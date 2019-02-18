@@ -636,26 +636,27 @@ The project is a 2D arcade game. It will be a 2D adventure game. The end goal of
 Throughout the paper these terms will be used in describing the game. 2D, branching storyline, linear storyline. 2D refers to the dimensions the game will be in i.e. 2D is short for 2 dimensions. To easily understand what this means picture a square drawn on a paper and then think of a cube. You can tell they are both completely different because the cube has depth this is a 3D representation that operates on the x,y and z coordinate plane. The square is the 2D representation because it's flat and only operates on the x and y plane. Branching storyline refers to the story structure and how the story of the game is built. The story that is produced depends on the choice of the player. This means the player could end up with a completely different ending or story leading to the ending depending on what they do in the game. Linear storyline also refers to the story structure within the game. A linear storyline is much like reading a book. From beginning to end the story is static and unchanging with only one ending. This definition is applied to games as well. This is a team project so we all have our own motivations for deciding to make a game. For me (Ethan ) and Jamel it's the video game aspect of it. Jamel and I plan to take our degrees in computer science to work in the video game industry. For Hunter it's the the idea. Hunter received inspiration from the Black Mirror, a tv series, episode Bandersnatch to make the game have multiple endings based on player choice. Hence the title Burning Choices.
 
 \subsection{Challenges}
-Some of the challenges we suspect to run into include programming the interaction between the player, character and game environment. This is drastically different from any programming projects we have attempted before. Creating in game objects like enemies and obstacles. This leads in to the environment interaction challenge. Challenge three is to create our different story lines and make sure they lead to an ending. Finally is the debugging. This is more of a patience challenge.
+Some of the challenges we suspect to run into include programming the interaction between the player, character and game environment. This is drastically different from any programming projects we have attempted before. We have learned about gathering user input and manipulating it, but we need to manipulate it in a way that interacts with objects or the player. Creating in game objects like enemies and obstacles leads in to the environment interaction challenge. A saved games are a necessity for games which entails gathering the players current place in the world as well as their choices in the story and be able to use this to load their progress when they load up the game. Challenge four is to create our different story lines and make sure they lead to an ending. Finally is the debugging. This is more of a patience challenge.
 To address these challenges we will need to do some research on useful libraries to help provide pre- defined functionality.
 
 \section{Scope}
-The project will be finished when we have multiple in game levels, a branching story, as bug free as possible and the world builds and functions properly. The minimum would be a game with a linear story opposed to the branching. THIS SECTION IS NOT FINISHED!!! needs stretch goals
+The project will be finished when we have at least three in game levels, a linear storyline, save states, as bug free as possible and the world builds and functions properly. The stretch goals we have set for this project are the branching storylines and more than three in game levels.
 
 \subsection{Requirements}
 As part of fleshing out the scope of your requirements, you'll also need to keep in mind both your functional and non-functional requirements.  These should be listed, and explained in detail as necessary.  Use this area to explain how you gathered these requirements.
 
 \subsubsection{Functional}
 \begin{itemize}
-\item User needs to have a private shopping cart -- this cannot be shared between users, and needs to maintain state across subsequent visits to the site
-\item Users need to have website accounts -- this will help track recent purchases, keep shopping cart records, etc.
-\item You'll need more than 2 of these...
+\item The program should load up the game "Burning Choices" and start on the title screen.
+\item The game will allow for saved states.
+\item The player can choose from the title menu to do things like load a game or start a new one.
+\item WANT TO ADD MORE!!!
 \end{itemize}
 
 \subsubsection{Non-Functional}
 \begin{itemize}
-\item Security -- user credentials must be encrypted on disk, users should be able to reset their passwords if forgotten
-\item you'll typically have fewer non-functional than functional requirements
+\item Usability- The game will give the player an amount of entertainment through gameplay.
+\item Recoverability- If the game crashes then the user will be able to open the game up and continue from a save. If the save corrupts then a backup of your save will be loaded instead.
 \end{itemize}
 
 \subsection{Use Cases}
