@@ -475,7 +475,7 @@
 % in the abstract or keywords.
 \IEEEtitleabstractindextext{%
 \begin{abstract}
-Over the course of the semester we will develop and present a 2D sidescroller game named "Burning Choices". The game will consist of the genres sidescroller, platformer and action adventure. It will include multiple levels and hopefully branching story depending on the time contraints. The game took inspiration from the Bandersnatch, a fictitious game in the Black Mirror tv series that also included branching story line. The target audience will be those that enjoy classic action arcade style games. Things achieved thus far include the brainstorming. We have put together many ideas of things we would like to achieve with this project.
+In the course of the next couple of months we will develop and present a 2D game named "Burning Choices". The game will consist of the genre  adventure. It will include multiple levels and hopefully branching story depending on the time contraints. The game took inspiration from the Bandersnatch, a fictitious game in the Black Mirror tv series that also included branching story line. The target audience will be those that enjoy classic action arcade style games. Things achieved thus far include the brainstorming. We have put together many ideas of things we would like to achieve with this project.
 \end{abstract}
 
 %As the comment below states, you usually only do these when you're doing a final submission of a paper, to make it easier to find your work when searching.
@@ -517,7 +517,7 @@ Over the course of the semester we will develop and present a 2D sidescroller ga
 
 
 \section{Introduction}
-The project is a 2D arcade game. It will be a 2D adventure game. The end goal of the project is to tell a story that branches depending on the actions of the player. The audience for this project would be those who enjoy retro style games. The audience will hopefully play the game and leave feeling satisfied/ entertained. The reason why we have chosen this project is thanks to different interests ranging from a love of video games to things we enjoy in our own lives and would like to create ourselves. The story will follow the player as they find their way through our world overcoming any obstacles in their way. In doing so they are given the ability to control their own story.
+The project is a 2D adventure game.  The end goal of the project is to tell a story that branches depending on the actions of the player. The audience for this project would be those who enjoy retro style games. The audience will hopefully play the game and leave feeling satisfied/ entertained. The reason why we have chosen this project is thanks to different interests ranging from a love of video games to things we enjoy in our own lives and would like to create ourselves. The story will follow the player as they find their way through our world overcoming any obstacles in their way. In doing so they are given the ability to control their own story.
 
 
 
@@ -633,7 +633,7 @@ The project is a 2D arcade game. It will be a 2D adventure game. The end goal of
 % \fnbelowfloat command of the stfloats package.
 
 \subsection{Background}
-Throughout the paper these terms will be used in describing the game. 2D, branching storyline, linear storyline. 2D refers to the dimensions the game will be in i.e. 2D is short for 2 dimensions. To easily understand what this means picture a square drawn on a paper and then think of a cube. You can tell they are both completely different because the cube has depth this is a 3D representation that operates on the x,y and z coordinate plane. The square is the 2D representation because it's flat and only operates on the x and y plane. Branching storyline refers to the story structure and how the story of the game is built. The story that is produced depends on the choice of the player. This means the player could end up with a completely different ending or story leading to the ending depending on what they do in the game. Linear storyline also refers to the story structure within the game. A linear storyline is much like reading a book. From beginning to end the story is static and unchanging with only one ending. This definition is applied to games as well. This is a team project so we all have our own motivations for deciding to make a game. For me (Ethan ) and Jamel it's the video game aspect of it. Jamel and I plan to take our degrees in computer science to work in the video game industry. For Hunter it's the the idea. Hunter received inspiration from the Black Mirror, a tv series, episode Bandersnatch to make the game have multiple endings based on player choice. Hence the title Burning Choices.
+Throughout the paper these terms will be used in describing certain aspects or situations in the game. Title screen, 2D, branching storyline, linear storyline are some of the terms. When you watch a movie before you can watch a screen will pop up that says play. This is the title screen and video games have them. They make sure the user is ready to play instead of just throwing them in where they left off. 2D refers to the dimensions the game will be in i.e. 2D is short for 2 dimensions. To easily understand what this means picture a square drawn on a paper and then think of a cube. You can tell they are both completely different because the cube has depth this is a 3D representation that operates on the x,y and z coordinate plane. The square is the 2D representation because it's flat and only operates on the x and y plane. Branching storyline refers to the story structure and how the story of the game is built. The story that is produced depends on the choice of the player. This means the player could end up with a completely different ending or story leading to the ending depending on what they do in the game. Linear storyline also refers to the story structure within the game. A linear storyline is much like reading a book. From beginning to end the story is static and unchanging with only one ending. This definition is applied to games as well. This is a team project so we all have our own motivations for deciding to make a game. For me (Ethan ) and Jamel it's the video game aspect of it. Jamel and I plan to take our degrees in computer science to work in the video game industry. For Hunter it's the the idea. Hunter received inspiration from the Black Mirror, a tv series, episode Bandersnatch to make the game have multiple endings based on player choice. Hence the title Burning Choices.
 
 \subsection{Challenges}
 Some of the challenges we suspect to run into include programming the interaction between the player, character and game environment. This is drastically different from any programming projects we have attempted before. We have learned about gathering user input and manipulating it, but we need to manipulate it in a way that interacts with objects or the player. Creating in game objects like enemies and obstacles leads in to the environment interaction challenge. A saved games are a necessity for games which entails gathering the players current place in the world as well as their choices in the story and be able to use this to load their progress when they load up the game. Challenge four is to create our different story lines and make sure they lead to an ending. Finally is the debugging. This is more of a patience challenge.
@@ -660,12 +660,6 @@ As part of fleshing out the scope of your requirements, you'll also need to keep
 \end{itemize}
 
 \subsection{Use Cases}
-This subsection is arguably part of how you define your project scope (why it is in the Scope section...).  In a traditional Waterfall approach, as part of your requirements gathering phase (what does the product actually \emph{need} to do?), you will typically sit down with a user to develop use cases.
-
-You should have a table listing all use cases discussed in the document, the ID is just the order it is listed in, the name should be indicative of what should happen, the primary actor is typically most important in an application where you may have different levels of users (think admin vs normal user), complexity is a best-guess on your part as to how hard it should be.  A lower number in priority indicates that it needs to happen sooner rather than later.  A sample table, or Use Case Index can be seen in Table \ref{tab:useCaseIndex}.
-
-
-
 
 \begin{table}
 \centering
@@ -686,41 +680,66 @@ Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
 
 \begin{itemize}
 \item[Use Case Number:] 1
-\item[Use Case Name:] Add item to cart
-\item[Description:] A shopper on our site has identified an item they wish to buy.  They will click on a ``Add to Cart" button.  This will kick off a process to add one instance of the item to their cart.
+\item[Use Case Name:] Running the game
+\item[Description:] The user wishes to play the game so they run the executable. This will launch the game to a beginning menu.
 \end{itemize}
 
-You will then go on to (minimally) discuss a basic flow for the process:
-
 \begin{enumerate}
-\item User navigates to page listing desired item
-\item User left-clicks on ``Add to Cart" button.
-\item User cart is updated to reflect the new item, this also updates the current total.
-\item[Termination Outcome:] The user now has a single instance of the item in their cart.
+\item The user finds their executable
+\item The user opens the executable
+\item The executable throws the user into the game's beginning menus
+\item The user is inside the game viewing the menu options
 \end{enumerate}
 
-You may need to also add in any alternative flows:
-
-Alternative: Item already exists in the cart
+Alternative: User creates a shortcut to the executable
 \begin{enumerate}
-\item User navigates to page listing desired item
-\item User left-clicks on ``Add to Cart" button.
-\item User cart is updated to reflect the new item, showing that one more instance of the existing item has been added.  This also updates the current total.
-\item[Termination Outcome:] The user now has multiple instances of the item in their cart.
+\item User opens the shortcut they created
+\item Then the shortcut will open the game.
+\item The user will be put on the title screen
 \end{enumerate}
 
 You will often also need to include pictures or diagrams.  It is quite common to see use-case diagrams in such write-ups.  To properly reference an image, you will need to use the \texttt{figure} environment and will need to reference it in your text (via the \texttt{ref} command) (see Figure \ref{cat1}).  NOTE: this is not a use case diagram, but a kitten.
 
-After fully describing a use case, it is time to move on to the next use case:
 
 \begin{itemize}
 \item[Use Case Number:] 2
-\item[Use Case Name:] Checkout
-\item[Description:] A shopper on our site has finished shopping.  They will click on a ``Checkout" button.  This will kick off a process to calculate cart total, any taxes, shipping rates, and collect payment from the shopper.
-
+\item[Use Case Name:] Starting the story.
+\item[Description:] The user is on the title screen and wants to start the story of the game. 
 \end{itemize}
 
-You will then need to continue to flesh out all use cases you have identified for your project.
+\begin{enumerate}
+\item The user will see multiple menu items on the title screen.
+\item The user will click on New Game to start a new story.
+\item The game starts at the beginning of the story.
+\end{enumerate}
+
+\begin{itemize}
+\item[Use Case Number:] 3
+\item[Use Case Name:] Game saving
+\item[Description:] The user reaches a point in the game where they wish to save their progress and quit.
+\end{itemize}
+
+\begin{enumerate}
+\item The user will hit the Esc key to pause the game.
+\item A list of menu items will pop up.
+\item The game environment will pause allowing the user time to read the items.
+\item The user will select Save Game in the pause menu.
+\item The game will store the player's story data in a file created by the executable.
+\item The game will un- pause and begin where the user left off.
+\end{enumerate}
+
+\begin{itemize}
+\item[Use Case Number:] 4
+\item[Use Case Name:] Load Game
+\item[Description:] The user is on the title screen and wishes to continue where they left off in the story.
+\end{itemize}
+
+\begin{enumerate}
+\item The user will see a menu item that reads "Load Game".
+\item The user will click "Load Game". 
+\item The game will open the file holding the saved data of where the user last saved.
+\item Using the saved data the game will load to the point where the user last saved in the story.
+\end{enumerate}
 
 \begin{figure}[ht!]
 \includegraphics[height=250px, width=350px]{cat1.jpg}
