@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:BurningChoices_code"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="420" VerticalAlignment="Top" Width="790" KeyDown="TraverseCanvas_KeyDown" Focusable="True" Initialized="CanvasInitialized" Background="#FFA68D8D" >
+        <Image x:Name="character" Height="100" Canvas.Left="0" Canvas.Top="0" Canvas.Bottom="0" Canvas.Right="0" Width="100" Initialized="CharacterInitialized" />
+
+    </Canvas>
 </Window>
