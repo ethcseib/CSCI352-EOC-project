@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BurningChoices_code"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="420" VerticalAlignment="Top" Width="790" KeyDown="TraverseCanvas_KeyDown" Focusable="True" Initialized="CanvasInitialized" Background="#FFA68D8D" >
-        <Image x:Name="character" Height="100" Canvas.Left="0" Canvas.Top="0" Canvas.Bottom="0" Canvas.Right="0" Width="100" Initialized="CharacterInitialized" />
+        Title="MainWindow" Height="811.126" Width="803.761">
+    <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="800" VerticalAlignment="Top" Width="800" KeyDown="TraverseCanvas_KeyDown" Focusable="True" Initialized="CanvasInitialized" Background="#FFA68D8D" Margin="0,0,-0.4,-1.4" KeyUp="TraverseCanvas_KeyUp" >
+        <Image x:Name="exit" Height="350" Canvas.Left="710" Canvas.Right="00" Canvas.Top="250" Canvas.Bottom="600" Width="90" Initialized="ExitInitialized"/>
+        <Image x:Name="character" Height="100" Canvas.Left="400" Canvas.Top="400" Width="100" Initialized="CharacterInitialized" />
+
 
     </Canvas>
 </Window>
