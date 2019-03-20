@@ -26,54 +26,6 @@ namespace BurningChoices_code
             InitializeComponent();
         }
 
-        protected bool BoundingCheck(FrameworkElement element)
-        {/*<Dissatisfaction> I do not like this. Would prefer to be able to use some of the libraries online to do this checing instead. As soon as I can figure it out />*/
-            //MessageBox.Show("Checked");
-            Point BottomLeft = new Point(Canvas.GetLeft(character), Canvas.GetTop(character) + character.Height);
-            Point TopLeft = new Point(Canvas.GetLeft(character), Canvas.GetTop(character));
-            Point TopRight = new Point(Canvas.GetLeft(character) + character.Width, Canvas.GetTop(character));
-            Point BottomRight = new Point(Canvas.GetLeft(character) + character.Width, Canvas.GetTop(character) + character.Height);
-
-            List<Point> ElementPoints = new List<Point>();
-            Point pt;
-            //logic is wrong. Could be that the character is getting in the negatives
-            for (int x = Convert.ToInt32(Canvas.GetLeft(element)); x <= Convert.ToInt32(Canvas.GetLeft(element) + element.Width); x++)
-            {
-                for(int y = Convert.ToInt32(Canvas.GetTop(element)); y <= Convert.ToInt32(Canvas.GetTop(element) + element.Height); y++)
-                {/*<Summary> Stores all the points inside the element being tested for comparison />*/
-
-                    pt = new Point(x, y);
-                    ElementPoints.Add(pt);
-                }
-            }
-
-            if (ElementPoints.Contains(BottomLeft))
-            {
-                ElementPoints.Clear();
-                return true;
-            }
-            else if (ElementPoints.Contains(BottomRight))
-            {
-                ElementPoints.Clear();
-                return true;
-            }
-            else if (ElementPoints.Contains(TopRight))
-            {
-                ElementPoints.Clear();
-                return true;
-            }
-            else if (ElementPoints.Contains(TopLeft))
-            {
-                ElementPoints.Clear();
-                return true;
-            }
-            else
-            {
-                ElementPoints.Clear();
-                return false;
-            }
-        }
-
         private void CharacterInitialized(object sender, EventArgs e)
         {
             /*<Summary> establishes the main character model. bitmap.UriSource will have to change depending on where the images are located on the pc. Could change it to "mlg.jpg" if the image
@@ -82,7 +34,7 @@ namespace BurningChoices_code
             BitmapImage bitmap = new BitmapImage();//system.Windows.Media.BitmapImage rather than Sytem.Drawing
 
             bitmap.BeginInit();
-            bitmap.UriSource = new Uri(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSON.png", UriKind.RelativeOrAbsolute);
+            bitmap.UriSource = new Uri("STANDSTILL.png", UriKind.RelativeOrAbsolute);//experimenting with file locations so that they can easier access the program
             bitmap.EndInit();
 
             character.Source = bitmap;
@@ -96,118 +48,143 @@ namespace BurningChoices_code
         private void TraverseCanvas_KeyDown(object sender, KeyEventArgs e)//controls the movement of the character
         {
             /*<Problem> This only applies to the object exit need to expand it to other objects rather than just the one />*/
-                    /*<Solution> What if I use a list to hold the obstacles or if i can figure out how events work i could raise a flag when the player hits an obstacle />*/
+            /*<Solution> What if I use a list to hold the obstacles or if i can figure out how events work i could raise a flag when the player hits an obstacle />*/
             /*<Note> need to make the wall wrap around the screen to keep player from going outside the level but doing so may prove weird when overlapping walls/>*/
+            /*<todo> I want to be able to make the character get right next to the wall rather than ten paces back. Perhaps i could do player movement - distance to wall or >= to wall. Could do
+             a move to statement that sets move = to 10 rather than += 10 but only works on one obstacle until i work to make it multiple obstacle capable. Might be able to do the obstacle
+             class to have this function and if the obstacle object has a property for collide that if true will make the obstacle unable to be passed through/>*/
+            /*<Note> Switch statements are a thing to look into />*/
+            /*<Note> strategy pattern is a thing to look into for collision behavior. Might be a problem book talks of revealing the strategies to the client. />*/
+            /*<Note> observer pattern might do well for collision tracking />*/
+
+            /*<Strategy> have a timer inside to determine when to create a thread that runs only when the keys are pressed. The timer will make the thread wait a certain amount of time before activating player 
+             * run />*/
+             /*<Problem> The character doesnt get close to the wall but apparently the character is supposed to be right next to it I assume its a dimensions thing I don't quite see yet />*/
+
             Obstacle CharObj = new Obstacle();
+            GenObstacle obs = new Wall(character, canvas);//change the constructors character is static
+                                                         //collision problems still
 
-            if (BoundingCheck(exit))
-            {/*<Note> Would make a barrier class and check for that rather than the Image class />*/
-                if (Canvas.GetRight(character) == Canvas.GetLeft(exit))//going right
+            obs.ClosestElement();//dissatisfying and didn't work or ClosestObstacle didn't work
+            obs.CollisionCheck();
+
+            //int move = 10; so we can reduce the movement code when  a collision happens to this i dont know why i thought this made sense
+
+           if (obs.CollisionStatus)//the problem is collision is true and never gets switched back to false
+           {
+                //MessageBox.Show("X " + Convert.ToString(Canvas.GetRight(GenObstacle.ClosestObstacle)) + " Y " + Convert.ToString(Canvas.GetTop(GenObstacle.ClosestObstacle)));
+                if (obs.collideable)//not right this is just one instance
                 {
-                    if (e.Key == Key.W)
-                    {
-                        Canvas.SetTop(character, Canvas.GetTop(character) - 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                    if (Canvas.GetRight(character) == Canvas.GetLeft(GenObstacle.ClosestObstacle))//going right
+                    { //MessageBox.Show("Character " + Convert.ToString(Canvas.GetRight(character) + " obs " + Convert.ToString(Canvas.GetLeft(GenObstacle.ClosestObstacle))));
+                        if (e.Key == Key.W)
+                        {
+                            Canvas.SetTop(character, Canvas.GetTop(character) - 10);
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                        }
+
+                        else if (e.Key == Key.S)
+                        {
+                            Canvas.SetTop(character, Canvas.GetTop(character) + 10);
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                        }
+
+                        else if (e.Key == Key.A)
+                        {
+                            Canvas.SetLeft(character, Canvas.GetLeft(character) - 10);
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
+                        }
+
+                        else if (e.Key == Key.D)
+                        {
+                            
+                            //Canvas.SetLeft(character, Canvas.GetLeft(exit));//directional problem. Will require maths
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTRIGHT.png");
+                        }
                     }
 
-                    else if (e.Key == Key.S)
+                    else if (Canvas.GetBottom(character) == Canvas.GetTop(GenObstacle.ClosestObstacle))//going down
                     {
-                        Canvas.SetTop(character, Canvas.GetTop(character) + 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                        //MessageBox.Show("Character " + Convert.ToString(Canvas.GetBottom(character) + " obs " + Convert.ToString(Canvas.GetTop(GenObstacle.ClosestObstacle))));
+                        if (e.Key == Key.W)
+                        {
+                            Canvas.SetTop(character, Canvas.GetTop(character) - 10);
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                        }
+
+                        else if (e.Key == Key.S)
+                        {
+                            //Canvas.SetTop(character, Canvas.GetTop(character) + 10);
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                        }
+
+                        else if (e.Key == Key.A)
+                        {
+                            Canvas.SetLeft(character, Canvas.GetLeft(character) - 10);
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
+                        }
+
+                        else if (e.Key == Key.D)
+                        {
+                            Canvas.SetLeft(character, Canvas.GetLeft(character) + 10);
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTRIGHT.png");
+                        }
                     }
 
-                    else if (e.Key == Key.A)
+                    else if (Canvas.GetTop(character) == Canvas.GetBottom(GenObstacle.ClosestObstacle))//going up
                     {
-                        Canvas.SetLeft(character, Canvas.GetLeft(character) - 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
+                        //MessageBox.Show("Character " + Convert.ToString(Canvas.GetTop(character) + " obs " + Convert.ToString(Canvas.GetBottom(GenObstacle.ClosestObstacle))));
+                        if (e.Key == Key.W)
+                        {
+                            //Canvas.SetTop(character, Canvas.GetTop(character) - 10);
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                        }
+
+                        else if (e.Key == Key.S)
+                        {
+                            Canvas.SetTop(character, Canvas.GetTop(character) + 10);
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                        }
+
+                        else if (e.Key == Key.A)
+                        {
+                            Canvas.SetLeft(character, Canvas.GetLeft(character) - 10);
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
+                        }
+
+                        else if (e.Key == Key.D)
+                        {
+                            Canvas.SetLeft(character, Canvas.GetLeft(character) + 10);
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTRIGHT.png");
+                        }
                     }
 
-                    else if (e.Key == Key.D)
+                    else if (Canvas.GetLeft(character) == Canvas.GetRight(GenObstacle.ClosestObstacle))//going left
                     {
-                        //Canvas.SetLeft(character, Canvas.GetLeft(character) + 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTRIGHT.png");
-                    }
-                }
+                        //MessageBox.Show("Character " + Convert.ToString(Canvas.GetLeft(character) + " obs " + Convert.ToString(Canvas.GetRight(GenObstacle.ClosestObstacle))));
+                        if (e.Key == Key.W)
+                        {
+                            Canvas.SetTop(character, Canvas.GetTop(character) - 10);
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                        }
 
-                else if(Canvas.GetBottom(character) == Canvas.GetTop(exit))//going down
-                {
-                    if (e.Key == Key.W)
-                    {
-                        Canvas.SetTop(character, Canvas.GetTop(character) - 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
-                    }
+                        else if (e.Key == Key.S)
+                        {
+                            Canvas.SetTop(character, Canvas.GetTop(character) + 10);
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                        }
 
-                    else if (e.Key == Key.S)
-                    {
-                        //Canvas.SetTop(character, Canvas.GetTop(character) + 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
-                    }
+                        else if (e.Key == Key.A)
+                        {
+                            //Canvas.SetLeft(character, Canvas.GetLeft(character) - 10);
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
+                        }
 
-                    else if (e.Key == Key.A)
-                    {
-                        Canvas.SetLeft(character, Canvas.GetLeft(character) - 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
-                    }
-
-                    else if (e.Key == Key.D)
-                    {
-                        Canvas.SetLeft(character, Canvas.GetLeft(character) + 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTRIGHT.png");
-                    }
-                }
-
-                else if (Canvas.GetTop(character) == Canvas.GetBottom(exit))//going up
-                {/*<Problem> this part is not considered as part of the element and thus the character runs through the bottom of the wall without throwing a hit/collision />*/
-                    
-                    if (e.Key == Key.W)
-                    {
-                        //Canvas.SetTop(character, Canvas.GetTop(character) - 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
-                    }
-
-                    else if (e.Key == Key.S)
-                    {
-                        Canvas.SetTop(character, Canvas.GetTop(character) + 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
-                    }
-
-                    else if (e.Key == Key.A)
-                    {
-                        Canvas.SetLeft(character, Canvas.GetLeft(character) - 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
-                    }
-
-                    else if (e.Key == Key.D)
-                    {
-                        Canvas.SetLeft(character, Canvas.GetLeft(character) + 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTRIGHT.png");
-                    }
-                }
-
-                else if (Canvas.GetLeft(character) == Canvas.GetRight(exit))//going left
-                {
-                    if (e.Key == Key.W)
-                    {
-                        Canvas.SetTop(character, Canvas.GetTop(character) - 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
-                    }
-
-                    else if (e.Key == Key.S)
-                    {
-                        Canvas.SetTop(character, Canvas.GetTop(character) + 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
-                    }
-
-                    else if (e.Key == Key.A)
-                    {
-                        //Canvas.SetLeft(character, Canvas.GetLeft(character) - 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
-                    }
-
-                    else if (e.Key == Key.D)
-                    {
-                        Canvas.SetLeft(character, Canvas.GetLeft(character) + 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTRIGHT.png");
+                        else if (e.Key == Key.D)
+                        {
+                            Canvas.SetLeft(character, Canvas.GetLeft(character) + 10);
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTRIGHT.png");
+                        }
                     }
                 }
             }
@@ -236,7 +213,7 @@ namespace BurningChoices_code
                     character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTRIGHT.png");
                 }
             }
-            Canvas.SetRight(character, Canvas.GetLeft(character) + character.Width);
+            Canvas.SetRight(character, Canvas.GetLeft(character) + character.Width);//setting right and bottom
             Canvas.SetBottom(character, Canvas.GetTop(character) + character.Height);
         }
 
@@ -244,13 +221,7 @@ namespace BurningChoices_code
         private void TraverseCanvas_KeyUp(object sender, KeyEventArgs e)
         {
             Obstacle CharObj = new Obstacle();
-            /*Point pt = new Point(Canvas.GetLeft(exit), Canvas.GetTop(exit));
 
-            HitTestResult res = VisualTreeHelper.HitTest(canvas, pt);
-
-            if (Convert.ToString(res.VisualHit) != "System.Windows.Controls.Image")/*<Note> This works for all images but im not satisfied. I only want  this to work for chosen images /Note>*/
-            /*<Note> Vould make a barrier class and check for that rather than the image class />*/
-            //MessageBox.Show(Convert.ToString(res.VisualHit));
             if (e.Key == Key.W)
             {
                 character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\STANDSTILL.png");
@@ -271,42 +242,24 @@ namespace BurningChoices_code
 
 
         private void CanvasInitialized(object sender, EventArgs e)//allows the canvas to take input which allows things like image movement
-        {
-            //Obstacle obs = new Obstacle();
-            //Thread new_thread = new Thread(new ThreadStart(obs.ObstacleThread));
+        {/*<Problem> The ObstacleAbstractFactory feels like a decorator somewhat />*/
+
+            /*<Note> For those planning to use the obstacle abstract factory to create walls you have to follow this implementation. 
+             * You call obs.CreateObs(path to picture, height of wall, width of wall, the wall object created in the MainWindow.xaml). If you plan to create a new wall or obstacle you must do obs = new Wall(character, canvas)
+             * or obs = new Door(canvas); however, only walls have really been fleshed out so the door class needs work. The abstract obstacle factory is still in development and thus certain parts are subject to change />*/
+
+            GenObstacle obs = new Wall(character, canvas);
+            
+            obs.CreateObs(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png", 50, 90, wall1);//almost like a decorator needs review
+            obs = new Wall(character, canvas);
+
+            obs.CreateObs(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png", 50, 50, wall2);
+
+            //obs.CreateObs(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png", 50, 50, wall3);
 
             canvas.Focusable = true;
             canvas.Focus();
 
-            //new_thread.Start();//works fine though need to stop it if the user quits the game. Im sure there is an exit handler
-        }
-
-        private void ExitInitialized(object sender, EventArgs e)//used to open another level
-        {
-            Obstacle ExitImg = new Obstacle();
-            Canvas.SetRight(exit, Canvas.GetLeft(exit) + exit.Width);
-            Canvas.SetBottom(exit, Canvas.GetTop(exit) + exit.Height);
-
-            exit.Stretch = Stretch.Fill;
-            exit.StretchDirection = StretchDirection.Both;
-            exit.Source = ExitImg.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png");
-        }
-
-        private void canvas_loaded(object sender, RoutedEventArgs e)
-        {
-            Obstacle ExitImg = new Obstacle();
-            Canvas.SetRight(exit, Canvas.GetLeft(exit) + exit.Width);
-            Canvas.SetBottom(exit, Canvas.GetTop(exit) + exit.Height);
-
-            exit.Stretch = Stretch.Fill;
-            exit.StretchDirection = StretchDirection.Both;
-            exit.Source = ExitImg.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png");
-        }
-
-        private void BoundingRectangle_Initialized(object sender, EventArgs e)
-        {
-            Canvas.SetLeft(rect, Canvas.GetLeft(character));
-            Canvas.SetTop(rect, Canvas.GetTop(character));
         }
     }
 
