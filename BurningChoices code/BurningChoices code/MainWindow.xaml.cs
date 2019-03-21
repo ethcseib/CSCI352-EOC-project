@@ -34,11 +34,12 @@ namespace BurningChoices_code
             BitmapImage bitmap = new BitmapImage();//system.Windows.Media.BitmapImage rather than Sytem.Drawing
 
             bitmap.BeginInit();
-            bitmap.UriSource = new Uri("STANDSTILL.png", UriKind.Relative);//experimenting with file locations so that they can easier access the program
+            bitmap.UriSource = new Uri(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\GUY.png", UriKind.RelativeOrAbsolute);//experimenting with file locations so that they can easier access the program
             bitmap.EndInit();
 
             character.Source = bitmap;
-
+            //character.Height = 100;
+            //character.Width = 100;
             Canvas.SetRight(character, Canvas.GetLeft(character) + character.Width);
             Canvas.SetBottom(character, Canvas.GetTop(character) + character.Height);
 
@@ -247,20 +248,26 @@ namespace BurningChoices_code
             /*<Note> For those planning to use the obstacle abstract factory to create walls you have to follow this implementation. 
              * You call obs.CreateObs(path to picture, height of wall, width of wall, the wall object created in the MainWindow.xaml). If you plan to create a new wall or obstacle you must do obs = new Wall(character, canvas)
              * or obs = new Door(canvas); however, only walls have really been fleshed out so the door class needs work. The abstract obstacle factory is still in development and thus certain parts are subject to change />*/
-
+            //Image img = new Image();
+            BitmapImage bit = new BitmapImage();
             GenObstacle obs = new Wall(character, canvas);
+            
+            bit.BeginInit();
+            bit.UriSource = new Uri(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\ROAD.png", UriKind.RelativeOrAbsolute);
+            bit.EndInit();
 
-            obs.CreateObs(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png", Convert.ToInt32(wall3.Width), Convert.ToInt32(wall3.Height), wall1); ;//almost like a decorator needs review
+            road.Source = bit;
+            obs.CreateObs(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png", Convert.ToInt32(wall1.Height), Convert.ToInt32(wall1.Width), wall1); ;//almost like a decorator needs review
 
             obs = new Wall(character, canvas);
-            obs.CreateObs(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png", Convert.ToInt32(wall3.Width), Convert.ToInt32(wall3.Height), wall2);
+            obs.CreateObs(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png", Convert.ToInt32(wall2.Height), Convert.ToInt32(wall2.Width), wall2);
 
             obs = new Wall(character, canvas);
-            //obs.CreateObs(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png", Convert.ToInt32(wall3.Height), Convert.ToInt32(wall3.Width), wall3);
-
+            obs.CreateObs(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png", Convert.ToInt32(wall3.Height), Convert.ToInt32(wall3.Width), wall3);
+            
             obs = new Wall(character, canvas);
-            //obs.CreateObs(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png", Convert.ToInt32(wall3.Height), Convert.ToInt32(wall3.Width), wall4); ;
-
+            obs.CreateObs(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png", Convert.ToInt32(wall4.Height), Convert.ToInt32(wall4.Width), wall4); ;
+            //the problem was Canvas.GetLeft(wall4) returned nothing because left was not given a value
             canvas.Focusable = true;
             canvas.Focus();
 

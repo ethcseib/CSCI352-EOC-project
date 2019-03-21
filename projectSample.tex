@@ -734,11 +734,11 @@ Alternative: User is on the title screen
 \item The game will open the file holding the saved data of where the user last saved.
 \item Using the saved data the game will load to the point where the user last saved in the story.
 \end{enumerate}
-
+\newpage
 \subsection{Interface Mockups}
 
-\begin{figure}[ht!]
-\includegraphics[width = 500px, height = 300px]{BurningChoicesGameplay.png}
+\begin{figure}[h]
+\includegraphics[scale=.4]{BurningChoicesGameplay.png}
 \caption{The gameplay so far}
 \label{gameplay_1}
 Currently we have the ability to add in walls as we want which allows us to start building on our game environment. In this picture the player is attempting to pass through a wall that cannot be passed through. This picture also shows the color and art style that can be expected within the game environment.
@@ -746,33 +746,48 @@ Currently we have the ability to add in walls as we want which allows us to star
  
 
 
-\begin{figure}[ht!]
-\includegraphics[width=275px, height=225px]{BurningChoicesMenu.png}
+\begin{figure}[h]
+\includegraphics[scale=.4]{BurningChoicesMenu.png}
 \caption{A layout of the Title Screen}
 \label{TS}
 This is what we want our title screen to look like once we are finished with the project except we plan to replace start with new game because we recognize how ambiguous it is. This image is the first thing that will pop up when you run the game. It shows you what we envision use cases 1 and 4 to be like. The Resume option, case 4, will allow the player to load a game to continue the story where they left off and the Start option, case 1, will begin a new game from the beginning of the story. The Quit option pertains to use case 3's alternative in which the user is on the title screen and wants to quit the game.
 \end{figure}
 
 
-\begin{figure}[ht!]
-\includegraphics[width = 275px, height = 225px]{BurningChoicesPauseScreen.png}
+\begin{figure}[h]
+\includegraphics[scale=.4]{BurningChoicesPauseScreen.png}
 \caption{A layout of the pause screen}
 \label{PS}
 This is the current version of our pause screen. You know it's the pause screen because it tells you the game is paused at the top. The screen will give you the three options to choose from. The Resume button will un-pause the game and continue the user where they left off. The save option is use case 2 which will record the user's current progress within the story and save it to a file to be loaded later. Then at the bottom of the list is quit which is use case 3. This will close the game entirely.
 \end{figure}
 
-
+\newpage
 \section{Project Timeline}
+The time line for this project starts with the requirements phase. It will last from January 2019 to January 2019. This phase is simple and took little time to complete. We gathered what most games have that would be useful in the context of our game.
 
+Next is the design phase. This phase is being developed still. Meaning we started out with our base line ideas we discussed in the beginning, but have modified them as time has gone on. This phase lasted from February through March because we will not be adding any new ideas.
+\begin{enumerate}
+\item We deliberate on the type of gameplay we will have.
+\item Discuss the story.
+\item Decide a theme for the whole game.
+\item Deliberate on some design patterns to use.
+\end{enumerate}
 
+Then comes the implementation phase this will take the most time.  We plan for this to last from February through April. In this time we plan to have these things finished.
+\begin{enumerate}
+\item Levels designed (In Progress)
+\item Obstacle class made (In Progress)
+\item The story implemented
+\end{enumerate}
+This sums up the time line we have set for ourselves because the verification and maintenance steps will be taken care of in the implementation step as we progress in the project.
 \section{Project Structure}
 Currently we have decided to use an Abstract Factory design pattern to define and create any objects we will use within the game such as walls and doors.
-
+\newpage
 \subsection{UML Outline}
 
 
-\begin{figure}[ht!]
-\includegraphics[width = 550px, height = 500px]{BurningChoicesUML.png}
+\begin{figure}[h]
+\includegraphics[scale= 0.4]{BurningChoicesUML.png}
 \caption{This is the current UML plan we have for our project. It is not finished, but thus far we have a plan for any in game object such as walls, doors and items as well as functionality for our MainWindow class}
 \label{UML}
 \end{figure}

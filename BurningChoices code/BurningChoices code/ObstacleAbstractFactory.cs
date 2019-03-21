@@ -100,9 +100,10 @@ namespace BurningChoices_code
 
         protected void SetList()//gathers the coordinates of each obstacle to be used for tracking and collision testing
         {
-
+            
             for (int x = Convert.ToInt32(Canvas.GetLeft(obs)); x <= Convert.ToInt32(Canvas.GetLeft(obs) + obs.Width); x++)
             {
+                
                 for (int y = Convert.ToInt32(Canvas.GetTop(obs)); y <= Convert.ToInt32(Canvas.GetTop(obs) + obs.Height); y++)
                 {
                     ObsPoints.Add(new Point(x, y));

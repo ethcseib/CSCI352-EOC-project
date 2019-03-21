@@ -7,10 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="811.126" Width="803.761">
     <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="800" VerticalAlignment="Top" Width="800" IsHitTestVisible="True" KeyDown="TraverseCanvas_KeyDown" Focusable="True" Initialized="CanvasInitialized" Background="#FFA68D8D" Margin="0,0,-0.4,-1.4" KeyUp="TraverseCanvas_KeyUp" >
-        <Image x:Name="character" Height="50" Canvas.Left="200" Canvas.Top="220" Width="50" IsHitTestVisible="True" Initialized="CharacterInitialized" />
         <Image x:Name="wall1" Height="800" Canvas.Left="0" Canvas.Top="0" Width="50"/>
         <Image x:Name="wall2" Height="800" Canvas.Left="750" Canvas.Top="0" Width="50"/>
-        <Image x:Name="wall3" Height="50" Width="800" Canvas.Top="0" />
-        <Image x:Name="wall4" Height="50" Width="800" Canvas.Top="750" />
+        <Image x:Name="wall3" Height="50" Width="800" Canvas.Top="0" Canvas.Left="0" />
+        <Image x:Name="wall4" Height="50" Width="800" Canvas.Top="750" Canvas.Left="0" />
+        <Image x:Name="road" Height="800" Width="800" Canvas.Top="0" />
+        <Image x:Name="character" Height="50" Canvas.Left="200" Canvas.Top="220" Width="50" IsHitTestVisible="True" Initialized="CharacterInitialized" />
     </Canvas>
 </Window>
