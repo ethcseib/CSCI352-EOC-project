@@ -34,7 +34,7 @@ namespace BurningChoices_code
             BitmapImage bitmap = new BitmapImage();//system.Windows.Media.BitmapImage rather than Sytem.Drawing
 
             bitmap.BeginInit();
-            bitmap.UriSource = new Uri("STANDSTILL.png", UriKind.RelativeOrAbsolute);//experimenting with file locations so that they can easier access the program
+            bitmap.UriSource = new Uri("STANDSTILL.png", UriKind.Relative);//experimenting with file locations so that they can easier access the program
             bitmap.EndInit();
 
             character.Source = bitmap;
@@ -249,13 +249,17 @@ namespace BurningChoices_code
              * or obs = new Door(canvas); however, only walls have really been fleshed out so the door class needs work. The abstract obstacle factory is still in development and thus certain parts are subject to change />*/
 
             GenObstacle obs = new Wall(character, canvas);
-            
-            obs.CreateObs(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png", 50, 90, wall1);//almost like a decorator needs review
+
+            obs.CreateObs(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png", Convert.ToInt32(wall3.Width), Convert.ToInt32(wall3.Height), wall1); ;//almost like a decorator needs review
+
             obs = new Wall(character, canvas);
+            obs.CreateObs(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png", Convert.ToInt32(wall3.Width), Convert.ToInt32(wall3.Height), wall2);
 
-            obs.CreateObs(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png", 50, 50, wall2);
+            obs = new Wall(character, canvas);
+            //obs.CreateObs(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png", Convert.ToInt32(wall3.Height), Convert.ToInt32(wall3.Width), wall3);
 
-            //obs.CreateObs(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png", 50, 50, wall3);
+            obs = new Wall(character, canvas);
+            //obs.CreateObs(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png", Convert.ToInt32(wall3.Height), Convert.ToInt32(wall3.Width), wall4); ;
 
             canvas.Focusable = true;
             canvas.Focus();

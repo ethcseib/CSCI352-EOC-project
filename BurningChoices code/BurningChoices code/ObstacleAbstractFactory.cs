@@ -10,7 +10,9 @@ using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace BurningChoices_code
-{
+{/*<Note> abstract factory works well when user or client is given a choice of different looks and feels of a product suchas if they want a blue car or red one. Then the desired look and feel is returned. This is
+    not really used to create in the program i believe />*/
+
     class ObstacleChecker
     {
         //TODO
@@ -29,7 +31,7 @@ namespace BurningChoices_code
         }
     }
 
-    class ExitFactory : ObstacleAbstractFactory
+    class DoorFactory : ObstacleAbstractFactory
     {
         public override GenObstacle GetObstacle(Image charac, Canvas can)
         {
@@ -40,6 +42,8 @@ namespace BurningChoices_code
     abstract class GenObstacle
     {
         public static Image ClosestObstacle;//used in tracking the closest obstacle to the player
+        //could possibly create an accessor for ClosestObstacle so it can't be openly modified
+
         protected static List<GenObstacle> GenObs = new List<GenObstacle>();//holds every object instance of a new obstacle. May not be the best due to memory consumption
         protected bool IsCollideable = true;//used to determine if an obstacle can be passed through by the player true means no
         public bool collideable//accessor to IsCollideable
@@ -62,7 +66,7 @@ namespace BurningChoices_code
         protected Canvas canvas;//the canvas to add obstacles to
         //might make this static because there should be just one canvas at a time
 
-        public GenObstacle()//this might be useless
+        public GenObstacle()//this might be useless 
         {
             ObsPoints = new List<Point>();
         }
@@ -173,7 +177,7 @@ namespace BurningChoices_code
 
     class Wall : GenObstacle//might make these private to reduce access to others though this might cause accessing issues
     {//TODO
-        List<Point> walls = new List<Point>();
+        //List<Point> walls = new List<Point>();
         
         public Wall(Image charac, Canvas canvas)
         {
@@ -181,7 +185,7 @@ namespace BurningChoices_code
             character = charac;
             this.canvas = canvas;
             //GenObs.Add(this);
-            obs = new Image();
+            //obs = new Image();
         }
 
     }
