@@ -80,13 +80,13 @@ namespace BurningChoices_code
                         if (e.Key == Key.W)
                         {
                             Canvas.SetTop(character, Canvas.GetTop(character) - 10);
-                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
                         }
 
                         else if (e.Key == Key.S)
                         {
                             Canvas.SetTop(character, Canvas.GetTop(character) + 10);
-                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
                         }
 
                         else if (e.Key == Key.A)
@@ -109,13 +109,13 @@ namespace BurningChoices_code
                         if (e.Key == Key.W)
                         {
                             Canvas.SetTop(character, Canvas.GetTop(character) - 10);
-                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
                         }
 
                         else if (e.Key == Key.S)
                         {
                             //Canvas.SetTop(character, Canvas.GetTop(character) + 10);
-                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
                         }
 
                         else if (e.Key == Key.A)
@@ -137,13 +137,13 @@ namespace BurningChoices_code
                         if (e.Key == Key.W)
                         {
                             //Canvas.SetTop(character, Canvas.GetTop(character) - 10);
-                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
                         }
 
                         else if (e.Key == Key.S)
                         {
                             Canvas.SetTop(character, Canvas.GetTop(character) + 10);
-                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
                         }
 
                         else if (e.Key == Key.A)
@@ -165,13 +165,13 @@ namespace BurningChoices_code
                         if (e.Key == Key.W)
                         {
                             Canvas.SetTop(character, Canvas.GetTop(character) - 10);
-                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
                         }
 
                         else if (e.Key == Key.S)
                         {
                             Canvas.SetTop(character, Canvas.GetTop(character) + 10);
-                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                            character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
                         }
 
                         else if (e.Key == Key.A)
@@ -195,12 +195,12 @@ namespace BurningChoices_code
                 {
                     
                     Canvas.SetTop(character, Canvas.GetTop(character) - 10);
-                    character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                    character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
                 }
                 else if (e.Key == Key.S)
                 {
                     Canvas.SetTop(character, Canvas.GetTop(character) + 10);
-                    character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                    character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
                 }
                 else if (e.Key == Key.A)
                 {
@@ -224,19 +224,19 @@ namespace BurningChoices_code
 
             if (e.Key == Key.W)
             {
-                character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\STANDSTILL.png");
+                character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\GUY.png");
             }
             else if (e.Key == Key.S)
             {
-                character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\STANDSTILL.png");
+                character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\GUY.png");
             }
             else if (e.Key == Key.A)
             {
-                character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\STANDSTILL.png");
+                character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\GUY.png");
             }
             else if (e.Key == Key.D)
             {
-                character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\STANDSTILL.png");
+                character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\GUY.png");
             }
         }
 
