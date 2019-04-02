@@ -95,5 +95,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Object Model\BurningChoicesMenu.png" />
+    <Resource Include="Object Model\BurningChoicesPauseScreen.png" />
+    <Resource Include="Object Model\Wall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Object Model\GUY.png" />
+    <Resource Include="Object Model\MOVEMENTLEFT.png" />
+    <Resource Include="Object Model\MOVEMENTRIGHT.png" />
+    <Resource Include="Object Model\ROAD.png" />
+    <Resource Include="Object Model\TREE.png" />
+    <Resource Include="Object Model\TREE2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

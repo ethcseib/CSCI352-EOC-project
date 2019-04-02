@@ -8,34 +8,27 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace BurningChoices_code
 {/*<Note> abstract factory works well when user or client is given a choice of different looks and feels of a product suchas if they want a blue car or red one. Then the desired look and feel is returned. This is
     not really used to create in the program i believe />*/
 
-    class ObstacleChecker
+    class MakeObstacle
     {
-        //TODO
-    }
-
-    abstract class ObstacleAbstractFactory
-    {
-        public abstract GenObstacle GetObstacle(Image charac, Canvas can);
-    }
-
-    class WallFactory : ObstacleAbstractFactory
-    {
-        public override GenObstacle GetObstacle(Image charac, Canvas can)
+        public GenObstacle MakeWall(Image charac, Canvas canvas, string pic, Image wall)
         {
-            return new Wall(charac, can);
+            return new Wall(charac, canvas, pic, wall);
         }
-    }
 
-    class DoorFactory : ObstacleAbstractFactory
-    {
-        public override GenObstacle GetObstacle(Image charac, Canvas can)
+         public GenObstacle MakeDoor(Image charac, Canvas canvas, string pic, Image door)
         {
-            return new Door(charac, can);
+            return new Door(charac, canvas, pic, door);
+        }
+
+        public GenObstacle MakeItem(Image charac, Canvas canvas, string pic, Image item)
+        {
+            return new Item(charac, canvas, pic, item);
         }
     }
 
@@ -61,7 +54,7 @@ namespace BurningChoices_code
 
         protected Image obs;//the obstacle
 
-        protected static Image character;//the character check collisions with
+        static protected Image character;//the character check collisions with
         //might make static because there should be just one character at a time
         protected Canvas canvas;//the canvas to add obstacles to
         //might make this static because there should be just one canvas at a time
@@ -71,7 +64,7 @@ namespace BurningChoices_code
             ObsPoints = new List<Point>();
         }
 
-        public void CreateObs(string picture, int height, int width, Image ImgObj)//, int CanvasLeft, int CanvasTop)//this might be best. Easier to control the obstacles created. though might remove canvasleft etc.
+        public void CreateObs(string picture, Image ImgObj)//, int CanvasLeft, int CanvasTop)//this might be best. Easier to control the obstacles created. though might remove canvasleft etc.
         {//string picture is the path to the picture
             BitmapImage x = new BitmapImage();
             obs = ImgObj;
@@ -82,18 +75,20 @@ namespace BurningChoices_code
             
             obs.Source = x;//gives the obstacles a texture/ image
 
-            obs.Height = height;
-            obs.Width = width;
+            obs.Height = ImgObj.Height;
+            obs.Width = ImgObj.Width;
+            
             obs.Stretch = Stretch.Fill;
             obs.StretchDirection = StretchDirection.Both;
 
-            Canvas.SetBottom(obs, Canvas.GetTop(obs) + height);//establishes the last two sides of the obstacles
-            Canvas.SetRight(obs, Canvas.GetLeft(obs) + width);
+            Canvas.SetBottom(obs, Canvas.GetTop(obs) + obs.Height);//establishes the last two sides of the obstacles
+            Canvas.SetRight(obs, Canvas.GetLeft(obs) + obs.Width);
 
-
+            //MessageBox.Show(Convert.ToString(Canvas.GetBottom(obs)));
+            //MessageBox.Show(Convert.ToString(Canvas.GetRight(obs)));
             //canvas.Children.Add(obs);
 
-            this.SetList();//adds obs's points to a list for collision checking and tracking
+            SetList();//adds obs's points to a list for collision checking and tracking
             GenObs.Add(this);//Hold every new obstacle created for collision checking
             /*<Note> Would like to find a way to just keep calling createObs to add new walls but this might defeat the purpose of abstract factory />*/
         }
@@ -111,13 +106,13 @@ namespace BurningChoices_code
             }
         }
 
-        public void CollisionCheck()//Checks for a collision between the character and an obstacle
+        static public void CollisionCheck()//Checks for a collision between the character and an obstacle
         {
             
-                Point BottomLeft = new Point(Canvas.GetLeft(character), Canvas.GetTop(character) + character.Height);
-                Point TopLeft = new Point(Canvas.GetLeft(character), Canvas.GetTop(character));
-                Point TopRight = new Point(Canvas.GetLeft(character) + character.Width, Canvas.GetTop(character));
-                Point BottomRight = new Point(Canvas.GetLeft(character) + character.Width, Canvas.GetTop(character) + character.Height);
+            Point BottomLeft = new Point(Canvas.GetLeft(character), Canvas.GetTop(character) + character.Height);
+            Point TopLeft = new Point(Canvas.GetLeft(character), Canvas.GetTop(character));
+            Point TopRight = new Point(Canvas.GetLeft(character) + character.Width, Canvas.GetTop(character));
+            Point BottomRight = new Point(Canvas.GetLeft(character) + character.Width, Canvas.GetTop(character) + character.Height);
             CollisionHappened = false;
 
             foreach (GenObstacle x in GenObs)
@@ -149,30 +144,35 @@ namespace BurningChoices_code
 
                     CollisionHappened = true;
                 }
+
             }
             
         }
 
         public void ClosestElement()//tracks the closest obstacle to the player for collision checking using a combination of the distance and midpoint formula. 
         {//Might look into using thread with it though possibly not due to the character unless i stop the thread after the loop exits
+            double CharacterMidpointX = (Canvas.GetLeft(character) + Canvas.GetRight(character)) / 2;
+            double CharacterMidpointY = (Canvas.GetTop(character) + Canvas.GetBottom(character)) / 2;
+            double ElementMidpointX = (Canvas.GetLeft(GenObs[0].obs) + Canvas.GetRight(GenObs[0].obs)) / 2;
+            double ElementMidpointY = (Canvas.GetTop(GenObs[0].obs) + Canvas.GetBottom(GenObs[0].obs)) / 2;
 
-            double MidpointX = (Canvas.GetLeft(character) + Canvas.GetRight(character)) / 2;
-            double MidpointY = (Canvas.GetTop(character) + Canvas.GetBottom(character)) / 2;
-            double dist = Math.Sqrt(Math.Pow((GenObs[0].ObsPoints[1].X - MidpointX), 2) + Math.Pow((GenObs[0].ObsPoints[1].Y - MidpointY), 2));
-            //MessageBox.Show(Convert.ToString(GenObs.Count));
-            for(int i = 0; i < GenObs.Count; i++)
+            double dist = Math.Sqrt(Math.Pow((ElementMidpointX - CharacterMidpointX), 2) + Math.Pow((ElementMidpointY - CharacterMidpointY), 2));
+
+            for (int i = 0; i < GenObs.Count; i++)
             {
-                for (int x = 0; x < GenObs[i].ObsPoints.Count; x++)
+                
+                for (int y = Convert.ToInt32(Canvas.GetTop(GenObs[i].obs)); y < Canvas.GetBottom(GenObs[i].obs); y++)
                 {
-                    if (Math.Sqrt(Math.Pow((GenObs[i].ObsPoints[x].X - ((Canvas.GetLeft(character) + Canvas.GetRight(character)) / 2)), 2)
-                + Math.Pow((GenObs[i].ObsPoints[x].Y - ((Canvas.GetTop(character) + Canvas.GetBottom(character)) / 2)), 2)) < dist)
+                    if (Math.Sqrt((Math.Pow(((Canvas.GetLeft(GenObs[i].obs) + Canvas.GetRight(GenObs[i].obs)) / 2) - (Canvas.GetLeft(character) + Canvas.GetRight(character) / 2), 2)
+                        + Math.Pow(((Canvas.GetTop(GenObs[i].obs) + Canvas.GetBottom(GenObs[i].obs)) / 2) - (Canvas.GetTop(character) + Canvas.GetBottom(character) / 2), 2))) < dist)
                     {
                         ClosestObstacle = GenObs[i].obs;
-                            
+
+                        dist = Math.Sqrt((Math.Pow(((Canvas.GetLeft(GenObs[i].obs) + Canvas.GetRight(GenObs[i].obs)) / 2) - (Canvas.GetLeft(character) + Canvas.GetRight(character) / 2), 2)
+                            + Math.Pow(((Canvas.GetTop(GenObs[i].obs) + Canvas.GetBottom(GenObs[i].obs)) / 2) - (Canvas.GetTop(character) + Canvas.GetBottom(character) / 2), 2)));
                     }
                 }
             }
-            //MessageBox.Show(Convert.ToString(Canvas.GetRight(ClosestObstacle)));
         }
     }
 
@@ -180,25 +180,86 @@ namespace BurningChoices_code
     {//TODO
         //List<Point> walls = new List<Point>();
         
-        public Wall(Image charac, Canvas canvas)
+        public Wall(Image charac, Canvas canv, string pic, Image wall)
         {
             IsCollideable = true;
             character = charac;
-            this.canvas = canvas;
-            //GenObs.Add(this);
-            //obs = new Image();
+            canvas = canv;
+            CreateObs(pic, wall);
         }
 
     }
 
     class Door : GenObstacle//gotta plan this one it's different than wall
     {
-        public Door(Image charac, Canvas canvas)
+        public Door(Image charac, Canvas canv, string pic, Image door)
         {//TODO
             IsCollideable = false;
-            //character = charac;
-            this.canvas = canvas;
-            //GenObs.Add(this);//might need to split this from walls
+            canvas = canv;
+            character = charac;
+            CreateObs(pic, door);
         }
     }
+
+    class Item : GenObstacle
+    {
+        public Item(Image charac, Canvas canv, string pic, Image item)
+        {
+            IsCollideable = false;
+            this.canvas = canv;
+            character = charac;
+            CreateObs(pic, item);
+            //canvas.Children.Remove(this);
+        }
+
+        /*public override void CollisionCheck()
+        {
+            base.CollisionCheck();MessageBox.Show("happened");
+            if (CollisionHappened)
+            {
+                
+                canvas.Children.Remove(obs);//I don't know how this will work logic wise
+            }
+        }*/
+    }
+
+    /*<TODO> This observer will hopefully be used with collision. Kind of like an event system. I need to think on the implementation a bit more. I'm not quite sure how I will go about this
+     * </TODO>*/
+    abstract class Subject
+    {
+        protected List<Observer> obs = new List<Observer>();
+
+        protected abstract void Attach(Observer obj);
+        protected abstract void Detatch(Observer obj);
+        protected abstract void Notify();
+    }
+
+    class Collision : Subject
+    {
+        protected override void Attach(Observer obj)
+        {
+            obs.Add(obj);
+        }
+
+        protected override void Detatch(Observer obj)
+        {
+            obs.Remove(obj);
+        }
+
+        protected override void Notify()
+        {
+            foreach(Observer x in obs)
+            {
+                x.Update(this);
+            }
+        }
+
+    }
+
+    abstract class Observer
+    {
+        public abstract void Update(Subject obj);// might need to be protected this is just a temporary fix
+    }
+
+
 }
