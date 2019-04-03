@@ -58,21 +58,15 @@ namespace BurningChoices_code
             /*<Question> What if i detect a collision fixing to happen and stop it from happening by not allowing movement but then you have to predict the next move />*/
 
             BitmapImage bit = new BitmapImage();
-
-            /*<Problem> GenObstacle is a problem I need to work out how to do collision checking and closest element without obs />*/
-            GenObstacle obs = new Wall(character, canvas, @"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png", wall4);
             
-            obs.ClosestElement();//gotta remove these somehow
-            GenObstacle.CollisionCheck();//might look into being able to remove GenObstacle in favor of MakeObstacle
-
-           if (obs.CollisionStatus)
+            GenObstacle.CollisionCheck();//might look into being able to remove GenObstacle in favor of MakeObstacle or remove it all together
+            GenObstacle obs = GenObstacle.ClosestElement();
+            if (obs.CollisionStatus)
            {
                 //MessageBox.Show("X " + Convert.ToString(Canvas.GetRight(GenObstacle.ClosestObstacle)) + " Y " + Convert.ToString(Canvas.GetTop(GenObstacle.ClosestObstacle)));
-                if (obs.collideable)
+                if (GenObstacle.ClosestElement().collideable)//obs.collideable)
                 {
-                    //MessageBox.Show("Character " + Convert.ToString(Canvas.GetLeft(character) + " obs " + Convert.ToString(Canvas.GetRight(GenObstacle.ClosestObstacle))));
-                    //MessageBox.Show("Character " + Convert.ToString(Canvas.GetTop(character) + " obs " + Convert.ToString(Canvas.GetTop(GenObstacle.ClosestObstacle))));
-                    //MessageBox.Show("X " + Convert.ToString(Canvas.GetRight(GenObstacle.ClosestObstacle)) + " Y " + Convert.ToString(Canvas.GetTop(GenObstacle.ClosestObstacle)));
+                    
                     if (Canvas.GetRight(character) == Canvas.GetLeft(GenObstacle.ClosestObstacle))//going right
                     { //MessageBox.Show("Character " + Convert.ToString(Canvas.GetRight(character) + " obs " + Convert.ToString(Canvas.GetLeft(GenObstacle.ClosestObstacle))));
                         if (e.Key == Key.W)
@@ -287,6 +281,12 @@ namespace BurningChoices_code
                             Canvas.SetLeft(character, Canvas.GetLeft(character) + 10);
                         }
                     }
+                }
+                else if(obs is Item)//type checking
+                {
+                    canvas.Children.Remove(GenObstacle.ClosestObstacle);
+                    obs.remove(obs);//quick and dirty. Needs improvement.
+                    
                 }
             }
 
