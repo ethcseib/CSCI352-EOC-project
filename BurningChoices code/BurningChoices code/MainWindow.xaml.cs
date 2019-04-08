@@ -82,7 +82,7 @@ namespace BurningChoices_code
             BitmapImage bitmap = new BitmapImage();//system.Windows.Media.BitmapImage rather than Sytem.Drawing
 
             bitmap.BeginInit();
-            bitmap.UriSource = new Uri(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSON.png", UriKind.RelativeOrAbsolute);
+            bitmap.UriSource = new Uri(@"C:\Users\hunte\Burning\PERSON.png", UriKind.RelativeOrAbsolute);
             bitmap.EndInit();
 
             character.Source = bitmap;
@@ -104,136 +104,136 @@ namespace BurningChoices_code
             {/*<Note> Would make a barrier class and check for that rather than the Image class />*/
                 if (Canvas.GetRight(character) == Canvas.GetLeft(exit))//going right
                 {
-                    if (e.Key == Key.W)
+                    if (e.Key == Key.W || e.Key == Key.Up)
                     {
                         Canvas.SetTop(character, Canvas.GetTop(character) - 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                        character.Source = CharObj.Image(@"C:\Users\hunte\Burning\PERSONMOVE.png");
                     }
 
-                    else if (e.Key == Key.S)
+                    else if (e.Key == Key.S || e.Key == Key.Down)
                     {
                         Canvas.SetTop(character, Canvas.GetTop(character) + 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                        character.Source = CharObj.Image(@"C:\Users\hunte\Burning\PERSONMOVE.png");
                     }
 
-                    else if (e.Key == Key.A)
+                    else if (e.Key == Key.A || e.Key == Key.Left)
                     {
                         Canvas.SetLeft(character, Canvas.GetLeft(character) - 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
+                        character.Source = CharObj.Image(@"C:\Users\hunte\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
                     }
 
-                    else if (e.Key == Key.D)
+                    else if (e.Key == Key.D || e.Key == Key.Right)
                     {
                         //Canvas.SetLeft(character, Canvas.GetLeft(character) + 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTRIGHT.png");
+                        character.Source = CharObj.Image(@"C:\Users\hunte\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTRIGHT.png");
                     }
                 }
 
                 else if(Canvas.GetBottom(character) == Canvas.GetTop(exit))//going down
                 {
-                    if (e.Key == Key.W)
+                    if (e.Key == Key.W || e.Key == Key.Up)
                     {
                         Canvas.SetTop(character, Canvas.GetTop(character) - 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                        character.Source = CharObj.Image(@"C:\Users\hunte\Burning\PERSONMOVE.png");
                     }
 
-                    else if (e.Key == Key.S)
+                    else if (e.Key == Key.S || e.Key == Key.Down)
                     {
                         //Canvas.SetTop(character, Canvas.GetTop(character) + 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                        character.Source = CharObj.Image(@"C:\Users\hunte\Burning\PERSONMOVE.png");
                     }
 
-                    else if (e.Key == Key.A)
+                    else if (e.Key == Key.A || e.Key == Key.Left)
                     {
                         Canvas.SetLeft(character, Canvas.GetLeft(character) - 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
+                        character.Source = CharObj.Image(@"C:\Users\hunte\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
                     }
 
-                    else if (e.Key == Key.D)
+                    else if (e.Key == Key.D || e.Key == Key.Right)
                     {
                         Canvas.SetLeft(character, Canvas.GetLeft(character) + 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTRIGHT.png");
+                        character.Source = CharObj.Image(@"C:\Users\hunte\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTRIGHT.png");
                     }
                 }
 
                 else if (Canvas.GetTop(character) == Canvas.GetBottom(exit))//going up
                 {/*<Problem> this part is not considered as part of the element and thus the character runs through the bottom of the wall without throwing a hit/collision />*/
                     
-                    if (e.Key == Key.W)
+                    if (e.Key == Key.W || e.Key == Key.Up)
                     {
                         //Canvas.SetTop(character, Canvas.GetTop(character) - 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                        character.Source = CharObj.Image(@"C:\Users\hunte\Burning\PERSONMOVE.png");
                     }
 
-                    else if (e.Key == Key.S)
+                    else if (e.Key == Key.S || e.Key == Key.Down)
                     {
                         Canvas.SetTop(character, Canvas.GetTop(character) + 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                        character.Source = CharObj.Image(@"C:\Users\hunte\Burning\PERSONMOVE.png");
                     }
 
-                    else if (e.Key == Key.A)
+                    else if (e.Key == Key.A || e.Key == Key.Left)
                     {
                         Canvas.SetLeft(character, Canvas.GetLeft(character) - 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
+                        character.Source = CharObj.Image(@"C:\Users\hunte\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
                     }
 
-                    else if (e.Key == Key.D)
+                    else if (e.Key == Key.D || e.Key == Key.Right)
                     {
                         Canvas.SetLeft(character, Canvas.GetLeft(character) + 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTRIGHT.png");
+                        character.Source = CharObj.Image(@"C:\Users\hunte\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTRIGHT.png");
                     }
                 }
 
                 else if (Canvas.GetLeft(character) == Canvas.GetRight(exit))//going left
                 {
-                    if (e.Key == Key.W)
+                    if (e.Key == Key.W || e.Key == Key.Up)
                     {
                         Canvas.SetTop(character, Canvas.GetTop(character) - 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                        character.Source = CharObj.Image(@"C:\Users\hunte\Burning\PERSONMOVE.png");
                     }
 
-                    else if (e.Key == Key.S)
+                    else if (e.Key == Key.S || e.Key == Key.Down)
                     {
                         Canvas.SetTop(character, Canvas.GetTop(character) + 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                        character.Source = CharObj.Image(@"C:\Users\hunte\Burning\PERSONMOVE.png");
                     }
 
-                    else if (e.Key == Key.A)
+                    else if (e.Key == Key.A || e.Key == Key.Left)
                     {
                         //Canvas.SetLeft(character, Canvas.GetLeft(character) - 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
+                        character.Source = CharObj.Image(@"C:\Users\hunte\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
                     }
 
-                    else if (e.Key == Key.D)
+                    else if (e.Key == Key.D || e.Key == Key.Right)
                     {
                         Canvas.SetLeft(character, Canvas.GetLeft(character) + 10);
-                        character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTRIGHT.png");
+                        character.Source = CharObj.Image(@"C:\Users\hunte\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTRIGHT.png");
                     }
                 }
             }
 
             else
             {
-                if (e.Key == Key.W)
+                if (e.Key == Key.W || e.Key == Key.Up)
                 {
                     
-                    Canvas.SetTop(character, Canvas.GetTop(character) - 10);
-                    character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                    Canvas.SetTop(character, Canvas.GetTop(character) - 100);
+                    character.Source = CharObj.Image(@"C:\Users\hunte\Burning\PERSONMOVE.png");
                 }
-                else if (e.Key == Key.S)
+                else if (e.Key == Key.S || e.Key == Key.Down)
                 {
-                    Canvas.SetTop(character, Canvas.GetTop(character) + 10);
-                    character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\PERSONMOVE.png");
+                    Canvas.SetTop(character, Canvas.GetTop(character) + 100);
+                    character.Source = CharObj.Image(@"C:\Users\hunte\Burning\PERSONMOVE.png");
                 }
-                else if (e.Key == Key.A)
+                else if (e.Key == Key.A || e.Key == Key.Left)
                 {
-                    Canvas.SetLeft(character, Canvas.GetLeft(character) - 10);
-                    character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
+                    Canvas.SetLeft(character, Canvas.GetLeft(character) - 100);
+                    character.Source = CharObj.Image(@"C:\Users\hunte\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTLEFT.png");
                 }
-                else if (e.Key == Key.D)
+                else if (e.Key == Key.D || e.Key == Key.Right)
                 {
-                    Canvas.SetLeft(character, Canvas.GetLeft(character) + 10);
-                    character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTRIGHT.png");
+                    Canvas.SetLeft(character, Canvas.GetLeft(character) + 100);
+                    character.Source = CharObj.Image(@"C:\Users\hunte\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\MOVEMENTRIGHT.png");
                 }
             }
             Canvas.SetRight(character, Canvas.GetLeft(character) + character.Width);
@@ -251,21 +251,21 @@ namespace BurningChoices_code
             if (Convert.ToString(res.VisualHit) != "System.Windows.Controls.Image")/*<Note> This works for all images but im not satisfied. I only want  this to work for chosen images /Note>*/
             /*<Note> Vould make a barrier class and check for that rather than the image class />*/
             //MessageBox.Show(Convert.ToString(res.VisualHit));
-            if (e.Key == Key.W)
+            if (e.Key == Key.W || e.Key == Key.Up)
             {
-                character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\STANDSTILL.png");
+                character.Source = CharObj.Image(@"C:\Users\hunte\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\STANDSTILL.png");
             }
-            else if (e.Key == Key.S)
+            else if (e.Key == Key.S || e.Key == Key.Down)
             {
-                character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\STANDSTILL.png");
+                character.Source = CharObj.Image(@"C:\Users\hunte\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\STANDSTILL.png");
             }
-            else if (e.Key == Key.A)
+            else if (e.Key == Key.A || e.Key == Key.Left)
             {
-                character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\STANDSTILL.png");
+                character.Source = CharObj.Image(@"C:\Users\hunte\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\STANDSTILL.png");
             }
-            else if (e.Key == Key.D)
+            else if (e.Key == Key.D || e.Key == Key.Right)
             {
-                character.Source = CharObj.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\STANDSTILL.png");
+                character.Source = CharObj.Image(@"C:\Users\hunte\Desktop\Burning Choices game\BurningChoices code\BurningChoices code\Object Models\STANDSTILL.png");
             }
         }
 
@@ -289,7 +289,7 @@ namespace BurningChoices_code
 
             exit.Stretch = Stretch.Fill;
             exit.StretchDirection = StretchDirection.Both;
-            exit.Source = ExitImg.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png");
+            exit.Source = ExitImg.Image(@"C:\Users\hunte\Burning\Wall.png");
         }
 
         private void canvas_loaded(object sender, RoutedEventArgs e)
@@ -300,7 +300,7 @@ namespace BurningChoices_code
 
             exit.Stretch = Stretch.Fill;
             exit.StretchDirection = StretchDirection.Both;
-            exit.Source = ExitImg.Image(@"C:\Users\Ethan Seiber\Desktop\Burning Choices game\Wall.png");
+            exit.Source = ExitImg.Image(@"C:\Users\hunte\Burning\Wall.png");
         }
 
         private void BoundingRectangle_Initialized(object sender, EventArgs e)
