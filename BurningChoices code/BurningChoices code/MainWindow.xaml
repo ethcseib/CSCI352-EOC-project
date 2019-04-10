@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BurningChoices_code"
         mc:Ignorable="d"
-        Title="MainWindow" Height="811.126" Width="803.761">
+        Title="MainWindow" Height="811.126" Width="1069.283">
     <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="800" VerticalAlignment="Top" Width="800" IsHitTestVisible="True" KeyDown="TraverseCanvas_KeyDown" Focusable="True" Initialized="CanvasInitialized" Background="#FFA68D8D" Margin="0,0,-0.4,-1.4" KeyUp="TraverseCanvas_KeyUp" >
         <Image x:Name="wall1" Height="800" Canvas.Left="0" Canvas.Top="0" Width="50"/>
         <Image x:Name="wall2" Height="800" Canvas.Left="750" Canvas.Top="0" Width="50"/>
@@ -15,5 +15,6 @@
         <Image x:Name="character" Height="50" Canvas.Left="400" Canvas.Top="280" Width="50" IsHitTestVisible="True" Initialized="CharacterInitialized" />
         <Image x:Name="item1" Height="100" Canvas.Left="350" Canvas.Top="510" Width="100"/>
         <Image x:Name="NPC1" Height="100" Width="100" Canvas.Left="480" Canvas.Top="280"/>
+        <Grid x:Name="InventoryGrid" Height="800" Canvas.Left="800" Canvas.Top="0" Width="260" Initialized="GridInitialized"/>
     </Canvas>
 </Window>

@@ -21,10 +21,15 @@ namespace BurningChoices_code
     /// </summary>
     public partial class MainWindow : Window
     {
-        StoryClass story = new StoryClass();
+        StoryClass story;
+        ItemCollection ItmCollect;
+        Inventory observe;
 
         public MainWindow()
         {
+            story = new StoryClass();
+            ItmCollect = new ItemCollection();
+            //observe = new Inventory(ItmCollect);
             InitializeComponent();
         }
 
@@ -43,8 +48,6 @@ namespace BurningChoices_code
 
             Canvas.SetRight(character, Canvas.GetLeft(character) + character.Width);
             Canvas.SetBottom(character, Canvas.GetTop(character) + character.Height);
-
-            
         }
         
         private void TraverseCanvas_KeyDown(object sender, KeyEventArgs e)//controls the movement of the character
@@ -56,9 +59,8 @@ namespace BurningChoices_code
 
             /*<Strategy> have a timer inside to determine when to create a thread that runs only when the keys are pressed. The timer will make the thread wait a certain amount of time before activating player 
              * run />*/
-            /*<Problem> I think the problem now is when the player reaches the corner then it is equidistant from two elements />*/
-            /*<Question> What if i detect a collision fixing to happen and stop it from happening by not allowing movement but then you have to predict the next move />*/
-            
+            /*<Glitch> I think the problem now is when the player reaches the corner then it is equidistant from two elements />*/
+
             BitmapImage bit = new BitmapImage();
             PlayerMovement move = new PlayerMovement(character, canvas);
 
@@ -105,64 +107,28 @@ namespace BurningChoices_code
                     }
                 }
 
-                else if(obs is Item)//type checking
+                else if(obs is Item)//item
                 {
                     canvas.Children.Remove(GenObstacle.ClosestObstacle);
-                    
+                    ItmCollect.Collect(GenObstacle.ClosestObstacle);
                     obs.Remove(obs);//quick and dirty. Needs improvement.
+                    //also just for future reference Remove is a function GenObstacle has for removing objects from GenObs
                 }
+
                 else if(obs is Door)
                 {
                     MessageBox.Show("door");
-                    /*MakeObstacle make = new MakeObstacle();
-                    Publisher pub = new Publisher();
-                    //make.MakeDoor(character, canvas, null, Door1, pub);
-                    pub.DoSomething();*/
-                    //raise an event here that will change the level
                 }
             }
 
             else
             {
-                if (e.Key == Key.W)
-                {
-                    bit.BeginInit();
-                    bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTLEFT.png", UriKind.Relative);
-                    bit.EndInit();
-
-                    character.Source = bit;
-                    Canvas.SetTop(character, Canvas.GetTop(character) - 10);
-                }
-                else if (e.Key == Key.S)
-                {
-                    bit.BeginInit();
-                    bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTLEFT.png", UriKind.Relative);
-                    bit.EndInit();
-
-                    character.Source = bit;
-                    Canvas.SetTop(character, Canvas.GetTop(character) + 10);
-                }
-                else if (e.Key == Key.A)
-                {
-                    bit.BeginInit();
-                    bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTLEFT.png", UriKind.Relative);
-                    bit.EndInit();
-
-                    character.Source = bit;
-                    Canvas.SetLeft(character, Canvas.GetLeft(character) - 10);
-                }
-                else if (e.Key == Key.D)
-                {
-                    bit.BeginInit();
-                    bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTRIGHT.png", UriKind.Relative);
-                    bit.EndInit();
-
-                    character.Source = bit;
-                    Canvas.SetLeft(character, Canvas.GetLeft(character) + 10);
-                }
+                move.MoveFreely(e);
             }
+
             Canvas.SetRight(character, Canvas.GetLeft(character) + character.Width);//setting right and bottom of character
             Canvas.SetBottom(character, Canvas.GetTop(character) + character.Height);
+
         }
 
 
@@ -189,6 +155,7 @@ namespace BurningChoices_code
             {
                 character.Source = bit;
             }
+
         }
 
         
@@ -225,9 +192,38 @@ namespace BurningChoices_code
             canvas.Focus();
 
         }
+
+        private void GridInitialized(object sender, EventArgs e)
+        {
+            observe = new Inventory(ItmCollect, InventoryGrid);
+            InventoryGrid.ShowGridLines = true;//shows gridlines
+            ColumnDefinition colDef1 = new ColumnDefinition();//defines one column
+
+            InventoryGrid.ColumnDefinitions.Add(colDef1);//Gives the grid the column
+
+            RowDefinition rowDef1 = new RowDefinition();//Instantiates 3 rows
+            RowDefinition rowDef2 = new RowDefinition();
+            RowDefinition rowDef3 = new RowDefinition();
+
+            InventoryGrid.RowDefinitions.Add(rowDef1);//Give my grid three rows
+            InventoryGrid.RowDefinitions.Add(rowDef2);
+            InventoryGrid.RowDefinitions.Add(rowDef3);
+
+            /*BitmapImage bit = new BitmapImage();//The image of the object to added to the grid
+            Image img = new Image();
+
+            bit.BeginInit();
+            bit.UriSource = new Uri(@"..\..\Object Model\TREE2.png", UriKind.RelativeOrAbsolute);
+            bit.EndInit();
+            
+            img.Source = bit;
+            img.Height = 100;
+            img.Width = 100;
+            
+            Grid.SetColumnSpan(img, 1);//put the image in column one
+            Grid.SetRow(img, 0);//Put the image in row 0
+            InventoryGrid.Children.Add(img);//Add the image to the grid
+            */
+        }
     }
 }
-
-/*plan: can use canvas.Left and canvas.Bottom to get the area of an element if i need to check if the character tries to walk over a wall. Perhaps can use threading to do this check.*/
-/*<Problems> The program could run into threading problems due running threads on multiple obstacles for checking hit detection. Might have to look into another solution </Problem>*/
-/*<Note> Might be able to use the decorator and wrap the walls in a hit box for hit detection</Note>*/

@@ -51,6 +51,7 @@ namespace BurningChoices_code
 
         protected List<Point> ObsPoints;//holds the (x, y) coordinates for the obstacles
 
+        
         static protected bool CollisionHappened = false;//when a collision happens this will become true
         public bool CollisionStatus//access to see if a collision happened
         {
@@ -69,8 +70,6 @@ namespace BurningChoices_code
         public GenObstacle()//this might be useless 
         {
             ObsPoints = new List<Point>();
-            //th = new Thread(CollisionCheck);//not finished
-            //th.Start();
         }
 
         public void CreateObs(string picture, Image ImgObj)//, int CanvasLeft, int CanvasTop)//this might be best. Easier to control the obstacles created. though might remove canvasleft etc.

@@ -55,6 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ItemCollection.cs" />
+    <Compile Include="ObserverInventory.cs" />
     <Compile Include="PlayerMovement.cs" />
     <Compile Include="StoryClass.cs" />
     <Page Include="MainWindow.xaml">
