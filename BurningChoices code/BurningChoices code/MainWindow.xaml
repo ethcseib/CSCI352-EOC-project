@@ -5,10 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BurningChoices_code"
         mc:Ignorable="d"
-        Title="MainWindow" Height="811.126" Width="803.761">
+        Title="MainWindow" Height="812" Width="1069">
     <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="800" VerticalAlignment="Top" Width="800" IsHitTestVisible="True" KeyDown="TraverseCanvas_KeyDown" Focusable="True" Initialized="CanvasInitialized" Background="#FFA68D8D" Margin="0,0,-0.4,-1.4" KeyUp="TraverseCanvas_KeyUp" >
-        <Image x:Name="character" Height="50" Canvas.Left="200" Canvas.Top="220" Width="50" IsHitTestVisible="True" Initialized="CharacterInitialized" />
-        <Image x:Name="wall1" Height="0" Canvas.Left="50" Canvas.Top="70" Width="0"/>
-        <Image x:Name="wall2" Height="100" Canvas.Left="600" Canvas.Top="220" Width="100"/>
+        <Image x:Name="wall1" Height="800" Canvas.Left="0" Canvas.Top="0" Width="50"/>
+        <Image x:Name="wall2" Height="800" Canvas.Left="750" Canvas.Top="0" Width="50"/>
+        <Image x:Name="Door1" Height="50" Width="800" Canvas.Top="0" Canvas.Left="0" />
+        <Image x:Name="wall3" Height="50" Width="800" Canvas.Top="750" Canvas.Left="0" />
+        <Image x:Name="road" Height="800" Width="800" Canvas.Top="0" />
+        <Image x:Name="character" Height="50" Canvas.Left="400" Canvas.Top="280" Width="50" IsHitTestVisible="True" Initialized="CharacterInitialized" />
+        <Image x:Name="NPC1" Height="100" Width="100" Canvas.Left="530" Canvas.Top="280"/>
+        <Grid x:Name="InventoryGrid" Height="800" Canvas.Left="800" Canvas.Top="0" Width="260" Initialized="GridInitialized"/>
+        <Image x:Name="bandage1" Height="100" Canvas.Left="120" Canvas.Top="130" Width="100"/>
+        <Image x:Name="bandage2" Height="100" Canvas.Left="660" Canvas.Top="670" Width="100"/>
+        <Image x:Name="bandage3" Height="100" Canvas.Left="120" Canvas.Top="640" Width="100"/>
     </Canvas>
 </Window>
