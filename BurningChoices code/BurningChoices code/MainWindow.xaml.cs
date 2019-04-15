@@ -144,8 +144,9 @@ namespace BurningChoices_code
 
                     else if (observe.Count == 3)//perhaps there is a better way because this is dis- pleasing
                     {
-                        
-                        story.PrintConversation();MessageBox.Show("Chracter " + Convert.ToString(Canvas.GetRight(character) + " NPC " + Canvas.GetLeft(NPC1)));
+                        //MessageBox.Show("Chracter " + Convert.ToString(Canvas.GetRight(character) + " NPC " + Canvas.GetLeft(NPC1)));
+                        observe.Clear();
+                        story.PrintConversation();
                     }
 
                     
@@ -215,7 +216,6 @@ namespace BurningChoices_code
             make.MakeWall(character, canvas, @"../../Object Model/Wall.png", wall2);
             make.MakeWall(character, canvas, @"../../Object Model/Wall.png", wall3);
             make.MakeDoor(character, canvas, "", Door1);
-            make.MakeItem(character, canvas, @"../../Object Model/GUY.png", item1);
             make.MakeNPC(character, canvas, @"../../Object Model/GUY.png", NPC1);
 
             canvas.Focusable = true;
