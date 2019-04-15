@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ItemCollection.cs" />
+    <Compile Include="ObserverInventory.cs" />
+    <Compile Include="PlayerMovement.cs" />
+    <Compile Include="StoryClass.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,6 +67,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Events.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -94,6 +99,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Object Model\BurningChoicesMenu.png" />
+    <Resource Include="Object Model\BurningChoicesPauseScreen.png" />
+    <Resource Include="Object Model\Wall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Object Model\GUY.png" />
+    <Resource Include="Object Model\MOVEMENTLEFT.png" />
+    <Resource Include="Object Model\MOVEMENTRIGHT.png" />
+    <Resource Include="Object Model\ROAD.png" />
+    <Resource Include="Object Model\TREE.png" />
+    <Resource Include="Object Model\TREE2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
