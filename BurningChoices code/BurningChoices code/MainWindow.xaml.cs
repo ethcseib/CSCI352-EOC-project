@@ -24,12 +24,15 @@ namespace BurningChoices_code
         StoryClass story;
         ItemCollection ItmCollect;
         Inventory observe;
+        MakeObstacle make;
 
         public MainWindow()
         {
             story = new StoryClass();
             ItmCollect = new ItemCollection();
-            //observe = new Inventory(ItmCollect);
+            observe = new Inventory(ItmCollect);
+            make = new MakeObstacle();
+
             InitializeComponent();
         }
 
@@ -49,17 +52,13 @@ namespace BurningChoices_code
             Canvas.SetRight(character, Canvas.GetLeft(character) + character.Width);
             Canvas.SetBottom(character, Canvas.GetTop(character) + character.Height);
         }
-        
+
         private void TraverseCanvas_KeyDown(object sender, KeyEventArgs e)//controls the movement of the character
         {
 
-            /*<Note> Switch statements are a thing to look into />*/
-            /*<Note> strategy pattern is a thing to look into for collision behavior. Might be a problem book talks of revealing the strategies to the client. />*/
-            /*<Note> observer pattern might do well for collision tracking />*/
-
-            /*<Strategy> have a timer inside to determine when to create a thread that runs only when the keys are pressed. The timer will make the thread wait a certain amount of time before activating player 
-             * run />*/
-            /*<Glitch> I think the problem now is when the player reaches the corner then it is equidistant from two elements />*/
+            /*<Glitch> I think the problem now is when the player reaches the corner then it is equidistant from two elements and the player phases through the
+             * walls and can no longer move. Gonna have to watch out for this because if the user tries to save in this position then they are screwed the next
+             * time they load />*/
 
             BitmapImage bit = new BitmapImage();
             PlayerMovement move = new PlayerMovement(character, canvas);
@@ -67,15 +66,8 @@ namespace BurningChoices_code
             GenObstacle.CollisionCheck();//might look into being able to remove GenObstacle in favor of MakeObstacle or remove it all together
             GenObstacle obs = GenObstacle.ClosestElement();
 
-            if (obs.CollisionStatus)
+           if (obs.CollisionStatus)
            {
-                if (obs is NPC)
-                {
-                    
-                    story.PrintConversation();
-                    move.MoveFreely(e);
-                }
-
                 //MessageBox.Show("X " + Convert.ToString(Canvas.GetRight(GenObstacle.ClosestObstacle)) + " Y " + Convert.ToString(Canvas.GetTop(GenObstacle.ClosestObstacle)));
                 if (obs.collideable)
                 {
@@ -107,17 +99,56 @@ namespace BurningChoices_code
                     }
                 }
 
-                else if(obs is Item)//item
+                else if(obs is Item)
                 {
+                    //MessageBox.Show(Convert.ToString(canvas.Children.Contains(GenObstacle.ClosestObstacle)));
+                    //MessageBox.Show(Convert.ToString("item: " + Canvas.GetBottom(GenObstacle.ClosestObstacle) + " character" + Canvas.GetTop(character)));
+
+                    /*<Problem Details> I collect an item and it is removed from the canvas. Then I move again and it lets me know that the item is no longer on the canvas which means
+                     * the item was successfully removed from it; however, the item still exists so it attempts to run this again and the same element is trying to be added twice to the grid
+                     * for the second time*/
+
                     canvas.Children.Remove(GenObstacle.ClosestObstacle);
+
                     ItmCollect.Collect(GenObstacle.ClosestObstacle);
-                    obs.Remove(obs);//quick and dirty. Needs improvement.
+                    obs.Remove(obs);
+                    //move.MoveFreely(e);
+                    //MessageBox.Show(Convert.ToString(VisualTreeHelper.GetParent(GenObstacle.ClosestObstacle)));
                     //also just for future reference Remove is a function GenObstacle has for removing objects from GenObs
                 }
 
                 else if(obs is Door)
                 {
+                    //Level2 win = new Level2();
+                    //win.Show();
+                    //this.Close();
                     MessageBox.Show("door");
+                }
+
+                if (obs is NPC)
+                {move.MoveFreely(e);
+                    
+                    /*<TODO> I still have to finish the story interaction such as when it advances if the player has collected all the items />*/
+                    /*<Strategy> I return the number of items collected so that it can tell whether to progress the story or not. I can return them through the
+                     * Inventory class />*/
+                    if (story.ShouldContinue == false)
+                    {
+                        make.MakeItem(character, canvas, "../../Object Model/TREE.png", bandage1);
+                        make.MakeItem(character, canvas, "../../Object Model/TREE.png", bandage2);
+                        make.MakeItem(character, canvas, "../../Object Model/TREE.png", bandage3);
+
+                        //story.PrintConversation();
+                        story.ShouldContinue = true;
+                        
+                    }
+
+                    else if (observe.Count == 3)//perhaps there is a better way because this is dis- pleasing
+                    {
+                        
+                        story.PrintConversation();MessageBox.Show("Chracter " + Convert.ToString(Canvas.GetRight(character) + " NPC " + Canvas.GetLeft(NPC1)));
+                    }
+
+                    
                 }
             }
 
@@ -163,7 +194,6 @@ namespace BurningChoices_code
         {
 
             BitmapImage bit = new BitmapImage();
-            MakeObstacle make = new MakeObstacle();
 
             story.AddIntro("Hi im James you are hurt! I'm calling the police.");
             story.AddIntro("This is the police how may we help you? Just kidding! We are the thought police. We know the situation. Gather three bandages to save their life.");
@@ -180,7 +210,7 @@ namespace BurningChoices_code
 
             /*<Fix> Added the file and contents of the file to the project. />*/
 
-            //road.Source = bit;
+            road.Source = bit;
             make.MakeWall(character, canvas, @"../../Object Model/Wall.png", wall1);//gotta open the new graphics in VS before they will work properly
             make.MakeWall(character, canvas, @"../../Object Model/Wall.png", wall2);
             make.MakeWall(character, canvas, @"../../Object Model/Wall.png", wall3);
@@ -195,7 +225,7 @@ namespace BurningChoices_code
 
         private void GridInitialized(object sender, EventArgs e)
         {
-            observe = new Inventory(ItmCollect, InventoryGrid);
+            observe.Connect(InventoryGrid);
             InventoryGrid.ShowGridLines = true;//shows gridlines
             ColumnDefinition colDef1 = new ColumnDefinition();//defines one column
 

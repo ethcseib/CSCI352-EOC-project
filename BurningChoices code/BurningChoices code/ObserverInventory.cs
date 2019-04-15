@@ -19,37 +19,49 @@ namespace BurningChoices_code
         ItemCollection sub;
         Image img;
         Grid grd;
+        public int test = 0;//remove later
 
-        public Inventory(ItemCollection sub, Grid grd)//was protected
+        public int Count { get { return row; } }
+
+        public Inventory(ItemCollection sub)//was protected
         {
             this.sub = sub;
             this.sub.Attach(this);
-            this.grd = grd;
             row = 0;
         }
 
-        public void Update(Subject sub)
+        public void Connect(Grid grd)
+        {
+            if(this.grd == null)
+            this.grd = grd;
+        }
+
+        public void Update(Subject sub)//gets an update the inventory
         {
             if(this.sub == sub)
             {
-                img = this.sub.GetItem;
+                img = this.sub.GetItem;//automatic step over for some reason
                 InventoryPlacement();
-                //do something
             }
         }
 
-        void InventoryPlacement()
+        void InventoryPlacement()//places in the inventory
         {
             if (row < 4)
-            {
+            {//MessageBox.Show(Convert.ToString(row));
                 Grid.SetColumnSpan(img, 1);
                 Grid.SetRow(img, row);
                 grd.Children.Add(img);
+                
                 row++;
             }
             else
                 MessageBox.Show("ERROR: Too many items collected there is no more inventory space.");
-            //I believe this will place items collected to the grid
+        }
+
+        public void Clear()
+        {
+            grd.Children.Clear();
         }
     }
 }

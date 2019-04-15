@@ -124,7 +124,7 @@ namespace BurningChoices_code
             {
                 if (x.ObsPoints.Contains(BottomLeft))//changed from ObsPoints.Contains()
                 {//collision at top or right
-                    //MessageBox.Show("bottom left " + Convert.ToString(BottomRight));
+                    //MessageBox.Show(Convert.ToString("bottom left " + BottomRight + " obs " + Canvas.GetLeft(obs)));
 
                     CollisionHappened = true;
                 }
@@ -165,13 +165,15 @@ namespace BurningChoices_code
             double dist = Math.Sqrt(Math.Pow((ElementPointX - CharacterMidpointX), 2) + Math.Pow((ElementPointY - CharacterMidpointY), 2));
             int index = 0;
             int test = 0;//remove later
-
-            for (int i = 0; i < GenObs.Count; i++)
+            int count = 0;
+            foreach (GenObstacle y in GenObs)
             {
-                for (int x = 0; x < GenObs[i].ObsPoints.Count; x++)
+                count++;
+                for (int x = 0; x < y.ObsPoints.Count; x++)
                 {
-                    ElementPointX = GenObs[i].ObsPoints[x].X;//((Canvas.GetLeft(GenObs[i].obs) + Canvas.GetRight(GenObs[i].obs)) / 2);
-                    ElementPointY = GenObs[i].ObsPoints[x].Y;//((Canvas.GetTop(GenObs[i].obs) + Canvas.GetBottom(GenObs[i].obs)) / 2);
+
+                    ElementPointX = y.ObsPoints[x].X;//((Canvas.GetLeft(GenObs[i].obs) + Canvas.GetRight(GenObs[i].obs)) / 2);
+                    ElementPointY = y.ObsPoints[x].Y;//((Canvas.GetTop(GenObs[i].obs) + Canvas.GetBottom(GenObs[i].obs)) / 2);
                     CharacterMidpointX = ((Canvas.GetLeft(character) + Canvas.GetRight(character)) / 2);
                     CharacterMidpointY = ((Canvas.GetTop(character) + Canvas.GetBottom(character)) / 2);
 
@@ -180,22 +182,25 @@ namespace BurningChoices_code
 
                     if (ObsDist < dist)
                     {
-                        index = i;
+                        index = count;
                         dist = ObsDist;//Math.Sqrt((Math.Pow(((Canvas.GetLeft(GenObs[i].obs) + Canvas.GetRight(GenObs[i].obs)) / 2) - (Canvas.GetLeft(character) + Canvas.GetRight(character) / 2), 2)
-                            //+ Math.Pow(((Canvas.GetTop(GenObs[i].obs) + Canvas.GetBottom(GenObs[i].obs)) / 2) - (Canvas.GetTop(character) + Canvas.GetBottom(character) / 2), 2)));
+                                       //+ Math.Pow(((Canvas.GetTop(GenObs[i].obs) + Canvas.GetBottom(GenObs[i].obs)) / 2) - (Canvas.GetTop(character) + Canvas.GetBottom(character) / 2), 2)));
                     }
                 }
             }
-            ClosestObstacle = GenObs[index].obs;
-            
-            //MessageBox.Show(Convert.ToString(GenObs[index]));
 
-            return GenObs[index]; 
+            ClosestObstacle = GenObs[index - 1].obs;
+            
+            //MessageBox.Show(Convert.ToString(GenObs.Count));
+
+            return GenObs[index - 1]; 
         }
 
         public void Remove(GenObstacle obs)
         {
-            GenObs.Remove(obs);
+            //MessageBox.Show(Convert.ToString(GenObs.Count));
+            GenObs.Remove(obs); 
+            //MessageBox.Show(Convert.ToString(GenObs.Count));
         }
     }
 

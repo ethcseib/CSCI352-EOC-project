@@ -9,15 +9,19 @@ namespace BurningChoices_code
 {
     class StoryClass
     {
-        int access;
         List<string> dialogue;
         List<string> intro;
+        bool cont;
+        bool TaskCompleted;
+
+        public bool ShouldContinue { get { return cont; } set { cont = value; } }
 
         public StoryClass()
         {
-            access = 0;
+            TaskCompleted = false;
             dialogue = new List<string>();
             intro = new List<string>();
+            cont = false;
         }
 
         public void AddIntro(string str)
@@ -32,22 +36,24 @@ namespace BurningChoices_code
 
         public void PrintConversation()
         {
-            if(access == 0)
+            if (TaskCompleted)
             {
-                access++;
-
+                MessageBox.Show("What are you still doing here? Leave!");
+            }
+            else if(cont == false)
+            {
                 foreach(string x in intro)
                 {
                     MessageBox.Show(x);
-                    System.Threading.Thread.Sleep(750);
                 }
             }
-            else
+            else if(cont)
             {
                 foreach(string str in dialogue)
                 {
                     MessageBox.Show(str);
                 }
+                TaskCompleted = true;
             }
         }
     }

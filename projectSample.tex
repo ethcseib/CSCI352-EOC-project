@@ -408,7 +408,7 @@
 % journal papers have the author affiliations above the "Manuscript
 % received ..."  text while in non-compsoc journals this is reversed. Sigh.
 
-\author{Project Designers: Ethan Seiber, Jamel Warren, and Hunter Haislip\\ % <-this % stops a space
+\author{Ethan Seiber, Jamel Warren, and Hunter Haislip\\ % <-this % stops a space
 }
 %Generally you should be the only author, so drop Michael Shell's name when you are creating your lab reports
 
@@ -475,7 +475,7 @@
 % in the abstract or keywords.
 \IEEEtitleabstractindextext{%
 \begin{abstract}
-In the course of the next couple of months we will develop and present a 2D game named ``Burning Choices". The game will primarily focus on the adventure genre. It will include multiple levels and hopefully branching story depending on the time constraints. The game took inspiration from Bandersnatch, a fictitious game in the Netflix original series Black Mirror that also included branching story line. The target audience will be those that enjoy classic action arcade style games. Things achieved thus far: we have made the functionality that will allow us to create obstacles, any interaction objects like doors and walls, in our window.xaml, along with this we have implemented character models to represent movement and an idle character.
+This project is a 2D game named ``Burning Choices". The game will primarily focus on the adventure genre. It will include multiple levels and branching story. The game took inspiration from Bandersnatch, a fictitious game in the Netflix original series Black Mirror that also included branching story line. The target audience will be those that enjoy classic action arcade style games.
 \end{abstract}
 
 %As the comment below states, you usually only do these when you're doing a final submission of a paper, to make it easier to find your work when searching.
@@ -517,7 +517,7 @@ In the course of the next couple of months we will develop and present a 2D game
 
 
 \section{Introduction}
-The project is a 2D adventure game that will operate around theme of angels, demons and humans. The end goal of the project is to tell a story that branches depending on the actions of the player. The audience for this project would be those who enjoy retro style games. The audience will play the game and leave feeling satisfied/ entertained if we do our jobs right. The reason why we have chosen this project is thanks to different interests ranging from a love of video games to things we enjoy in our own lives and would like to create ourselves. The story will follow the player as they find their way through our world overcoming any obstacles in their way. In doing so they are given the ability to control their own story.
+Burning Choices is a 2D adventure game that operates around theme of angels, demons and humans. The end goal of the project is to tell a story that branches depending on the actions of the player. The story will follow the player as they find their way through our world overcoming any obstacles in their way. In doing so they are given the ability to control their own story. The audience for this project would be those who enjoy retro style games. The main goal is for our audience to play the game and keep coming back for more thanks to our game leaving them feeling satisfied and entertained. We chose this project thanks to our different interests ranging from a love of video games to things we enjoy in our own lives and would like to create ourselves. 
 
 
 
@@ -633,22 +633,22 @@ The project is a 2D adventure game that will operate around theme of angels, dem
 % \fnbelowfloat command of the stfloats package.
 
 \subsection{Background}
-Throughout the paper these terms will be used in describing certain aspects or situations in the game. 2D graphics, branching storyline and linear storyline. 2D graphics refers to the dimensions of of the art style within the game i.e. 2D graphics is short for 2 dimensional graphics. Mario for the nintendo 64 is a great example of 2D graphics. Branching storyline refers to the story structure and how the story of the game is built. The story that is produced depends on the choice of the player. This means the player could end up with a completely different ending or story leading to the ending depending on what they do in the game. Linear storyline also refers to the story structure within the game. A linear storyline is much like reading a book. From beginning to end the story is static and unchanging with only one ending.  This is a team project so we all have our own motivations for deciding to make a game. For both Ethan and Jamel it's the video game aspect of it because we are both fans of video games. For Hunter it's the idea. Hunter received inspiration from the Black Mirror episode Bandersnatch to make the game have multiple endings based on player choice. Hence the title Burning Choices.
+Throughout the paper these terms will be used in describing certain aspects or situations in the game. 2D graphics, branching storyline and linear storyline. 2D graphics refers to the dimensions of of the art style within the game i.e. 2D graphics is short for 2 dimensional graphics. Mario for the nintendo 64 is a great example of 2D graphics. Branching storyline refers to the story structure and how the story of the game is built. The story that is produced depends on the choice of the player. This means the player could end up with a completely different ending or story leading to the ending depending on what they do in the game. Linear storyline also refers to the story structure within the game. A linear storyline is much like reading a book. From beginning to end the story is static and unchanging with only one end. Ethan and Jamel chose this project to hone their game development skills, while Hunter was more interested by the story aspect. 
 
 \subsection{Challenges}
-Some of the challenges we suspect to run into include programming the interaction between the player and environment, player movement and the creation many levels that are connected to each other so the player may move between levels. This is drastically different from any programming projects we have attempted before. We have learned about gathering user input and manipulating it, but we need to manipulate it in a way that interacts with objects or the player. Creating in game objects like obstacles, doors and keys leads in to the environment interaction challenge. Saved games are a necessity for games which entails gathering the players current place in the world as well as their choices in the story and then being able to use this to load their progress when they start up the game. The last expected challenge is to create our different story lines and make sure they lead to an ending. Lastly is the debugging. This is more of a patience challenge to try and break our game. To address these challenges we will need to do some research on useful libraries to help provide pre- defined functionality or create our own functionality.
+Some of the challenges we suspect to run into include programmatically creating obstacles like walls and items the player can interact with, giving the player the ability to move around each level and the creation of many levels that are connected so the player may move between levels. We know how to gather a user's key inputs, but we need to make the keys perform actions like move the character. This will be the first time we have worked with moving an object on screen using our own code. Next we have to overcome how objects like walls and items act within the program because a wall is different than an item. A wall the player can't pass through, but an item they could. Saved games are a necessity because it records the player's progress within the story thus far and stores it away so that they may access it later to load their game. The last expected challenge is to create our different story lines and make sure they lead to an ending. To address these challenges we will need to do some research on useful libraries to help provide pre- defined functionality or create our own functionality. Things we have found to help us are the C\# classes Canvas, Image, BitmapImage and Grid. The Canvas class has allowed us to create the levels for which the player will travers. The Image and BitmapImage classes help us give graphical pictures to our walls, items and level. The Grid class allows us to be able to create an inventory system that will help the player keep track of items collected thus far within the game.
 
 \section{Scope}
-The project will be finished when we have at least three in game levels, a linear storyline, can save, and the world builds and functions properly. The stretch goals we have set for this project are the branching storylines and more than three in game levels.
+The project will be finished when we have at least three in game levels, a linear storyline and can save. The stretch goals we have set for this project are the branching storylines and additional game levels.
 
 \subsection{Requirements}
-The functional requirements for this project were gathered from experience in other games. The functional requirements for games are typically things that make life easier as well as providing a logical order to the project.
+The functional requirements for this project were gathered from our experiences in other games.
 
 \subsubsection{Functional}
 \begin{itemize}
-\item The program should load up the game ``Burning Choices" and start on the title screen.
-\item The game will allow for saved games.
-\item The player can choose from the title menu to do things like load a game or start a new one or quit.
+\item On load up of the game. Start on the title screen.
+\item The player will be able to save the game.
+\item On the title menu the user can choose to load a game, start a new one or quit.
 \end{itemize}
 
 \subsubsection{Non-Functional}
@@ -664,7 +664,8 @@ The functional requirements for this project were gathered from experience in ot
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
-\hline \hline
+\hline 
+\hline
 1 & Starting the Story & Player & Easy & 1\\
 \hline
 2 & Game Saving & Player & Med & 2\\
@@ -673,8 +674,12 @@ Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
 \hline
 4 & Load Game & Player & Med & 2\\
 \hline
+5 & Character Movement & Player & Easy & 1\\
+\hline
+6 & Items & Player & Hard & 1
+
 \end{tabular}
-\caption{Sample use case table}
+\caption{Use case table}
 \label{tab:useCaseIndex}
 \end{table}
 
@@ -697,10 +702,10 @@ Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
 
 \begin{enumerate}
 \item The user will hit the Esc key to pause the game.
+\item The game environment will pause.
 \item A list of menu items will pop up.
-\item The game environment will pause allowing the user time to read the items.
 \item The user will select Save Game in the pause menu.
-\item The game will store the player's story data in a file created by the executable.
+\item The game will store the player's story data.
 \item The game will un- pause and continue where the user left off.
 \end{enumerate}
 
@@ -729,15 +734,38 @@ Alternative: User is on the title screen
 \end{itemize}
 
 \begin{enumerate}
-\item The user will see a menu item that reads ``Load Game".
-\item The user will click ``Load Game". 
+\item The user will click the menu item ``Load Game". 
 \item The game will open the file holding the saved data of where the user last saved.
-\item Using the saved data the game will load to the point where the user last saved in the story.
+\item The game will load to the point where the user last saved in the story.
 \end{enumerate}
-\newpage
+
+\begin{enumerate}
+\item[Use Case Number:] 5
+\item[Use Case Name:] Character Movement
+\item[Description:] The user is in a game level and wishes to move within the level.
+\end{enumerate}
+
+\begin{enumerate}
+\item The user presses one of the keys w,a,s,d on their keyboard.
+\item The character the player controls will move in the direction of the button pressed.
+\end{enumerate}
+
+\begin{enumerate}
+\item[Use Case:] 6
+\item[Use Case Name:] Items
+\item[Description:] To complete quests the player needs to collect items.
+\end{enumerate}
+
+\begin{enumerate}
+\item Player has to collect items.
+\item The player walks onto an item.
+\item The item is collected by the player.
+\end{enumerate}
+
 \subsection{Interface Mockups}
 
 \begin{figure}[h]
+\centering
 \includegraphics[scale=.4]{BurningChoicesGameplay.png}
 \caption{The gameplay so far}
 \label{gameplay_1}
@@ -747,25 +775,35 @@ Currently we have the ability to add in walls as we want which allows us to star
 
 
 \begin{figure}[h]
+\centering
 \includegraphics[scale=.4]{BurningChoicesMenu.png}
 \caption{A layout of the Title Screen}
 \label{TS}
-This is what we want our title screen to look like once we are finished with the project except we plan to replace start with new game because we recognize how ambiguous it is. This image is the first thing that will pop up when you run the game. It shows you what we envision use cases 1 and 4 to be like. The Resume option, case 4, will allow the player to load a game to continue the story where they left off and the Start option, case 1, will begin a new game from the beginning of the story. The Quit option pertains to use case 3's alternative in which the user is on the title screen and wants to quit the game.
+This is what we want our title screen to look like once we are finished with the project except we plan to replace start with new game. This image is the first thing that will pop up when you run the game. It shows you what we envision use cases 1 and 4 to be like. The Resume option, case 4, will allow the player to load a game to continue the story where they left off and the Start option, case 1, will begin a new game from the beginning of the story. The Quit option pertains to use case 3's alternative in which the user is on the title screen and wants to quit the game.
 \end{figure}
 
 
 \begin{figure}[h]
+\centering
 \includegraphics[scale=.4]{BurningChoicesPauseScreen.png}
 \caption{A layout of the pause screen}
 \label{PS}
-This is the current version of our pause screen. You know it's the pause screen because it tells you the game is paused at the top. The screen will give you the three options to choose from. The Resume button will un-pause the game and continue the user where they left off. The save option is use case 2 which will record the user's current progress within the story and save it to a file to be loaded later. Then at the bottom of the list is quit which is use case 3. This will close the game entirely.
+This is the current version of our pause screen. The screen will give you the three options to choose from. The Resume button will un-pause the game and continue the user where they left off. The save option is use case 2 which will record the user's current progress within the story and save it to a file to be loaded later. Then at the bottom of the list is quit which is use case 3. This will close the game entirely.
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.4]{GameScreenMockUp.png}
+\caption{A sample of what the game will look like}
+\label{Gameplay}
+This is a very early version of our level design. This particular scene will involve a lady the player can talk to and she will give the player a quest to collect items. To the right of the game is the inventory system for item collection. The black bars are walls that the player can not go through. At the top of the screen is how the player will transfer to a new level.
 \end{figure}
 
 \newpage
 \section{Project Timeline}
-The time line for this project starts with the requirements phase. It will last from January 2019 to January 2019. This phase is simple and took little time to complete. We gathered what most games have that would be useful in the context of our game.
+The timeline for this project starts with the requirements phase. It will last from January 2019 to January 2019. This phase is simple and took little time to complete. We took looked at things that were convenient and useful in other that can be applied to this project, so that the user can have the same convenience with this game. An example of this would be a saving feature.
 
-Next is the design phase. This phase is being developed still. Meaning we started out with our base line ideas we discussed in the beginning, but have modified them as time has gone on. This phase lasted from February through March because we will not be adding any new ideas.
+We are currently in the design phase.  This phase runs from February through March.
 \begin{enumerate}
 \item We deliberate on the type of gameplay we will have.
 \item Discuss the story.
@@ -773,16 +811,22 @@ Next is the design phase. This phase is being developed still. Meaning we starte
 \item Deliberate on some design patterns to use.
 \end{enumerate}
 
-Then comes the implementation phase this will take the most time.  We plan for this to last from February through April. In this time we plan to have these things finished.
+Next is the implementation phase. We plan for this to last from February through April. In this time we plan to have these things finished.
 \begin{enumerate}
-\item Levels designed (In Progress)
-\item Obstacle class made (In Progress- Will finish the weekend of 3/23)
-\item Inventory system made and implemented (Will finish within 3/25 - 4/8)
-\item The story implemented
+\item Levels designed (April 2019- April 2019)
+\item Obstacle class made (March 1, 2019- March 23, 2019)
+\item Inventory system made and implemented (March 25- April 16, 2019)
+\item The story implemented (April 17 2019- April 21, 2019)
 \end{enumerate}
-This sums up the time line we have set for ourselves because the verification and maintenance steps will be taken care of in the implementation step as we progress in the project.
+
+Next is the verification phase and it will last from April 21, 2019 through April 23, 2019.
+
+Lastly is the Maintenance phase which will last from April 23, 2019 to April 24, 2019.
 \section{Project Structure}
 Currently we have decided to use an Abstract Factory design pattern to define and create any objects we will use within the game such as walls and doors.
+
+The second pattern we are using is the Observer pattern. This keeps the inventory system up to date. 
+
 \newpage
 \subsection{UML Outline}
 
@@ -795,13 +839,13 @@ Currently we have decided to use an Abstract Factory design pattern to define an
 
 
 \subsection{Design Patterns Used}
-Currently we are using the Abstract Factory design patter as one of our patterns.
+Currently we are using the Abstract Factory design patter as one of our patterns. It allow us to create obstacles like walls, doors, items and characters. The second pattern we used was the observer pattern. We needed a way to update our inventory grid when the player collects an item. Using a subject we collect the item and send it to the observer which puts it in the inventory grid.
 
 \section{Results}
-The project stands at being able to freely create walls to restrict the player's movement. This is still buggy when it comes to more than 3 walls is the current thought, but the belief could change as we begin debugging. It could be buggy for another reason.
+The project stands at being able to freely create walls to restrict the player's movement. The player can collect items and have them added to the inventory.
 
 \subsection{Future Work}
-The next steps we will take are to smooth out the object tracking bugs and work out the implementation for doors i.e. objects that will open another level.
+In the future we will finish the inventory system and then we will start making other levels using plans we have already laid out. After this we will debug the project.
 
 
 
@@ -880,14 +924,6 @@ The next steps we will take are to smooth out the object tracking bugs and work 
 
 %Make sure to reference any resource used aside from the lab itself!
 %(you can make a separate *.bib file if preferred, this just tends to be the quick and dirty approach)
-
-\begin{thebibliography}{1}
-
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
-
-\end{thebibliography}
 
 % biography section
 % 
