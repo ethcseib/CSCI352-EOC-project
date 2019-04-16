@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace BurningChoices_code
 {
-    class StoryClass
+    class Story
     {
         List<string> dialogue;
         List<string> intro;
@@ -16,7 +16,7 @@ namespace BurningChoices_code
 
         public bool ShouldContinue { get { return cont; } set { cont = value; } }
 
-        public StoryClass()
+        public Story()
         {
             TaskCompleted = false;
             dialogue = new List<string>();

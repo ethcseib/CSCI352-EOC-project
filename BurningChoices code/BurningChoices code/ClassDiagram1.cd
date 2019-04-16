@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BurningChoices_code.App" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BurningChoices_code.Events" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BurningChoices_code.Subject" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAIAAAAAAAAAAIAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>ItemCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BurningChoices_code.ItemCollection" Collapsed="true">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAkAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ItemCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BurningChoices_code.Level2Good" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Level2Good.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BurningChoices_code.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAACAAAAAAoAAAAAAAQAgAAACAAAAAAAAAAAGA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BurningChoices_code.Inventory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABAEAAAAAEAAAAAAAAIQCIAAAAAAIAAAAAABAAAA=</HashCode>
+      <FileName>ObserverInventory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BurningChoices_code.MakeObstacle" Collapsed="true">
+    <Position X="11.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAABAAAAAAAQAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ObstacleAbstractFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BurningChoices_code.GenObstacle" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAIAAAAAgBAIIAJAAAIBEACAABAAAAAAAAABABAAAA=</HashCode>
+      <FileName>ObstacleAbstractFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BurningChoices_code.Wall" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ObstacleAbstractFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BurningChoices_code.Door" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ObstacleAbstractFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BurningChoices_code.Item" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ObstacleAbstractFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BurningChoices_code.NPC">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ObstacleAbstractFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BurningChoices_code.PlayerMovement" Collapsed="true">
+    <Position X="13.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIBAAAAAAIAAAIBAAAAAAAABAAAAAAAAAAQABAAAA=</HashCode>
+      <FileName>PlayerMovement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BurningChoices_code.Story" Collapsed="true">
+    <Position X="11.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAACCAAIAAAAAAAAAAAYAAAAAAAAAABAAAE=</HashCode>
+      <FileName>Story.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BurningChoices_code.Properties.Resources" Collapsed="true">
+    <Position X="15.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BurningChoices_code.Properties.Settings" Collapsed="true">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="BurningChoices_code.Observer" Collapsed="true">
+    <Position X="10" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ObserverInventory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

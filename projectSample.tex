@@ -653,8 +653,8 @@ The functional requirements for this project were gathered from our experiences 
 
 \subsubsection{Non-Functional}
 \begin{itemize}
-\item Recoverability- If the game crashes then it can be rebooted and the user can restart using an auto save.
-\item Maintainability- Given this project is relatively small it makes it easy to find and get rid of any bugs within. This means in the long run being able to maintain this project will be relatively simple especially as we discover and fix bugs.
+\item Recoverability- If the game crashes then it can be rebooted and the user can restart their game using a loaded save.
+\item Maintainability- Code is stable so that we can easily add new features with few to no problems. 
 \end{itemize}
 
 \subsection{Use Cases}
@@ -665,7 +665,6 @@ The functional requirements for this project were gathered from our experiences 
 \hline
 Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
 \hline 
-\hline
 1 & Starting the Story & Player & Easy & 1\\
 \hline
 2 & Game Saving & Player & Med & 2\\
@@ -766,10 +765,10 @@ Alternative: User is on the title screen
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=.4]{BurningChoicesGameplay.png}
+\includegraphics[scale=.4]{GameScreenMockUp.png}
 \caption{The gameplay so far}
 \label{gameplay_1}
-Currently we have the ability to add in walls as we want which allows us to start building on our game environment. In this picture the player is attempting to pass through a wall that cannot be passed through. This picture also shows the color and art style that can be expected within the game environment.
+This is a very early version of our level design. This particular scene will involve a lady the player can talk to and she will give the player a quest to collect items. To the right of the game is the inventory system for item collection. The black bars are walls that the player can not go through. At the top of the screen is how the player will transfer to a new level.
 \end{figure}
  
 
@@ -791,14 +790,6 @@ This is what we want our title screen to look like once we are finished with the
 This is the current version of our pause screen. The screen will give you the three options to choose from. The Resume button will un-pause the game and continue the user where they left off. The save option is use case 2 which will record the user's current progress within the story and save it to a file to be loaded later. Then at the bottom of the list is quit which is use case 3. This will close the game entirely.
 \end{figure}
 
-\begin{figure}[h]
-\centering
-\includegraphics[scale=.4]{GameScreenMockUp.png}
-\caption{A sample of what the game will look like}
-\label{Gameplay}
-This is a very early version of our level design. This particular scene will involve a lady the player can talk to and she will give the player a quest to collect items. To the right of the game is the inventory system for item collection. The black bars are walls that the player can not go through. At the top of the screen is how the player will transfer to a new level.
-\end{figure}
-
 \newpage
 \section{Project Timeline}
 The timeline for this project starts with the requirements phase. It will last from January 2019 to January 2019. This phase is simple and took little time to complete. We took looked at things that were convenient and useful in other that can be applied to this project, so that the user can have the same convenience with this game. An example of this would be a saving feature.
@@ -815,25 +806,27 @@ Next is the implementation phase. We plan for this to last from February through
 \begin{enumerate}
 \item Levels designed (April 2019- April 2019)
 \item Obstacle class made (March 1, 2019- March 23, 2019)
-\item Inventory system made and implemented (March 25- April 16, 2019)
-\item The story implemented (April 17 2019- April 21, 2019)
+\item Inventory system made and implemented (March 25- April 14, 2019)
+\item The story implemented (April 15 2019- April 21, 2019)
 \end{enumerate}
 
-Next is the verification phase and it will last from April 21, 2019 through April 23, 2019.
+Next is the verification phase and it will last from April 21, 2019 through April 22, 2019.
 
-Lastly is the Maintenance phase which will last from April 23, 2019 to April 24, 2019.
+Lastly is the Maintenance phase which will last from April 22, 2019 to April 24, 2019.
+
+It's still hard to tell whether we budgeted our time well. We have the majority of the gameplay implemented and waiting to be used, but there are still many things like the main menu, pause menu and the story/ levels that need to be finished. The main menu and pause menu have their own functionality that is separate from the gameplay that has yet to be defined. With these tasks taken in consideration with the fact that the deadline is close then we probably did not budget well. 
 \section{Project Structure}
 Currently we have decided to use an Abstract Factory design pattern to define and create any objects we will use within the game such as walls and doors.
 
 The second pattern we are using is the Observer pattern. This keeps the inventory system up to date. 
 
-\newpage
+
 \subsection{UML Outline}
 
 
 \begin{figure}[h]
-\includegraphics[scale= 0.4]{BurningChoicesUML.png}
-\caption{This is the current UML plan we have for our project. It is not finished, but thus far we have a plan for any in game object such as walls, doors and items as well as functionality for our MainWindow class}
+\includegraphics[scale= 0.4]{Burning_Choices_UML.jpg}
+\caption{This is the current UML are using for our project. It is not finished for there may be a need to create another class for transferring into new levels. The Story class is how we plan to tell the story of the game. It is currently being developed. The PlayerMovement class is how the player moves throughout the game. The MoveFreely function allows the player to move around un- impeded. The functions with Restrict at the begining of the name restricts the player's movement in a direction that is defined at the end of the function name. The GenObstacle class is an abstract class that defines common functionality for all obstacles that will be used within the game. Individual obstacles such as: walls, doors, items and other characters inherit from GenObstacle to share in the functionality. Each obstacle has its own way the player will interact with it. For example the player can't walk through a wall. The Subject class defines common functionality for any derived class to inherit. The ItemCollection class inherits from the Subject class and works with the Inventory class. The Inventory and ItemCollection classes work together to form an observer and subject relationship. The ItemCollection class will collect an item obstacle when the player walks into an item and then send it to the Inventory class to be put into the player's inventory.}
 \label{UML}
 \end{figure}
 
@@ -842,10 +835,10 @@ The second pattern we are using is the Observer pattern. This keeps the inventor
 Currently we are using the Abstract Factory design patter as one of our patterns. It allow us to create obstacles like walls, doors, items and characters. The second pattern we used was the observer pattern. We needed a way to update our inventory grid when the player collects an item. Using a subject we collect the item and send it to the observer which puts it in the inventory grid.
 
 \section{Results}
-The project stands at being able to freely create walls to restrict the player's movement. The player can collect items and have them added to the inventory.
+The project's gameplay functionality is nearly complete. This means the player can collect items to the inventory and the player can't travel to places they aren't allowed to. We have the capability to create the story within the game as well as little tasks to complete in the game, but we have not taken the time to really add them.
 
 \subsection{Future Work}
-In the future we will finish the inventory system and then we will start making other levels using plans we have already laid out. After this we will debug the project.
+There are many goals we haven't made thus far. We haven't implemented the linear story and levels. Then there are the main and pause menus. These were the things that we decided would take the least amount of time and thus were slated to be finished last. Things that we would add if we had more time and no other tasks to get through would be gameplay. Perhaps we would do a hedge maze within the game. Then we might make the story less of a pattern. Currently we have the story operate in a pattern of 3. The player does interacts with something, they get a quest and they complete the quest and leave for the next level.
 
 
 

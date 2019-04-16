@@ -56,9 +56,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ItemCollection.cs" />
+    <Compile Include="Level2Good.xaml.cs">
+      <DependentUpon>Level2Good.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ObserverInventory.cs" />
     <Compile Include="PlayerMovement.cs" />
-    <Compile Include="StoryClass.cs" />
+    <Compile Include="Story.cs" />
+    <Page Include="Level2Good.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -92,6 +99,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -112,6 +120,18 @@
     <Resource Include="Object Model\ROAD.png" />
     <Resource Include="Object Model\TREE.png" />
     <Resource Include="Object Model\TREE2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Object Model\CAR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Object Model\Home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Object Model\FirstMap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Object Model\MainCharacter.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

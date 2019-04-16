@@ -13,13 +13,13 @@ namespace BurningChoices_code
     class PlayerMovement
     {
         BitmapImage bit;
-        static Image character;
-        static Canvas StatCan;
+        Image character;
+        Canvas can;//mightnot be needed
 
         public PlayerMovement(Image character, Canvas can)
         {
-            PlayerMovement.character = character;
-            StatCan = can;
+            this.character = character;
+            this.can = can;
             bit = new BitmapImage();
         }
         //Too much reuse i'm sure there is a better way of doing this

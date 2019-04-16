@@ -21,14 +21,14 @@ namespace BurningChoices_code
     /// </summary>
     public partial class MainWindow : Window
     {
-        StoryClass story;
+        Story story;
         ItemCollection ItmCollect;
         Inventory observe;
         MakeObstacle make;
 
         public MainWindow()
         {
-            story = new StoryClass();
+            story = new Story();
             ItmCollect = new ItemCollection();
             observe = new Inventory(ItmCollect);
             make = new MakeObstacle();
@@ -44,13 +44,15 @@ namespace BurningChoices_code
             BitmapImage bitmap = new BitmapImage();//system.Windows.Media.BitmapImage rather than Sytem.Drawing
 
             bitmap.BeginInit();
-            bitmap.UriSource = new Uri(@"..\..\Object Model\GUY.png", UriKind.Relative);//experimenting with file locations so that they can easier access the program
+            bitmap.UriSource = new Uri(@"..\..\Object Model\MainCharacter.png", UriKind.Relative);//experimenting with file locations so that they can easier access the program
             bitmap.EndInit();
 
             character.Source = bitmap;
 
             Canvas.SetRight(character, Canvas.GetLeft(character) + character.Width);
             Canvas.SetBottom(character, Canvas.GetTop(character) + character.Height);
+
+
         }
 
         private void TraverseCanvas_KeyDown(object sender, KeyEventArgs e)//controls the movement of the character
@@ -119,14 +121,15 @@ namespace BurningChoices_code
 
                 else if(obs is Door)
                 {
-                    //Level2 win = new Level2();
-                    //win.Show();
-                    //this.Close();
-                    MessageBox.Show("door");
+                    Level2Good win = new Level2Good();
+                    win.Show();
+                    this.Close();
+                    //MessageBox.Show("door");
                 }
 
                 if (obs is NPC)
-                {move.MoveFreely(e);
+                {
+                    move.MoveFreely(e);
                     
                     /*<TODO> I still have to finish the story interaction such as when it advances if the player has collected all the items />*/
                     /*<Strategy> I return the number of items collected so that it can tell whether to progress the story or not. I can return them through the
@@ -137,7 +140,7 @@ namespace BurningChoices_code
                         make.MakeItem(character, canvas, "../../Object Model/TREE.png", bandage2);
                         make.MakeItem(character, canvas, "../../Object Model/TREE.png", bandage3);
 
-                        //story.PrintConversation();
+                        story.PrintConversation();
                         story.ShouldContinue = true;
                         
                     }
@@ -168,7 +171,7 @@ namespace BurningChoices_code
         {
             BitmapImage bit = new BitmapImage();
             bit.BeginInit();
-            bit.UriSource = new Uri(@"..\..\Object Model\GUY.png", UriKind.Relative);
+            bit.UriSource = new Uri(@"..\..\Object Model\MainCharacter.png", UriKind.Relative);
             bit.EndInit();
 
             if (e.Key == Key.W)
@@ -193,12 +196,20 @@ namespace BurningChoices_code
         
         private void CanvasInitialized(object sender, EventArgs e)//allows the canvas to take input which allows things like image movement
         {
-
+            
             BitmapImage bit = new BitmapImage();
 
+            /*<Thoughts> Perhaps I need to work on the story class and expand it more, so that the story is easier to create. />*/
+
+            MessageBox.Show("Narrator: This is a story about a young programmer named Xavier. He is just an average dude trying to make it through the onslaught of job interviews. Today is a special " +
+                "day for Xzavier for he will be inflicted with a disease known as \"Burning Choices\".");
+            MessageBox.Show("Narrator: While walking home from work Xzavier bore witness to a car swerve and crash into a tree.");
+            MessageBox.Show("As Xzavier approached the car he noticed that the person was bleeding and unconcious.");
+            MessageBox.Show("Xzavier: I wonder what happened to her. Was she drunk? Wait! Is that an unusually large amount of money? Should I take it and run? It would be easy no one knows" +
+                " I was here, but she could die if I leave them. Perhaps I should help them instead.");
             story.AddIntro("Hi im James you are hurt! I'm calling the police.");
             story.AddIntro("This is the police how may we help you? Just kidding! We are the thought police. We know the situation. Gather three bandages to save their life.");
-
+            
             story.AddDialogue("Have you found the bandages?");
             story.AddDialogue("Good good you have just saved this woman's life. I feel some good fortune coming your way sir or madam.");
             story.AddDialogue("It's sir.");
@@ -206,7 +217,7 @@ namespace BurningChoices_code
                 "up thought crime.");
 
             bit.BeginInit();
-            bit.UriSource = new Uri(@"../../Object Model/ROAD.png", UriKind.RelativeOrAbsolute);
+            bit.UriSource = new Uri(@"../../Object Model/FirstMap.png", UriKind.RelativeOrAbsolute);
             bit.EndInit();
 
             /*<Fix> Added the file and contents of the file to the project. />*/
@@ -215,6 +226,7 @@ namespace BurningChoices_code
             make.MakeWall(character, canvas, @"../../Object Model/Wall.png", wall1);//gotta open the new graphics in VS before they will work properly
             make.MakeWall(character, canvas, @"../../Object Model/Wall.png", wall2);
             make.MakeWall(character, canvas, @"../../Object Model/Wall.png", wall3);
+            make.MakeWall(character, canvas, @"../../Object Model/CAR.png", Car);
             make.MakeDoor(character, canvas, "", Door1);
             make.MakeNPC(character, canvas, @"../../Object Model/GUY.png", NPC1);
 
