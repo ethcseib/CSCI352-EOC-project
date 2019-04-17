@@ -28,7 +28,7 @@ namespace BurningChoices_code
             if (e.Key == Key.W)
             {
                 bit.BeginInit();
-                bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTLEFT.png", UriKind.Relative);
+                bit.UriSource = new Uri(@"..\..\Object Model\Movement.png", UriKind.Relative);
                 bit.EndInit();
 
                 character.Source = bit;
@@ -38,7 +38,7 @@ namespace BurningChoices_code
             else if (e.Key == Key.S)
             {
                 bit.BeginInit();
-                bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTLEFT.png", UriKind.Relative);
+                bit.UriSource = new Uri(@"..\..\Object Model\Movement.png", UriKind.Relative);
                 bit.EndInit();
 
                 character.Source = bit;
@@ -48,7 +48,7 @@ namespace BurningChoices_code
             else if (e.Key == Key.A)
             {
                 bit.BeginInit();
-                bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTLEFT.png", UriKind.Relative);
+                bit.UriSource = new Uri(@"..\..\Object Model\Movement.png", UriKind.Relative);
                 bit.EndInit();
 
                 character.Source = bit;
@@ -58,7 +58,7 @@ namespace BurningChoices_code
             else if (e.Key == Key.D)
             {
                 bit.BeginInit();
-                bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTRIGHT.png", UriKind.Relative);
+                bit.UriSource = new Uri(@"..\..\Object Model\Movement.png", UriKind.Relative);
                 bit.EndInit();
 
                 character.Source = bit;
@@ -70,7 +70,7 @@ namespace BurningChoices_code
             if (e.Key == Key.W)
             {
                 bit.BeginInit();
-                bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTLEFT.png", UriKind.Relative);
+                bit.UriSource = new Uri(@"..\..\Object Model\Movement.png", UriKind.Relative);
                 bit.EndInit();
 
                 character.Source = bit;
@@ -80,7 +80,7 @@ namespace BurningChoices_code
             else if (e.Key == Key.S)
             {
                 bit.BeginInit();
-                bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTLEFT.png", UriKind.Relative);
+                bit.UriSource = new Uri(@"..\..\Object Model\Movement.png", UriKind.Relative);
                 bit.EndInit();
 
                 character.Source = bit;
@@ -90,7 +90,7 @@ namespace BurningChoices_code
             else if (e.Key == Key.A)
             {
                 bit.BeginInit();
-                bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTLEFT.png", UriKind.Relative);
+                bit.UriSource = new Uri(@"..\..\Object Model\Movement.png", UriKind.Relative);
                 bit.EndInit();
 
                 character.Source = bit;
@@ -100,7 +100,7 @@ namespace BurningChoices_code
             else if (e.Key == Key.D)
             {
                 bit.BeginInit();
-                bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTRIGHT.png", UriKind.Relative);
+                bit.UriSource = new Uri(@"..\..\Object Model\Movement.png", UriKind.Relative);
                 bit.EndInit();
 
                 character.Source = bit;
@@ -113,7 +113,7 @@ namespace BurningChoices_code
             if (e.Key == Key.W)
             {
                 bit.BeginInit();
-                bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTLEFT.png", UriKind.Relative);
+                bit.UriSource = new Uri(@"..\..\Object Model\Movement.png", UriKind.Relative);
                 bit.EndInit();
 
                 character.Source = bit;
@@ -123,7 +123,7 @@ namespace BurningChoices_code
             else if (e.Key == Key.S)
             {
                 bit.BeginInit();
-                bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTLEFT.png", UriKind.Relative);
+                bit.UriSource = new Uri(@"..\..\Object Model\Movement.png", UriKind.Relative);
                 bit.EndInit();
 
                 character.Source = bit;
@@ -133,7 +133,7 @@ namespace BurningChoices_code
             else if (e.Key == Key.A)
             {
                 bit.BeginInit();
-                bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTLEFT.png", UriKind.Relative);
+                bit.UriSource = new Uri(@"..\..\Object Model\Movement.png", UriKind.Relative);
                 bit.EndInit();
 
                 character.Source = bit;
@@ -143,7 +143,7 @@ namespace BurningChoices_code
             else if (e.Key == Key.D)
             {
                 bit.BeginInit();
-                bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTRIGHT.png", UriKind.Relative);
+                bit.UriSource = new Uri(@"..\..\Object Model\Movement.png", UriKind.Relative);
                 bit.EndInit();
 
                 character.Source = bit;
@@ -156,7 +156,7 @@ namespace BurningChoices_code
             if (e.Key == Key.W)
             {
                 bit.BeginInit();
-                bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTLEFT.png", UriKind.Relative);
+                bit.UriSource = new Uri(@"..\..\Object Model\Movement.png", UriKind.Relative);
                 bit.EndInit();
 
                 character.Source = bit;
@@ -166,7 +166,7 @@ namespace BurningChoices_code
             else if (e.Key == Key.S)
             {
                 bit.BeginInit();
-                bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTLEFT.png", UriKind.Relative);
+                bit.UriSource = new Uri(@"..\..\Object Model\Movement.png", UriKind.Relative);
                 bit.EndInit();
 
                 character.Source = bit;
@@ -176,7 +176,7 @@ namespace BurningChoices_code
             else if (e.Key == Key.A)
             {
                 bit.BeginInit();
-                bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTLEFT.png", UriKind.Relative);
+                bit.UriSource = new Uri(@"..\..\Object Model\Movement.png", UriKind.Relative);
                 bit.EndInit();
 
                 character.Source = bit;
@@ -186,7 +186,7 @@ namespace BurningChoices_code
             else if (e.Key == Key.D)
             {
                 bit.BeginInit();
-                bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTRIGHT.png", UriKind.Relative);
+                bit.UriSource = new Uri(@"..\..\Object Model\Movement.png", UriKind.Relative);
                 bit.EndInit();
 
                 character.Source = bit;
@@ -199,7 +199,7 @@ namespace BurningChoices_code
             if (e.Key == Key.W)
             {
                 bit.BeginInit();
-                bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTLEFT.png", UriKind.Relative);
+                bit.UriSource = new Uri(@"..\..\Object Model\Movement.png", UriKind.Relative);
                 bit.EndInit();
 
                 character.Source = bit;
@@ -208,7 +208,7 @@ namespace BurningChoices_code
             else if (e.Key == Key.S)
             {
                 bit.BeginInit();
-                bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTLEFT.png", UriKind.Relative);
+                bit.UriSource = new Uri(@"..\..\Object Model\Movement.png", UriKind.Relative);
                 bit.EndInit();
 
                 character.Source = bit;
@@ -217,7 +217,7 @@ namespace BurningChoices_code
             else if (e.Key == Key.A)
             {
                 bit.BeginInit();
-                bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTLEFT.png", UriKind.Relative);
+                bit.UriSource = new Uri(@"..\..\Object Model\Movement.png", UriKind.Relative);
                 bit.EndInit();
 
                 character.Source = bit;
@@ -226,7 +226,7 @@ namespace BurningChoices_code
             else if (e.Key == Key.D)
             {
                 bit.BeginInit();
-                bit.UriSource = new Uri(@"..\..\Object Model\MOVEMENTRIGHT.png", UriKind.Relative);
+                bit.UriSource = new Uri(@"..\..\Object Model\Movement.png", UriKind.Relative);
                 bit.EndInit();
 
                 character.Source = bit;

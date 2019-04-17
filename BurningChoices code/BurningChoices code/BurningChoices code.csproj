@@ -133,5 +133,14 @@
   <ItemGroup>
     <Resource Include="Object Model\MainCharacter.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Object Model\Movement.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Object Model\MONEY.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Object Model\SECOND.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

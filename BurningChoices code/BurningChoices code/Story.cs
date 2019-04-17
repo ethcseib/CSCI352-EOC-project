@@ -14,7 +14,7 @@ namespace BurningChoices_code
         bool cont;
         bool TaskCompleted;
 
-        public bool ShouldContinue { get { return cont; } set { cont = value; } }
+        public bool ShouldContinue { set { cont = value; } get { return cont; } }//set was removed
 
         public Story()
         {
@@ -36,24 +36,30 @@ namespace BurningChoices_code
 
         public void PrintConversation()
         {
-            if (TaskCompleted)
+            /*if (intro.Count == 0 && dialogue.Count == 0)
             {
                 MessageBox.Show("What are you still doing here? Leave!");
-            }
-            else if(cont == false)
+            }*/
+
+            if(intro.Count != 0)
             {
+                cont = true;
+
                 foreach(string x in intro)
                 {
                     MessageBox.Show(x);
                 }
+                intro.Clear();
             }
             else if(cont)
             {
                 foreach(string str in dialogue)
                 {
                     MessageBox.Show(str);
+                    //MessageBox.Show("hi");
                 }
-                TaskCompleted = true;
+                dialogue.Clear();
+                //TaskCompleted = true;
             }
         }
     }
