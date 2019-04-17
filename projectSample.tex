@@ -475,7 +475,7 @@
 % in the abstract or keywords.
 \IEEEtitleabstractindextext{%
 \begin{abstract}
-This project is a 2D game named ``Burning Choices". The game will primarily focus on the adventure genre. It will include multiple levels and branching story. The game took inspiration from Bandersnatch, a fictitious game in the Netflix original series Black Mirror that also included branching story line. The target audience will be those that enjoy classic action arcade style games.
+This project is a 2D game named ``Burning Choices". The game will primarily focus on the adventure genre. It will include multiple levels and a branching story. The game took inspiration from Bandersnatch, a fictitious game in the Netflix original series Black Mirror that also included a branching story line. The target audience will be those that enjoy classic action arcade style games.
 \end{abstract}
 
 %As the comment below states, you usually only do these when you're doing a final submission of a paper, to make it easier to find your work when searching.
@@ -653,8 +653,8 @@ The functional requirements for this project were gathered from our experiences 
 
 \subsubsection{Non-Functional}
 \begin{itemize}
-\item Recoverability- If the game crashes then it can be rebooted and the user can restart using an auto save.
-\item Maintainability- Given this project is relatively small it makes it easy to find and get rid of any bugs within. This means in the long run being able to maintain this project will be relatively simple especially as we discover and fix bugs.
+\item Recoverability- If the game crashes then it can be rebooted and the user can restart their game using a loaded save.
+\item Maintainability- Code is stable so that we can easily add new features with few to no problems. 
 \end{itemize}
 
 \subsection{Use Cases}
@@ -663,20 +663,21 @@ The functional requirements for this project were gathered from our experiences 
 \centering
 \begin{tabular}{|c|c|c|c|c|}
 \hline
-Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
+Task ID & Task Name & Primary Actor & Complexity & Priority \\
 \hline 
+1 & Starting the Story & Player & Easy & 1 \\
 \hline
-1 & Starting the Story & Player & Easy & 1\\
+2 & Game Saving & Player & Med & 2 \\
 \hline
-2 & Game Saving & Player & Med & 2\\
+3 & Exiting Game & Player & Easy & 2 \\
 \hline
-3 & Exiting Game & Player & Easy & 2\\
+4 & Load Game & Player & Med & 2 \\
 \hline
-4 & Load Game & Player & Med & 2\\
+5 & Character Movement & Player & Easy & 1 \\
 \hline
-5 & Character Movement & Player & Easy & 1\\
+6 & Items & Player & Hard & 1 \\
 \hline
-6 & Items & Player & Hard & 1
+7 & Walls & Player & Hard & 1 \\
 
 \end{tabular}
 \caption{Use case table}
@@ -684,8 +685,8 @@ Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
 \end{table}
 
 \begin{itemize}
-\item[Use Case Number:] 1
-\item[Use Case Name:] Starting the story.
+\item[Task Number:] 1
+\item[Task Name:] Starting the story.
 \item[Description:] The user is on the title screen and wants to start the story of the game. 
 \end{itemize}
 
@@ -695,8 +696,8 @@ Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
 \end{enumerate}
 
 \begin{itemize}
-\item[Use Case Number:] 2
-\item[Use Case Name:] Game saving
+\item[Task Number:] 2
+\item[Task Name:] Game saving
 \item[Description:] The user reaches a point in the game where they wish to save their progress.
 \end{itemize}
 
@@ -710,8 +711,8 @@ Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
 \end{enumerate}
 
 \begin{itemize}
-\item[Use Case Number:] 3
-\item[Use Case Name:] Exiting Game
+\item[Task Number:] 3
+\item[Task Name:] Exiting Game
 \item[Description:] After playing for a while the user will want to quit the game.
 \end{itemize}
 
@@ -728,8 +729,8 @@ Alternative: User is on the title screen
 \end{enumerate}
 
 \begin{itemize}
-\item[Use Case Number:] 4
-\item[Use Case Name:] Load Game
+\item[Task Number:] 4
+\item[Task Name:] Load Game
 \item[Description:] The user is on the title screen and wishes to continue where they left off in the story.
 \end{itemize}
 
@@ -740,8 +741,8 @@ Alternative: User is on the title screen
 \end{enumerate}
 
 \begin{enumerate}
-\item[Use Case Number:] 5
-\item[Use Case Name:] Character Movement
+\item[Task Number:] 5
+\item[Task Name:] Character Movement
 \item[Description:] The user is in a game level and wishes to move within the level.
 \end{enumerate}
 
@@ -751,29 +752,39 @@ Alternative: User is on the title screen
 \end{enumerate}
 
 \begin{enumerate}
-\item[Use Case:] 6
-\item[Use Case Name:] Items
+\item[Task Number:] 6
+\item[Task Name:] Items
 \item[Description:] To complete quests the player needs to collect items.
 \end{enumerate}
 
 \begin{enumerate}
-\item Player has to collect items.
+\item Player has to collect items for a quest.
 \item The player walks onto an item.
 \item The item is collected by the player.
+\item The collected item is moved to the player's inventory.
+\end{enumerate}
+
+\begin{enumerate}
+\item[Task Number:] 7
+\item[Task Name:] Walls
+\item[Description:] An object the player can not walk through.
+\end{enumerate}
+
+\begin{enumerate}
+\item The player tries to walk outside the bounds of the level.
+\item The walls will stop their advance in that direction.
 \end{enumerate}
 
 \subsection{Interface Mockups}
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=.4]{BurningChoicesGameplay.png}
+\includegraphics[scale=.4]{GameScreenMockUp.png}
 \caption{The gameplay so far}
 \label{gameplay_1}
-Currently we have the ability to add in walls as we want which allows us to start building on our game environment. In this picture the player is attempting to pass through a wall that cannot be passed through. This picture also shows the color and art style that can be expected within the game environment.
+This is a very early version of our level design. This particular scene will involve a lady the player can talk to and she will give the player a quest to collect items. To the right of the game is the inventory system for item collection. The black bars are walls that the player can not go through. At the top of the screen is how the player will transfer to a new level.
 \end{figure}
  
-
-
 \begin{figure}[h]
 \centering
 \includegraphics[scale=.4]{BurningChoicesMenu.png}
@@ -789,14 +800,6 @@ This is what we want our title screen to look like once we are finished with the
 \caption{A layout of the pause screen}
 \label{PS}
 This is the current version of our pause screen. The screen will give you the three options to choose from. The Resume button will un-pause the game and continue the user where they left off. The save option is use case 2 which will record the user's current progress within the story and save it to a file to be loaded later. Then at the bottom of the list is quit which is use case 3. This will close the game entirely.
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\includegraphics[scale=.4]{GameScreenMockUp.png}
-\caption{A sample of what the game will look like}
-\label{Gameplay}
-This is a very early version of our level design. This particular scene will involve a lady the player can talk to and she will give the player a quest to collect items. To the right of the game is the inventory system for item collection. The black bars are walls that the player can not go through. At the top of the screen is how the player will transfer to a new level.
 \end{figure}
 
 \newpage
@@ -815,25 +818,27 @@ Next is the implementation phase. We plan for this to last from February through
 \begin{enumerate}
 \item Levels designed (April 2019- April 2019)
 \item Obstacle class made (March 1, 2019- March 23, 2019)
-\item Inventory system made and implemented (March 25- April 16, 2019)
-\item The story implemented (April 17 2019- April 21, 2019)
+\item Inventory system made and implemented (March 25- April 14, 2019)
+\item The story implemented (April 15 2019- April 21, 2019)
 \end{enumerate}
 
-Next is the verification phase and it will last from April 21, 2019 through April 23, 2019.
+Next is the verification phase and it will last from April 21, 2019 through April 22, 2019. It is at this point we will begin trying to break the game in order to find bugs in the project.
 
-Lastly is the Maintenance phase which will last from April 23, 2019 to April 24, 2019.
+Lastly is the Maintenance phase which will last from April 22, 2019 to April 24, 2019. We will take this time to fix any bugs we have discovered.
+
+It's hard to tell whether we budgeted our time well. We have the majority of the gameplay implemented and waiting to be used, but there are still many things like the main menu, pause menu and the story/ levels that need to be finished. The main menu and pause menu have their own functionality that is separate from the gameplay that has yet to be defined. With these tasks taken in consideration with the fact that the deadline is close then we probably did not budget well. 
 \section{Project Structure}
 Currently we have decided to use an Abstract Factory design pattern to define and create any objects we will use within the game such as walls and doors.
 
-The second pattern we are using is the Observer pattern. This keeps the inventory system up to date. 
+The second pattern we are using is the Observer pattern. This keeps the inventory system up to date when an item is collected. 
 
-\newpage
+
 \subsection{UML Outline}
 
 
 \begin{figure}[h]
-\includegraphics[scale= 0.4]{BurningChoicesUML.png}
-\caption{This is the current UML plan we have for our project. It is not finished, but thus far we have a plan for any in game object such as walls, doors and items as well as functionality for our MainWindow class}
+\includegraphics[scale= 0.4]{Burning_Choices_UML.jpg}
+\caption{This is the current UML are using for our project. It is not finished for there may be a need to create another class for transferring into new levels. The Story class is how we plan to tell the story of the game. It is currently being developed. The PlayerMovement class is how the player moves throughout the game. The MoveFreely function allows the player to move around un- impeded. The functions with Restrict at the begining of the name restricts the player's movement in a direction that is defined at the end of the function name. The GenObstacle class is an abstract class that defines common functionality for all obstacles that will be used within the game. Individual obstacles such as: walls, doors, items and other characters inherit from GenObstacle to share in the functionality. Each obstacle has its own way the player will interact with it. For example the player can't walk through a wall. The Subject class defines common functionality for any derived class to inherit. The ItemCollection class inherits from the Subject class and works with the Inventory class. The Inventory and ItemCollection classes work together to form an observer and subject relationship. The ItemCollection class will collect an item obstacle when the player walks into an item and then send it to the Inventory class to be put into the player's inventory.}
 \label{UML}
 \end{figure}
 
@@ -842,10 +847,10 @@ The second pattern we are using is the Observer pattern. This keeps the inventor
 Currently we are using the Abstract Factory design patter as one of our patterns. It allow us to create obstacles like walls, doors, items and characters. The second pattern we used was the observer pattern. We needed a way to update our inventory grid when the player collects an item. Using a subject we collect the item and send it to the observer which puts it in the inventory grid.
 
 \section{Results}
-The project stands at being able to freely create walls to restrict the player's movement. The player can collect items and have them added to the inventory.
+The project's gameplay functionality is nearly complete. This means the player can collect items to the inventory and the player can't travel to places they aren't allowed to. We have the capability to create the story within the game as well as little tasks to complete in the game, but we have not taken the time to really add them.
 
 \subsection{Future Work}
-In the future we will finish the inventory system and then we will start making other levels using plans we have already laid out. After this we will debug the project.
+There are many goals we haven't made thus far. We haven't implemented the linear story and levels. Then there are the main and pause menus. These were the things that we decided would take the least amount of time and thus were slated to be finished last. Things that we would add if we had more time and no other tasks to get through would be gameplay. Perhaps we would do a hedge maze within the game. Then we might make the story less of a pattern. Currently we have the story operate in a pattern of 3. The player does interacts with something, they get a quest and they complete the quest and leave for the next level.
 
 
 
