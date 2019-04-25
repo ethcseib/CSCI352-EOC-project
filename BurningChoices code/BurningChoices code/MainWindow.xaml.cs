@@ -21,17 +21,24 @@ namespace BurningChoices_code
     /// </summary>
     public partial class MainWindow : Window
     {
-        Story story;
+        Story GoodStory;
+        Story BadStory;
         ItemCollection ItmCollect;
         Inventory observe;
         MakeObstacle make;
+        bool LevelFinished;
+        KeyPresses move;
+        public bool IsLevelFinished { get { return LevelFinished; } }
 
         public MainWindow()
         {
-            story = new Story();
+            move = new KeyPresses();
+            GoodStory = new Story();
+            BadStory = new Story();
             ItmCollect = new ItemCollection();
             observe = new Inventory(ItmCollect);
             make = new MakeObstacle();
+            LevelFinished = false;
 
             InitializeComponent();
         }
@@ -58,15 +65,11 @@ namespace BurningChoices_code
         private void TraverseCanvas_KeyDown(object sender, KeyEventArgs e)//controls the movement of the character
         {
 
-            /*<Glitch> I think the problem now is when the player reaches the corner then it is equidistant from two elements and the player phases through the
-             * walls and can no longer move. Gonna have to watch out for this because if the user tries to save in this position then they are screwed the next
-             * time they load />*/
-
-            BitmapImage bit = new BitmapImage();
-            PlayerMovement move = new PlayerMovement(character, canvas);
-
             GenObstacle.CollisionCheck();//might look into being able to remove GenObstacle in favor of MakeObstacle or remove it all together
             GenObstacle obs = GenObstacle.ClosestElement();
+
+            if(GoodStory.OccuredOnce != true)
+                GoodStory.PrintLevelIntro(StoryBox);
 
            if (obs.CollisionStatus)
            {
@@ -100,63 +103,54 @@ namespace BurningChoices_code
                         move.MoveFreely(e);
                     }
                 }
+                else if(obs is NPC)
+                {
+                    if(GoodStory.ShouldContinue == false && observe.Count == 0)
+                    {
+                        GoodStory.PrintConversation(StoryBox);
+                        make.MakeItem(character, canvas, @"../../Object Model/Quit.png", bandage1);
+                        make.MakeItem(character, canvas, @"../../Object Model/Quit.png", bandage2);
+                        make.MakeItem(character, canvas, @"../../Object Model/Quit.png", bandage3);
+                        GoodStory.ShouldContinue = true;
+
+                        canvas.Children.Remove(money);
+                        
+                    }
+
+                    else if(GoodStory.ShouldContinue == true && observe.Count == 3 && GoodStory.IsComplete == false)
+                    {
+                        GoodStory.PrintConversation(StoryBox);
+                        observe.Clear();
+                    }
+
+                    move.MoveFreely(e);
+                }
 
                 else if(obs is Item)
                 {
-                    //MessageBox.Show(Convert.ToString(canvas.Children.Contains(GenObstacle.ClosestObstacle)));
-                    //MessageBox.Show(Convert.ToString("item: " + Canvas.GetBottom(GenObstacle.ClosestObstacle) + " character" + Canvas.GetTop(character)));
-
-                    /*<Problem Details> I collect an item and it is removed from the canvas. Then I move again and it lets me know that the item is no longer on the canvas which means
-                     * the item was successfully removed from it; however, the item still exists so it attempts to run this again and the same element is trying to be added twice to the grid
-                     * for the second time*/
-                    story.ShouldContinue = true;
-                    story.PrintConversation();//quick and dirty
-                    //story.PrintConversation();
+                    if(GoodStory.ShouldContinue == false && BadStory.IsComplete == false)
+                    {
+                        BadStory.PrintConversation(StoryBox);
+                    }
+                   
                     canvas.Children.Remove(GenObstacle.ClosestObstacle);
 
                     ItmCollect.Collect(GenObstacle.ClosestObstacle);
                     obs.Remove(obs);
-                    //move.MoveFreely(e);
-                    //MessageBox.Show(Convert.ToString(VisualTreeHelper.GetParent(GenObstacle.ClosestObstacle)));
-                    //also just for future reference Remove is a function GenObstacle has for removing objects from GenObs
                 }
 
                 else if(obs is Door)
                 {
-                    Level2Good win = new Level2Good();
-                    win.Show();
-                    this.Close();
-                    //MessageBox.Show("door");
+                    if(GoodStory.IsComplete || BadStory.IsComplete)
+                    {
+                        obs.Clear();//just added
+                        LevelFinished = true;
+                        this.Close();
+                    }
+                    move.RestrictUp(e);//defeats the point of collision checking in a way 
                 }
-
-                /*if (obs is NPC)
-                {
-                    move.MoveFreely(e);
-
-                    if (story.ShouldContinue == false)
-                    {
-                        make.MakeItem(character, canvas, "../../Object Model/TREE.png", bandage1);
-                        make.MakeItem(character, canvas, "../../Object Model/TREE.png", bandage2);
-                        make.MakeItem(character, canvas, "../../Object Model/TREE.png", bandage3);
-
-                        story.PrintConversation();
-                        
-                    }
-
-                    else if (observe.Count == 3)//perhaps there is a better way because this is dis- pleasing
-                    {
-                        //MessageBox.Show("Chracter " + Convert.ToString(Canvas.GetRight(character) + " NPC " + Canvas.GetLeft(NPC1)));
-                        observe.Clear();
-                        story.PrintConversation();
-                    }
-                }*/
-
-                /*if(obs is Item)
-                {
-                    story.PrintConversation();
-                }*/
            }
-
+            
             else
             {
                 move.MoveFreely(e);
@@ -166,31 +160,13 @@ namespace BurningChoices_code
             Canvas.SetBottom(character, Canvas.GetTop(character) + character.Height);
         }
 
-
         private void TraverseCanvas_KeyUp(object sender, KeyEventArgs e)
         {
             BitmapImage bit = new BitmapImage();
             bit.BeginInit();
             bit.UriSource = new Uri(@"..\..\Object Model\MainCharacter.png", UriKind.Relative);
             bit.EndInit();
-
-            if (e.Key == Key.W)
-            {
-                character.Source = bit;
-            }
-            else if (e.Key == Key.S)
-            {
-                character.Source = bit;
-            }
-            else if (e.Key == Key.A)
-            {
-                character.Source = bit;
-            }
-            else if (e.Key == Key.D)
-            {
-                character.Source = bit;
-            }
-
+            character.Source = bit;
         }
 
         
@@ -199,27 +175,25 @@ namespace BurningChoices_code
             
             BitmapImage bit = new BitmapImage();
 
-            /*<Thoughts> Perhaps I need to work on the story class and expand it more, so that the story is easier to create. />*/
-            /*<Thoughts> An evil storoy object and a good story object might do well />*/
-
-            MessageBox.Show("Narrator: This is a story about a young programmer named Xavier. He is just an average dude trying to make it through the onslaught of job interviews. Today is a special " +
-                "day for Xzavier for he will be inflicted with a disease known as \"Burning Choices\".");
-            MessageBox.Show("Narrator: While walking home from work Xzavier bore witness to a car swerve and crash into a tree.");
-            MessageBox.Show("As Xzavier approached the car he noticed that the person was bleeding and unconcious.");
-            MessageBox.Show("Xzavier: I wonder what happened to her. Was she drunk? Wait! Is that an unusually large amount of money? Should I take it and run? It would be easy no one knows" +
+            GoodStory.AddIntro("<LevelIntro>Narrator: This is a story about a young programmer named Xavier. He is just an average dude trying to make it through the onslaught of job interviews. Today is a special " +
+                "day for Xavier for he will be inflicted with a disease known as \"Burning Choices\".");//not a fan of the end of this line
+            GoodStory.AddIntro("<LevelIntro>Narrator: While walking home from work Xavier bore witness to a car swerve and crash into a tree.");
+            GoodStory.AddIntro("<LevelIntro>As Xavier approached the car he noticed that the person was bleeding and unconcious.");
+            GoodStory.AddIntro("<LevelIntro>Xavier: I wonder what happened to her. Was she drunk? Wait! Is that an unusually large amount of money? Should I take it and run? It would be easy no one knows" +
                 " I was here, but she could die if I leave them. Perhaps I should help them instead.");
-            story.AddDialogue("Narrator: Xzavier did as any person might do. ");
-            story.AddDialogue("Xzavier: This could be a once in a lifetime oppurtunity for me!");
-            story.AddDialogue("Narrator: Xzavier took the money and ran with it.");
-            /*story.AddIntro("Hi im James you are hurt! I'm calling the police.");
-            story.AddIntro("This is the police how may we help you? Just kidding! We are the thought police. We know the situation. Gather three bandages to save their life.");
+            GoodStory.AddDialogue("Narrator: Xavier did as any person might do.");
+            GoodStory.AddIntro("<LevelIntro>Xavier: This could be a once in a lifetime oppurtunity for me!");
+            BadStory.AddDialogue("Narrator: Xavier took the money and ran with it.");
+
+            GoodStory.AddIntro("<CharacterIntro>Xavier: Hi im Xavier you are hurt! I'm calling the police.");
+            GoodStory.AddIntro("<CharacterIntro>Police: This is the police how may we help you? Just kidding! We are the thought police. We know the situation. Gather three bandages to save their life.");
             
-            story.AddDialogue("Police: Have you found the special trees?");
-            story.AddDialogue("Police: Good good you have just saved this woman's life. I feel some good fortune coming your way sir or madam.");
-            story.AddDialogue("Xzavier: It's sir.");
-            story.AddDialogue("Police: Yeah I don't care your services are no longer needed please leave and continue with your life. By please I mean leave before I bring you in for some made " +
+            GoodStory.AddDialogue("Police: Have you found the special trees?");
+            GoodStory.AddDialogue("Police: Good good you have just saved this woman's life. I feel some good fortune coming your way sir or madam.");
+            GoodStory.AddDialogue("Xavier: It's sir.");
+            GoodStory.AddDialogue("Police: Yeah I don't care your services are no longer needed please leave and continue with your life. By please I mean leave before I bring you in for some made " +
                 "a thought crime.");
-            story.AddDialogue("Xzavier's inner thoughts: I guess I should head NORTH along the road to head home. There's nothing for me here.");*/
+            GoodStory.AddDialogue("Xavier's inner thoughts: I guess I should head NORTH along the road to head home. There's nothing for me here.");
 
             bit.BeginInit();
             bit.UriSource = new Uri(@"../../Object Model/FirstMap.png", UriKind.RelativeOrAbsolute);
@@ -232,13 +206,13 @@ namespace BurningChoices_code
             make.MakeWall(character, canvas, @"../../Object Model/Wall.png", wall1);//gotta open the new graphics in VS before they will work properly
             make.MakeWall(character, canvas, @"../../Object Model/Wall.png", wall2);
             make.MakeWall(character, canvas, @"../../Object Model/Wall.png", wall3);
-            //make.MakeWall(character, canvas, @"../../Object Model/CAR.png", Car);
             make.MakeDoor(character, canvas, "", Door1);
             make.MakeNPC(character, canvas, @"../../Object Model/GUY.png", NPC1);
 
             canvas.Focusable = true;
             canvas.Focus();
 
+            move.ConnectCharacter_and_Canvas(character, canvas);
         }
 
         private void GridInitialized(object sender, EventArgs e)
@@ -256,22 +230,6 @@ namespace BurningChoices_code
             InventoryGrid.RowDefinitions.Add(rowDef1);//Give my grid three rows
             InventoryGrid.RowDefinitions.Add(rowDef2);
             InventoryGrid.RowDefinitions.Add(rowDef3);
-
-            /*BitmapImage bit = new BitmapImage();//The image of the object to added to the grid
-            Image img = new Image();
-
-            bit.BeginInit();
-            bit.UriSource = new Uri(@"..\..\Object Model\TREE2.png", UriKind.RelativeOrAbsolute);
-            bit.EndInit();
-            
-            img.Source = bit;
-            img.Height = 100;
-            img.Width = 100;
-            
-            Grid.SetColumnSpan(img, 1);//put the image in column one
-            Grid.SetRow(img, 0);//Put the image in row 0
-            InventoryGrid.Children.Add(img);//Add the image to the grid
-            */
         }
     }
 }

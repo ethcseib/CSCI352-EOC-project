@@ -10,21 +10,27 @@ using System.Windows.Media.Imaging;
 
 namespace BurningChoices_code
 {
-    class PlayerMovement
+    class KeyPresses
     {
         BitmapImage bit;
         Image character;
         Canvas can;//mightnot be needed
 
-        public PlayerMovement(Image character, Canvas can)
+        public KeyPresses()
+        {
+            bit = new BitmapImage();
+        }
+
+        public void ConnectCharacter_and_Canvas(Image character,Canvas can)
         {
             this.character = character;
             this.can = can;
-            bit = new BitmapImage();
         }
-        //Too much reuse i'm sure there is a better way of doing this
+
         public void RestrictRight(KeyEventArgs e)
         {
+            bit = new BitmapImage();
+
             if (e.Key == Key.W)
             {
                 bit.BeginInit();
@@ -67,6 +73,8 @@ namespace BurningChoices_code
 
         public void RestrictDown(KeyEventArgs e)
         {
+            bit = new BitmapImage();
+
             if (e.Key == Key.W)
             {
                 bit.BeginInit();
@@ -110,6 +118,8 @@ namespace BurningChoices_code
 
         public void RestrictUp(KeyEventArgs e)
         {
+            bit = new BitmapImage();
+
             if (e.Key == Key.W)
             {
                 bit.BeginInit();
@@ -153,6 +163,8 @@ namespace BurningChoices_code
 
         public void RestrictLeft(KeyEventArgs e)
         {
+            bit = new BitmapImage();
+
             if (e.Key == Key.W)
             {
                 bit.BeginInit();
@@ -196,6 +208,8 @@ namespace BurningChoices_code
 
         public void MoveFreely(KeyEventArgs e)
         {
+            bit = new BitmapImage();
+
             if (e.Key == Key.W)
             {
                 bit.BeginInit();

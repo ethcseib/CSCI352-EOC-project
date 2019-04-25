@@ -42,7 +42,7 @@ namespace BurningChoices_code
         public static Image ClosestObstacle;//used in tracking the closest obstacle to the player
         //could possibly create an accessor for ClosestObstacle so it can't be openly modified
 
-        protected static List<GenObstacle> GenObs = new List<GenObstacle>();//holds every object instance of a new obstacle. May not be the best due to memory consumption
+        protected static List<GenObstacle> GenObs = new List<GenObstacle>();//holds every object instance of a new obstacle. May not be the best due to memory consumption also was protected
         protected bool IsCollideable = true;//used to determine if an obstacle can be passed through by the player true means no
         public bool collideable//accessor to IsCollideable
         {
@@ -161,14 +161,12 @@ namespace BurningChoices_code
             double CharacterMidpointY = ((Canvas.GetTop(character) + Canvas.GetBottom(character)) / 2);
             double ElementPointX = GenObs[0].ObsPoints[0].X;//((Canvas.GetLeft(GenObs[0].obs) + Canvas.GetRight(GenObs[0].obs)) / 2);
             double ElementPointY = GenObs[0].ObsPoints[0].Y;//((Canvas.GetTop(GenObs[0].obs) + Canvas.GetBottom(GenObs[0].obs)) / 2);
-            
             double dist = Math.Sqrt(Math.Pow((ElementPointX - CharacterMidpointX), 2) + Math.Pow((ElementPointY - CharacterMidpointY), 2));
             int index = 0;
-            int test = 0;//remove later
             int count = 0;
+
             foreach (GenObstacle y in GenObs)
             {
-                count++;
                 for (int x = 0; x < y.ObsPoints.Count; x++)
                 {
 
@@ -183,17 +181,17 @@ namespace BurningChoices_code
                     if (ObsDist < dist)
                     {
                         index = count;
-                        dist = ObsDist;//Math.Sqrt((Math.Pow(((Canvas.GetLeft(GenObs[i].obs) + Canvas.GetRight(GenObs[i].obs)) / 2) - (Canvas.GetLeft(character) + Canvas.GetRight(character) / 2), 2)
-                                       //+ Math.Pow(((Canvas.GetTop(GenObs[i].obs) + Canvas.GetBottom(GenObs[i].obs)) / 2) - (Canvas.GetTop(character) + Canvas.GetBottom(character) / 2), 2)));
+                        dist = ObsDist;
                     }
                 }
+                count++;
             }
+                        //MessageBox.Show(Convert.ToString(index));//GenObs.Count));
+                        //MessageBox.Show(Convert.ToString(GenObs.Count()));
+            ClosestObstacle = GenObs[index].obs;
 
-            ClosestObstacle = GenObs[index - 1].obs;
-            
-            //MessageBox.Show(Convert.ToString(GenObs.Count));
-
-            return GenObs[index - 1]; 
+            return GenObs[index]; /*<Plan> Create an event that gets its data to pass to other functions here and make this function's signature match that of the KeyUp event so that
+                                                this function is called when the window triggers the KeyDown event />*/
         }
 
         public void Remove(GenObstacle obs)
@@ -201,6 +199,16 @@ namespace BurningChoices_code
             //MessageBox.Show(Convert.ToString(GenObs.Count));
             GenObs.Remove(obs); 
             //MessageBox.Show(Convert.ToString(GenObs.Count));
+        }
+
+        public void Clear()
+        {
+            GenObs.Clear();
+        }
+
+        public int Count()
+        {
+            return GenObs.Count();
         }
     }
 

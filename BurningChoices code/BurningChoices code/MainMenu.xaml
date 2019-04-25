@@ -1,0 +1,15 @@
+﻿<Window x:Class="BurningChoices_code.MainMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BurningChoices_code"
+        mc:Ignorable="d"
+        Title="MainMenu" Height="450" Width="800">
+    <Canvas HorizontalAlignment="Left" Height="417" VerticalAlignment="Top" Width="790">
+        <Image x:Name="MainMenuImage" Height="417" Width="790" Initialized="MainMenuImage_initialized"/>
+        <Button x:Name="NewGame" Content="" Canvas.Left="251" Canvas.Top="65" Width="292" Height="106" BorderBrush="Black" Background="Black" Opacity="0" Click="NewGame_CllicKed"/>
+        <Button x:Name="ResumeGame" Content="" Canvas.Left="251" Canvas.Top="171" Width="292" Height="114" Background="{x:Null}" Opacity="0" Click="ResumeGame_Clicked"/>
+        <Button x:Name="QuitGame" Content="" Canvas.Left="251" Canvas.Top="290" Width="292" Height="101" Opacity="0" Click="QuitGame_Clicked"/>
+    </Canvas>
+</Window>

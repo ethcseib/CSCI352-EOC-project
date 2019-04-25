@@ -47,8 +47,8 @@ namespace BurningChoices_code
 
         void InventoryPlacement()//places in the inventory
         {
-            if (row < 4)
-            {//MessageBox.Show(Convert.ToString(row));
+            if (row < 3)
+            {
                 Grid.SetColumnSpan(img, 1);
                 Grid.SetRow(img, row);
                 grd.Children.Add(img);
@@ -56,7 +56,7 @@ namespace BurningChoices_code
                 row++;
             }
             else
-                MessageBox.Show("ERROR: Too many items collected there is no more inventory space.");
+                row++;
         }
 
         public void Clear()

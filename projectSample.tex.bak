@@ -636,7 +636,7 @@ Burning Choices is a 2D adventure game that operates around the theme of angels,
 Throughout the paper these terms will be used in describing certain aspects or situations in the game. 2D graphics, branching storyline and linear storyline. 2D graphics refers to the dimensions of of the art style within the game i.e. 2D graphics is short for 2 dimensional graphics. Mario for the nintendo 64 is a great example of 2D graphics. Branching storyline refers to the story structure and how the story of the game is built. The story that is produced depends on the choice of the player. This means the player could end up with a completely different ending or story leading to the ending depending on what they do in the game. Linear storyline also refers to the story structure within the game. A linear storyline is much like reading a book. From beginning to end the story is static and unchanging with only one end. Ethan and Jamel chose this project to hone their game development skills, while Hunter was more interested by the story aspect. 
 
 \subsection{Challenges}
-Some of the challenges we suspect to run into include programmatically creating obstacles like walls and items the player can interact with, giving the player the ability to move around each level and the creation of many levels that are connected so the player may move between levels. We know how to gather a user's key inputs, but we need to make the keys perform actions like move the character. This will be the first time we have worked with moving an object on screen using our own code. Next we have to overcome how objects like walls and items act within the program because a wall is different than an item. A wall the player can't pass through, but an item they could. Saved games are a necessity because it records the player's progress within the story thus far and stores it away so that they may access it later to load their game. The last expected challenge is to create our different story lines and make sure they lead to an ending. To address these challenges we will need to do some research on useful libraries to help provide pre- defined functionality or create our own functionality. Things we have found to help us are the C\# classes Canvas, Image, BitmapImage and Grid. The Canvas class has allowed us to create the levels for which the player will travers. The Image and BitmapImage classes help us give graphical pictures to our walls, items and level. The Grid class allows us to be able to create an inventory system that will help the player keep track of items collected thus far within the game.
+Some of the challenges we suspect to run into include programmatically creating obstacles like walls and items the player can interact with, giving the player the ability to move around each level and the creation of many levels that are connected so the player may move between levels. We know how to gather a user's key inputs, but we need to make the keys perform actions like move the character. This will be the first time we have worked with moving an object on screen using our own code. Next we have to decipher how objects like walls and items act within the game because a wall is different than an item. A wall being an object the player can't pass through, but an item being something they could. Saved games are a necessity because it records the player's progress within the story up to that point and stores it away so that they may access it later to load their game. The last expected challenge is to create our different story lines and make sure they lead to an ending. To address these challenges we will need to do some research on useful libraries to help provide pre- defined functionality or create our own functionality. Things we have found to help us are the C\# classes Canvas, Image, BitmapImage and Grid. The Canvas class has allowed us to create the levels for which the player will traverse. The Image and BitmapImage classes help us give graphical pictures to our walls, items and levels. The Grid class allows us to be able to create an inventory system that will help the player keep track of items collected thus far within the game.
 
 \section{Scope}
 The project will be finished when we have at least three in game levels, a linear storyline and can save. The stretch goals we have set for this project are the branching storylines and additional game levels.
@@ -760,7 +760,7 @@ Alternative: User is on the title screen
 \begin{enumerate}
 \item Player has to collect items for a quest.
 \item The player walks onto an item.
-\item The item is collected by the player.
+\item The item is removed from the level.
 \item The collected item is moved to the player's inventory.
 \end{enumerate}
 
@@ -771,7 +771,7 @@ Alternative: User is on the title screen
 \end{enumerate}
 
 \begin{enumerate}
-\item The player tries to walk outside the bounds of the level.
+\item The player tries to walk through a wall.
 \item The walls will stop their advance in that direction.
 \end{enumerate}
 

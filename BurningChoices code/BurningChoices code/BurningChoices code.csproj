@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>BurningChoices_code.MyMain</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -56,13 +59,35 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ItemCollection.cs" />
-    <Compile Include="Level2Good.xaml.cs">
-      <DependentUpon>Level2Good.xaml</DependentUpon>
+    <Compile Include="Level2Bad.xaml.cs">
+      <DependentUpon>Level2Bad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Level2Trident1.xaml.cs">
+      <DependentUpon>Level2Trident1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Level2TridentPieces2And3.xaml.cs">
+      <DependentUpon>Level2TridentPieces2And3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyMain.cs" />
+    <Compile Include="MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="ObserverInventory.cs" />
     <Compile Include="PlayerMovement.cs" />
     <Compile Include="Story.cs" />
-    <Page Include="Level2Good.xaml">
+    <Page Include="Level2Bad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Level2Trident1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Level2TridentPieces2And3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -74,7 +99,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Events.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -109,7 +133,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Object Model\BurningChoicesMenu.png" />
     <Resource Include="Object Model\BurningChoicesPauseScreen.png" />
     <Resource Include="Object Model\Wall.png" />
   </ItemGroup>
@@ -125,9 +148,6 @@
     <Resource Include="Object Model\CAR.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Object Model\Home.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Object Model\FirstMap.png" />
   </ItemGroup>
   <ItemGroup>
@@ -140,7 +160,30 @@
     <Resource Include="Object Model\MONEY.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Object Model\SECOND.png" />
+    <Resource Include="Object Model\MainMenu.png" />
+    <Resource Include="Object Model\NewGame.png" />
+    <Resource Include="Object Model\Quit.png" />
+    <Resource Include="Object Model\Resume.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Object Model\Demon.png" />
+    <Resource Include="Object Model\Level2BadEnding.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Object Model\Hell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Object Model\rocks.png" />
+    <Resource Include="Object Model\T1.png" />
+    <Resource Include="Object Model\T2.png" />
+    <Resource Include="Object Model\T3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Object Model\Band.png" />
+    <Resource Include="Object Model\devil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Object Model\SatanicCircle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

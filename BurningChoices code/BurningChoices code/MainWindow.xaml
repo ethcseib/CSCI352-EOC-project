@@ -10,14 +10,15 @@
         <Image x:Name="wall1" Height="800" Canvas.Left="0" Canvas.Top="0" Width="50"/>
         <Image x:Name="wall2" Height="800" Canvas.Left="750" Canvas.Top="0" Width="50"/>
         <Image x:Name="Door1" Height="50" Width="800" Canvas.Top="0" Canvas.Left="0" />
-        <Image x:Name="wall3" Height="50" Width="800" Canvas.Top="750" Canvas.Left="0" />
+        <Image x:Name="wall3" Height="50" Width="800" Canvas.Top="610" Canvas.Left="0" />
         <Image x:Name="road" Height="800" Width="800" Canvas.Top="0" />
         <Image x:Name="character" Height="140" Canvas.Left="320" Canvas.Top="190" Width="120" IsHitTestVisible="True" Initialized="CharacterInitialized" />
         <Image x:Name="NPC1" Height="100" Width="100" Canvas.Left="180" Canvas.Top="380"/>
         <Grid x:Name="InventoryGrid" Height="800" Canvas.Left="800" Canvas.Top="0" Width="260" Initialized="GridInitialized"/>
         <Image x:Name="bandage1" Height="100" Canvas.Left="120" Canvas.Top="130" Width="100"/>
-        <Image x:Name="bandage2" Height="100" Canvas.Left="660" Canvas.Top="670" Width="100"/>
-        <Image x:Name="bandage3" Height="100" Canvas.Left="120" Canvas.Top="640" Width="100"/>
+        <Image x:Name="bandage2" Height="100" Canvas.Left="340" Canvas.Top="190" Width="100"/>
+        <Image x:Name="bandage3" Height="100" Canvas.Left="568" Canvas.Top="264" Width="100"/>
         <Image x:Name="money" Height="100" Canvas.Left="320" Canvas.Top="480" Width="100"/>
+        <TextBox x:Name="StoryBox" Height="150" TextWrapping="Wrap" Canvas.Top="640" Width="800" Background="White" Focusable="False"/>
     </Canvas>
 </Window>
