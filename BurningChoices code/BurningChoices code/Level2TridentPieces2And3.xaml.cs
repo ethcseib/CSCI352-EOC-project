@@ -25,7 +25,9 @@ namespace BurningChoices_code
         Story GoodStory;
         KeyPresses press;
         bool LevelFinished;
+        bool GameBeaten;
         public bool IsLevelFinished { get { return LevelFinished; } }
+        public bool IsGameBeaten { get { return GameBeaten; } }
 
         public Level2TridentPieces2And3()
         {
@@ -35,14 +37,17 @@ namespace BurningChoices_code
             GoodStory = new Story();
             press = new KeyPresses();
             LevelFinished = false;
+            GameBeaten = false;
 
             InitializeComponent();
         }
 
         private void HellCanvas_Initialized(object sender, EventArgs e)
         {
-            GoodStory.AddIntro("<LevelIntro>Xzavier: This is it. The last two pieces and then I confront Satan.");
-            GoodStory.AddDialogue("Satan: Well Well I see you have collected all of the pieces to the staff. I geuss this means you rule hell now.");
+            GoodStory.AddIntro("<LevelIntro>Xavier: This is it. The last two pieces and then I confront Satan.");
+            GoodStory.AddDialogue("Satan: Well Well. I see you have collected all of the pieces to the staff. I geuss this means you rule hell now. If you will head left your prize awaits " +
+                "you.");
+
             BitmapImage bit = new BitmapImage();
 
             bit.BeginInit();
@@ -62,17 +67,21 @@ namespace BurningChoices_code
             HellCanvas.Focusable = true;
             HellCanvas.Focus();
 
+            /*<Problem> The rock walls are kinda glitchy />*/
             //make.MakeWall(MainCharacter, HellCanvas, "../../Object Model/rocks.png", Rock1);
-            //make.MakeWall(MainCharacter, HellCanvas, "", Rock2);
+            //make.MakeWall(MainCharacter, HellCanvas, "../../Object Model/rocks.png", Rock2);
             make.MakeItem(MainCharacter, HellCanvas, "../../Object Model/T1.png", Trident1);
             make.MakeItem(MainCharacter, HellCanvas, "../../Object Model/T2.png", Trident2);
             make.MakeNPC(MainCharacter, HellCanvas, "../../Object Model/devil.png", Satan);
             make.MakeDoor(MainCharacter, HellCanvas, "", Door1);
-            make.MakeDoor(MainCharacter, HellCanvas, "", Door2);
+            make.MakeWall(MainCharacter, HellCanvas, "", Wall3);
             make.MakeWall(MainCharacter, HellCanvas, "", Wall1);
             make.MakeWall(MainCharacter, HellCanvas, "", Wall2);
 
             press.ConnectCharacter_and_Canvas(MainCharacter, HellCanvas);
+
+            Canvas.SetRight(MainCharacter, Canvas.GetLeft(MainCharacter) + MainCharacter.Width);//setting right and bottom of character
+            Canvas.SetBottom(MainCharacter, Canvas.GetTop(MainCharacter) + MainCharacter.Height);
         }
 
         private void HellCanvas_KeyDown(object sender, KeyEventArgs e)
@@ -117,10 +126,20 @@ namespace BurningChoices_code
                 }
                 else if(obs is NPC)
                 {
-                    if (inv.Count == 3)
+                    if (inv.Count == 1)
                     {
-                        if(GoodStory.IsComplete != true)
-                            GoodStory.PrintConversation(StoryText);
+                        if(GoodStory.ShouldContinue)
+                        {
+                            if(GoodStory.IsComplete != true)
+                            {
+                                GoodStory.PrintConversation(StoryText);
+                                LevelFinished = true;
+                                GameBeaten = true;
+                                
+                            }
+                                
+                        }
+                            
                     }
                     press.MoveFreely(e);
                 }
@@ -128,18 +147,43 @@ namespace BurningChoices_code
                 {
                     /*<Problem> Has a problem with walls in the middle of the level not sure why just yet. This is with the majority of levels this is odd because I'm pretty sure I have had
                      * walls like that before. />*/
-                    //MessageBox.Show(Convert.ToString(Canvas.GetLeft(GenObstacle.ClosestObstacle)));
+
                     HellCanvas.Children.Remove(GenObstacle.ClosestObstacle);
                     CollectItm.Collect(GenObstacle.ClosestObstacle);
                     obs.Remove(obs);
+
+                    if(inv.Count == 3)
+                    {
+                        inv.Clear();
+
+                        Image img = new Image();
+                        BitmapImage bit = new BitmapImage();
+
+                        bit.BeginInit();
+                        bit.UriSource = new Uri("../../Object Model/Trident.png", UriKind.Relative);
+                        bit.EndInit();
+
+                        img.Source = bit;
+                        CollectItm.Collect(img);
+                        GoodStory.ShouldContinue = true;
+                    }
+                }
+                else if(obs is Door)
+                {
+                    if (GoodStory.IsComplete)
+                    {
+                        this.Close();
+                    }
+                    press.MoveFreely(e);
                 }
             }
             else
             {
                 press.MoveFreely(e);
             }
-        
-    }
+            Canvas.SetRight(MainCharacter, Canvas.GetLeft(MainCharacter) + MainCharacter.Width);//setting right and bottom of character
+            Canvas.SetBottom(MainCharacter, Canvas.GetTop(MainCharacter) + MainCharacter.Height);
+        }
 
         private void HellCanvas_KeyUp(object sender, KeyEventArgs e)
         {

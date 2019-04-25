@@ -73,6 +73,9 @@
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="ObserverInventory.cs" />
+    <Compile Include="PauseScreen.xaml.cs">
+      <DependentUpon>PauseScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PlayerMovement.cs" />
     <Compile Include="Story.cs" />
     <Page Include="Level2Bad.xaml">
@@ -103,6 +106,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PauseScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ObstacleAbstractFactory.cs" />
@@ -137,7 +144,6 @@
     <Resource Include="Object Model\Wall.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Object Model\GUY.png" />
     <Resource Include="Object Model\MOVEMENTLEFT.png" />
     <Resource Include="Object Model\MOVEMENTRIGHT.png" />
     <Resource Include="Object Model\ROAD.png" />
@@ -184,6 +190,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Object Model\SatanicCircle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Object Model\Trident.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Object Model\Bleed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Object Model\Amb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Saved Game\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

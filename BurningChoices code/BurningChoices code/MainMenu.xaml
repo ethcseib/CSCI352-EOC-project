@@ -8,8 +8,8 @@
         Title="MainMenu" Height="450" Width="800">
     <Canvas HorizontalAlignment="Left" Height="417" VerticalAlignment="Top" Width="790">
         <Image x:Name="MainMenuImage" Height="417" Width="790" Initialized="MainMenuImage_initialized"/>
-        <Button x:Name="NewGame" Content="" Canvas.Left="251" Canvas.Top="65" Width="292" Height="106" BorderBrush="Black" Background="Black" Opacity="0" Click="NewGame_CllicKed"/>
-        <Button x:Name="ResumeGame" Content="" Canvas.Left="251" Canvas.Top="171" Width="292" Height="114" Background="{x:Null}" Opacity="0" Click="ResumeGame_Clicked"/>
-        <Button x:Name="QuitGame" Content="" Canvas.Left="251" Canvas.Top="290" Width="292" Height="101" Opacity="0" Click="QuitGame_Clicked"/>
+        <Button x:Name="NewGame" Content="" Canvas.Left="251" Canvas.Top="65" Width="292" Height="97" BorderBrush="Black" Background="Black" Click="NewGame_CllicKed" Opacity="0"/>
+        <Button x:Name="ResumeGame" Content="" Canvas.Left="251" Canvas.Top="183" Width="292" Height="90" Background="Black" Click="ResumeGame_Clicked" Opacity="0"/>
+        <Button x:Name="QuitGame" Content="" Canvas.Left="251" Canvas.Top="290" Width="292" Height="101" Click="QuitGame_Clicked" Opacity="0"/>
     </Canvas>
 </Window>

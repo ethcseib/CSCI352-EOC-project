@@ -47,13 +47,17 @@ namespace BurningChoices_code
             bit.EndInit();
 
             MainCharacter.Source = bit;
-            press.ConnectCharacter_and_Canvas(MainCharacter, HellCanvas);
+
+            Canvas.SetRight(MainCharacter, Canvas.GetLeft(MainCharacter) + MainCharacter.Width);//setting right and bottom of character
+            Canvas.SetBottom(MainCharacter, Canvas.GetTop(MainCharacter) + MainCharacter.Height);
+
+            
         }
 
         private void HellCanvas_Initialized(object sender, EventArgs e)
         {
             GoodStory.AddIntro("<LevelIntro>Xavier: Well I suppose that is the first piece of the scepter thing that demon was talking about.");
-
+            GoodStory.AddIntro("<CharacterIntro>Xavier: One piece down just two more to go. I guess I should try going down or the the left to find the other pieces.");
             HellCanvas.Focusable = true;
             HellCanvas.Focus();
 
@@ -63,6 +67,8 @@ namespace BurningChoices_code
             make.MakeDoor(MainCharacter, HellCanvas, "", Door2);
             make.MakeWall(MainCharacter, HellCanvas, "", Wall1);
             make.MakeWall(MainCharacter, HellCanvas, "", Wall2);
+
+            press.ConnectCharacter_and_Canvas(MainCharacter, HellCanvas);
         }
 
         private void HellCanvas_KeyUp(object sender, KeyEventArgs e)
@@ -122,13 +128,17 @@ namespace BurningChoices_code
                     CollectItm.Collect(GenObstacle.ClosestObstacle);
                     obs.Remove(obs);
                     LevelFinished = true;
+
+                    GoodStory.PrintConversation(StoryBox);
+                    GoodStory.ShouldContinue = true;
+                    
                 }
                 else if (obs is Door)
                 {
                     if (LevelFinished)
                     {
+                        obs.Clear();
                         this.Close();
-
                     }
                     press.MoveFreely(e);
                 }
@@ -137,6 +147,8 @@ namespace BurningChoices_code
             {
                 press.MoveFreely(e);
             }
+            Canvas.SetRight(MainCharacter, Canvas.GetLeft(MainCharacter) + MainCharacter.Width);//setting right and bottom of character
+            Canvas.SetBottom(MainCharacter, Canvas.GetTop(MainCharacter) + MainCharacter.Height);
         }
 
         private void InvGrd_Initialized(object sender, EventArgs e)

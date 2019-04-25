@@ -157,6 +157,8 @@ namespace BurningChoices_code
 
         static public GenObstacle ClosestElement()//tracks the closest obstacle to the player for collision checking using a combination of the distance and midpoint formula. 
         {//Might look into using thread with it though possibly not due to the character unless i stop the thread after the loop exits
+            //MessageBox.Show(Convert.ToString("CanvasLeft " + Canvas.GetRight(character)));
+
             double CharacterMidpointX = ((Canvas.GetLeft(character) + Canvas.GetRight(character)) / 2);
             double CharacterMidpointY = ((Canvas.GetTop(character) + Canvas.GetBottom(character)) / 2);
             double ElementPointX = GenObs[0].ObsPoints[0].X;//((Canvas.GetLeft(GenObs[0].obs) + Canvas.GetRight(GenObs[0].obs)) / 2);
@@ -186,6 +188,8 @@ namespace BurningChoices_code
                 }
                 count++;
             }
+            //MessageBox.Show(Convert.ToString(GenObstacle.ClosestObstacle));
+            //MessageBox.Show(Convert.ToString("dist " + dist));
                         //MessageBox.Show(Convert.ToString(index));//GenObs.Count));
                         //MessageBox.Show(Convert.ToString(GenObs.Count()));
             ClosestObstacle = GenObs[index].obs;

@@ -61,6 +61,7 @@ namespace BurningChoices_code
 
         public void Clear()
         {
+            row = 0;
             grd.Children.Clear();
         }
     }

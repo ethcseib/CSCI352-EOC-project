@@ -24,6 +24,7 @@ namespace BurningChoices_code
 
         public MainMenu()
         {
+            choice = -1;
             InitializeComponent();
         }
 
