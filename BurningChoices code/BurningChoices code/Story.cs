@@ -4,21 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace BurningChoices_code
 {
     class Story
     {
-        List<string> dialogue;
+        public List<string> dialogue;
         List<string> intro;
         bool cont;
-        bool TaskCompleted;
-
-        public bool ShouldContinue { set { cont = value; } get { return cont; } }//set was removed
+        bool complete;//level completed
+        bool good;
+        bool occured;
+        public bool OccuredOnce { get { return occured; } }
+        public bool IsGood { get { return good; } }
+        public bool IsComplete { get { return complete; } }//level completed
+        public bool ShouldContinue { set { cont = value; } get { return cont; } }
 
         public Story()
         {
-            TaskCompleted = false;
+            occured = false;
+            good = false;
+            complete = false;
             dialogue = new List<string>();
             intro = new List<string>();
             cont = false;
@@ -34,32 +41,51 @@ namespace BurningChoices_code
             dialogue.Add(convo);
         }
 
-        public void PrintConversation()
+        public void PrintLevelIntro(TextBox box)
         {
-            /*if (intro.Count == 0 && dialogue.Count == 0)
+            occured = true;
+            foreach (string x in intro)
             {
-                MessageBox.Show("What are you still doing here? Leave!");
-            }*/
+                if (x.Substring(0, 12) == "<LevelIntro>")
+                {
+                    
+                    box.Text += "\n" + x.Remove(0, 12) + "\n";
+                    
+                }
 
+                else
+                {
+                    /*<YOLO> Do nothing />*/
+                }
+            }
+        }
+
+        public void PrintConversation(TextBox box)
+        {
+            box.Text = "\n";
+            
             if(intro.Count != 0)
             {
                 cont = true;
 
                 foreach(string x in intro)
                 {
-                    MessageBox.Show(x);
+                    if(x.Substring(0, 16) == "<CharacterIntro>")
+                    {
+                        box.Text += x.Remove(0, 16) + "\n";
+                    }
                 }
                 intro.Clear();
             }
-            else if(cont)
+
+            else if(dialogue.Count != 0)
             {
                 foreach(string str in dialogue)
                 {
-                    MessageBox.Show(str);
-                    //MessageBox.Show("hi");
+                    box.Text += "\n" + str + "\n";
                 }
+                complete = true;
                 dialogue.Clear();
-                //TaskCompleted = true;
             }
         }
     }
