@@ -14,8 +14,8 @@
         <Image x:Name="Trident2" Height="100" Canvas.Left="560" Canvas.Top="30" Width="100"/>
         <Image x:Name="Rock1" Height="100" Canvas.Left="410" Canvas.Top="110" Width="100"/>
         <Image x:Name="Rock2" Height="100" Canvas.Left="190" Canvas.Top="150" Width="100"/>
-        <Image x:Name="SatanicGrid" Height="100" Canvas.Left="240" Canvas.Top="20" Width="100"/>
-        <Image x:Name="Satan" Height="100" Canvas.Left="240" Canvas.Top="20" Width="100"/>
+        <Image x:Name="SatanicGrid" Height="100" Canvas.Left="240" Canvas.Top="80" Width="100"/>
+        <Image x:Name="Satan" Height="100" Canvas.Left="240" Canvas.Top="80wwwaaaa" Width="100"/>
         <Image x:Name="MainCharacter" Height="100" Canvas.Left="310" Canvas.Top="190" Width="100"/>
         <Grid x:Name="InvGrd" Height="420" Canvas.Left="665" Width="129" Background="White" Initialized="InvGrd_Initialized"/>
         <TextBox x:Name="StoryText" Height="71" TextWrapping="Wrap" Canvas.Top="349" Width="665"/>

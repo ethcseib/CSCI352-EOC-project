@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*Description: This is part of our observer pattern that was used for the inventory system. This is the Observer portion */ 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,11 +16,12 @@ namespace BurningChoices_code
 
     class Inventory : Observer
     {
+        /*<Summary> This is the inventory that stores items collected by the player. It connects to a Grid control for displaying />*/
+
         int row;
         ItemCollection sub;
         Image img;
         Grid grd;
-        public int test = 0;//remove later
 
         public int Count { get { return row; } }
 
@@ -30,13 +32,13 @@ namespace BurningChoices_code
             row = 0;
         }
 
-        public void Connect(Grid grd)
+        public void Connect(Grid grd)//Connects the object to a Grid
         {
             if(this.grd == null)
             this.grd = grd;
         }
 
-        public void Update(Subject sub)//gets an update the inventory
+        public void Update(Subject sub)//gets and update the inventory
         {
             if(this.sub == sub)
             {
@@ -45,7 +47,7 @@ namespace BurningChoices_code
             }
         }
 
-        void InventoryPlacement()//places in the inventory
+        void InventoryPlacement()//places item in the inventory
         {
             if (row < 3)
             {
@@ -59,7 +61,7 @@ namespace BurningChoices_code
                 row++;
         }
 
-        public void Clear()
+        public void Clear()//clears the inventory of items
         {
             row = 0;
             grd.Children.Clear();
