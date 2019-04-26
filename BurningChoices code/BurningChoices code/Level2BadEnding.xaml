@@ -16,7 +16,7 @@
         <Image x:Name="SatanicCircle" Height="100" Canvas.Left="250" Canvas.Top="60" Width="100"/>
         <Image x:Name="Satan" Height="100" Canvas.Left="250" Canvas.Top="60" Width="100"/>
         <Image x:Name="Door1" Height="420" Canvas.Left="680" Canvas.Top="0" Width="10"/>
-        <Image x:Name="Door2" Height="20" Canvas.Top="335" Canvas.Left="0" Width="690"/>
+        <Image x:Name="Door2" Height="20" Canvas.Top="330" Canvas.Left="0" Width="690"/>
         <Image x:Name="Door3" Height="420" Canvas.Top="0" Canvas.Left="0" Width="20"/>
         <Image x:Name="Door4" Height="10" Canvas.Top="0" Canvas.Left="0" Width="700"/>
         <Image x:Name="MainCharacter" Height="100" Canvas.Left="340" Canvas.Top="220" Width="100"/>

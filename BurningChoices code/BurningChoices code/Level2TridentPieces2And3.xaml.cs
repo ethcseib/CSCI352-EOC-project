@@ -92,7 +92,13 @@ namespace BurningChoices_code
                 GoodStory.PrintLevelIntro(StoryText);
             }
 
-            if (obs.CollisionStatus)
+            if (e.Key == Key.Escape)
+            {
+                PauseScreen pause = new PauseScreen(this);
+                pause.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                pause.ShowDialog();
+            }
+            else if (obs.CollisionStatus)
             {
                 if (obs.collideable)
                 {
@@ -169,7 +175,22 @@ namespace BurningChoices_code
                     {
                         this.Close();
                     }
-                    press.MoveFreely(e);
+
+                    else if (Canvas.GetTop(MainCharacter) == Canvas.GetBottom(GenObstacle.ClosestObstacle))//going up
+                    {
+                        press.RestrictUp(e);
+                    }
+
+                    else if (Canvas.GetLeft(MainCharacter) == Canvas.GetRight(GenObstacle.ClosestObstacle))//going left
+                    {
+                        press.RestrictLeft(e);
+                    }
+
+                    else
+                    {
+                        press.MoveFreely(e);
+                    }
+                    
                 }
             }
             else
