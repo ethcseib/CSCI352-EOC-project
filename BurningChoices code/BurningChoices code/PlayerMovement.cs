@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*Description: Controls player movement. Mainly to make player movement easier.*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace BurningChoices_code
     {
         BitmapImage bit;
         Image character;
-        Canvas can;//mightnot be needed
+        Canvas can;
 
         public KeyPresses()
         {
@@ -92,7 +93,6 @@ namespace BurningChoices_code
                 bit.EndInit();
 
                 character.Source = bit;
-                //Canvas.SetTop(character, Canvas.GetTop(character) + 10);
             }
 
             else if (e.Key == Key.A)
@@ -127,7 +127,6 @@ namespace BurningChoices_code
                 bit.EndInit();
 
                 character.Source = bit;
-                //Canvas.SetTop(character, Canvas.GetTop(character) - 10);
             }
 
             else if (e.Key == Key.S)
@@ -192,7 +191,6 @@ namespace BurningChoices_code
                 bit.EndInit();
 
                 character.Source = bit;
-                //Canvas.SetLeft(character, Canvas.GetLeft(character) - 10);
             }
 
             else if (e.Key == Key.D)

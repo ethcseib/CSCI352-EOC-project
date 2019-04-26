@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*Description: An item collection level of the story. Thus doesn't have much story.*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

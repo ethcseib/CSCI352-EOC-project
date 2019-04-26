@@ -10,14 +10,14 @@ namespace BurningChoices_code
 {
     class MyMain
     {
-        enum Windows { MainWindow = 0, Level2Bad, Level2Trident1, Level2TridentPieces2and3 };
-
         [STAThreadAttribute]
         static void Main()
-        {   
+        {
+            /*<Summary> Our created main so that we are able to control the flow/ Level progression. Our game's main menu will be opened and then the player will select a menu item />*/
+
             MainMenu win = new MainMenu();
             bool IsGoodEnding = false;
-            int LevelNumber = 1;
+            int LevelNumber = 1;//keeps track of player level progression
             bool GameBeaten = false;
             string SavedGame = "";
 
@@ -26,6 +26,8 @@ namespace BurningChoices_code
 
             if(win.Choice == 0)//new game
             {
+                /*<Summary> Opens a new game starting from the beginning />*/
+
                 MainWindow windoe = new MainWindow();
 
                 windoe.WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -41,6 +43,8 @@ namespace BurningChoices_code
 
             else if(win.Choice == 1)//Resume game
             {
+                /*<Summary> The user wishes to load a game />*/
+
                 SavedGame = System.IO.File.ReadAllText("../../Saved Game/SaveGame1.txt");
                 SavedGame = SavedGame.Remove(0, 20);
 
@@ -70,24 +74,44 @@ namespace BurningChoices_code
                 }
             }
 
-            if(LevelNumber == 2)//Quit game
+            if(LevelNumber == 2)
             {
+                /*<Summary> The user chose to quit the game from the main menu and game />*/
                 Level2Bad level = new Level2Bad();
-                level.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                level.ShowDialog();
-                
+
+                if(IsGoodEnding == false)
+                {
+                    level.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                    level.ShowDialog();
+                }
+
+                IsGoodEnding = level.IsGoodEnding;
+
                 if (level.IsLevelFinished)
                     LevelNumber++;
-                
             }
 
             if(LevelNumber == 3)
             {
-                Level2Trident1 level = new Level2Trident1();
-                level.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                level.ShowDialog();
+                bool LevelFinished = false;   
+                
 
-                if (level.IsLevelFinished)
+                if(IsGoodEnding == true)
+                {
+                    Level2Trident1 level = new Level2Trident1();
+                    level.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                    level.ShowDialog();
+                    LevelFinished = level.IsLevelFinished;
+                }
+                else if(IsGoodEnding == false)
+                {
+                    Level2BadEnding lev = new Level2BadEnding();
+                    lev.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                    lev.ShowDialog();
+                    GameBeaten = lev.IsGameBeaten;
+                }
+
+                if (LevelFinished)
                 {
                     LevelNumber++;
                 }

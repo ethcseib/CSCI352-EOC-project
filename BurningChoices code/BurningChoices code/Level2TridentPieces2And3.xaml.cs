@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*Description: The last level of the Bad/Good ending where the player takes over hell.*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -67,9 +68,6 @@ namespace BurningChoices_code
             HellCanvas.Focusable = true;
             HellCanvas.Focus();
 
-            /*<Problem> The rock walls are kinda glitchy />*/
-            //make.MakeWall(MainCharacter, HellCanvas, "../../Object Model/rocks.png", Rock1);
-            //make.MakeWall(MainCharacter, HellCanvas, "../../Object Model/rocks.png", Rock2);
             make.MakeItem(MainCharacter, HellCanvas, "../../Object Model/T1.png", Trident1);
             make.MakeItem(MainCharacter, HellCanvas, "../../Object Model/T2.png", Trident2);
             make.MakeNPC(MainCharacter, HellCanvas, "../../Object Model/devil.png", Satan);
@@ -145,9 +143,6 @@ namespace BurningChoices_code
                 }
                 else if (obs is Item)
                 {
-                    /*<Problem> Has a problem with walls in the middle of the level not sure why just yet. This is with the majority of levels this is odd because I'm pretty sure I have had
-                     * walls like that before. />*/
-
                     HellCanvas.Children.Remove(GenObstacle.ClosestObstacle);
                     CollectItm.Collect(GenObstacle.ClosestObstacle);
                     obs.Remove(obs);

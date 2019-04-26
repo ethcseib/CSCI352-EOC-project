@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*Description: This is our abstract factory implementation. It is used to create in- game obstacles like walls, items and doors*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,9 +12,7 @@ using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace BurningChoices_code
-{/*<Note> abstract factory works well when user or client is given a choice of different looks and feels of a product suchas if they want a blue car or red one. Then the desired look and feel is returned. This is
-    not really used to create in the program i believe />*/
-
+{
     class MakeObstacle
     {
         public GenObstacle MakeWall(Image charac, Canvas canvas, string pic, Image wall)
@@ -39,12 +38,13 @@ namespace BurningChoices_code
 
     abstract class GenObstacle
     {
+        /*<Summary> An abstract class for obstacles to inherit from. The goal for it for the most part is to define tracking functionality for all obstacles. />*/
         public static Image ClosestObstacle;//used in tracking the closest obstacle to the player
         //could possibly create an accessor for ClosestObstacle so it can't be openly modified
 
-        protected static List<GenObstacle> GenObs = new List<GenObstacle>();//holds every object instance of a new obstacle. May not be the best due to memory consumption also was protected
-        protected bool IsCollideable = true;//used to determine if an obstacle can be passed through by the player true means no
-        public bool collideable//accessor to IsCollideable
+        protected static List<GenObstacle> GenObs = new List<GenObstacle>();//holds every object instance of a new obstacle.
+        protected bool IsCollideable = true;
+        public bool collideable
         {
             get { return IsCollideable; }
         }
@@ -52,28 +52,26 @@ namespace BurningChoices_code
         protected List<Point> ObsPoints;//holds the (x, y) coordinates for the obstacles
 
         
-        static protected bool CollisionHappened = false;//when a collision happens this will become true
-        public bool CollisionStatus//access to see if a collision happened
+        static protected bool CollisionHappened = false;
+        public bool CollisionStatus
         {
             get { return CollisionHappened; }
         }
 
-        protected Image obs;//the obstacle
+        protected Image obs;//the obstacle image
 
-        static protected Image character;//the character check collisions with
-        //might make static because there should be just one character at a time
-        protected Canvas canvas;//the canvas to add obstacles to
-                                //might make this static because there should be just one canvas at a time
+        static protected Image character;
+        protected Canvas canvas;
 
-        //Thread th;
-
-        public GenObstacle()//this might be useless 
+        public GenObstacle()
         {
             ObsPoints = new List<Point>();
         }
 
-        public void CreateObs(string picture, Image ImgObj)//, int CanvasLeft, int CanvasTop)//this might be best. Easier to control the obstacles created. though might remove canvasleft etc.
-        {//string picture is the path to the picture
+        public void CreateObs(string picture, Image ImgObj)
+        {
+            /*<Summary> Creates an obstacle of the type that will be specified by the class that calls the function and it also gives the obstacles an image and adds them to a tracking list />*/
+
             BitmapImage x = new BitmapImage();
             obs = ImgObj;
 
@@ -81,7 +79,7 @@ namespace BurningChoices_code
             x.UriSource = new Uri(picture, UriKind.RelativeOrAbsolute);
             x.EndInit();
             
-            obs.Source = x;//gives the obstacles a texture/ image
+            obs.Source = x;
 
             obs.Height = ImgObj.Height;
             obs.Width = ImgObj.Width;
@@ -89,18 +87,17 @@ namespace BurningChoices_code
             obs.Stretch = Stretch.Fill;
             obs.StretchDirection = StretchDirection.Both;
 
-            Canvas.SetBottom(obs, Canvas.GetTop(obs) + obs.Height);//establishes the last two sides of the obstacles
+            Canvas.SetBottom(obs, Canvas.GetTop(obs) + obs.Height);
             Canvas.SetRight(obs, Canvas.GetLeft(obs) + obs.Width);
-
-            //canvas.Children.Add(obs);
 
             SetPoints();//adds obs's points to a list for collision checking and tracking
             GenObs.Add(this);//Hold every new obstacle created for collision checking
         }
 
-        protected void SetPoints()//gathers the coordinates of each obstacle to be used for tracking and collision testing
+        protected void SetPoints()
         {
-            
+            /*<Summary> Gathers the coordinates of each obstacle within its respective Canvas object they will be used for tracking and collision testing />*/
+
             for (int x = Convert.ToInt32(Canvas.GetLeft(obs)); x <= Convert.ToInt32(Canvas.GetLeft(obs) + obs.Width); x++)
             {
                 
@@ -111,9 +108,10 @@ namespace BurningChoices_code
             }
         }
 
-        static public void CollisionCheck()//Checks for a collision between the character and an obstacle
+        static public void CollisionCheck()
         {
-            
+            /*<Summary> Checks for a collision between the character and an obstacle />*/
+
             Point BottomLeft = new Point(Canvas.GetLeft(character), Canvas.GetTop(character) + character.Height);
             Point TopLeft = new Point(Canvas.GetLeft(character), Canvas.GetTop(character));
             Point TopRight = new Point(Canvas.GetLeft(character) + character.Width, Canvas.GetTop(character));
@@ -122,47 +120,37 @@ namespace BurningChoices_code
 
             foreach (GenObstacle x in GenObs)
             {
-                if (x.ObsPoints.Contains(BottomLeft))//changed from ObsPoints.Contains()
-                {//collision at top or right
-                    //MessageBox.Show(Convert.ToString("bottom left " + BottomRight + " obs " + Canvas.GetLeft(obs)));
-
+                if (x.ObsPoints.Contains(BottomLeft))
+                {
                     CollisionHappened = true;
                 }
 
-                else if (x.ObsPoints.Contains(BottomRight))//if i can find a way to decide this i might be able to use some form of strategy pattern
-                {//collisiion at top or left
-                    //MessageBox.Show("bottom right " + Convert.ToString(BottomRight));
-
+                else if (x.ObsPoints.Contains(BottomRight))
+                {
                     CollisionHappened = true;
                 }
 
                 else if (x.ObsPoints.Contains(TopLeft))
-                {//Collision at bottom or right
-                    //MessageBox.Show("top left " + Convert.ToString(BottomRight));
-
+                {
                     CollisionHappened = true;
                 }
 
                 else if (x.ObsPoints.Contains(TopRight))
-                {//collision at bottom or left
-                    //MessageBox.Show("top right " + Convert.ToString(BottomRight));
-
+                {
                     CollisionHappened = true;
                 }
-
-                
             }
             
         }
 
-        static public GenObstacle ClosestElement()//tracks the closest obstacle to the player for collision checking using a combination of the distance and midpoint formula. 
-        {//Might look into using thread with it though possibly not due to the character unless i stop the thread after the loop exits
-            //MessageBox.Show(Convert.ToString("CanvasLeft " + Canvas.GetRight(character)));
+        static public GenObstacle ClosestElement()
+        {
+            /*<Summary> tracks the closest obstacle to the player for collision checking using a combination of the distance and midpoint formula. It returns the obstacle from the function. />*/
 
             double CharacterMidpointX = ((Canvas.GetLeft(character) + Canvas.GetRight(character)) / 2);
             double CharacterMidpointY = ((Canvas.GetTop(character) + Canvas.GetBottom(character)) / 2);
-            double ElementPointX = GenObs[0].ObsPoints[0].X;//((Canvas.GetLeft(GenObs[0].obs) + Canvas.GetRight(GenObs[0].obs)) / 2);
-            double ElementPointY = GenObs[0].ObsPoints[0].Y;//((Canvas.GetTop(GenObs[0].obs) + Canvas.GetBottom(GenObs[0].obs)) / 2);
+            double ElementPointX = GenObs[0].ObsPoints[0].X;
+            double ElementPointY = GenObs[0].ObsPoints[0].Y;
             double dist = Math.Sqrt(Math.Pow((ElementPointX - CharacterMidpointX), 2) + Math.Pow((ElementPointY - CharacterMidpointY), 2));
             int index = 0;
             int count = 0;
@@ -172,8 +160,8 @@ namespace BurningChoices_code
                 for (int x = 0; x < y.ObsPoints.Count; x++)
                 {
 
-                    ElementPointX = y.ObsPoints[x].X;//((Canvas.GetLeft(GenObs[i].obs) + Canvas.GetRight(GenObs[i].obs)) / 2);
-                    ElementPointY = y.ObsPoints[x].Y;//((Canvas.GetTop(GenObs[i].obs) + Canvas.GetBottom(GenObs[i].obs)) / 2);
+                    ElementPointX = y.ObsPoints[x].X;
+                    ElementPointY = y.ObsPoints[x].Y;
                     CharacterMidpointX = ((Canvas.GetLeft(character) + Canvas.GetRight(character)) / 2);
                     CharacterMidpointY = ((Canvas.GetTop(character) + Canvas.GetBottom(character)) / 2);
 
@@ -188,21 +176,14 @@ namespace BurningChoices_code
                 }
                 count++;
             }
-            //MessageBox.Show(Convert.ToString(GenObstacle.ClosestObstacle));
-            //MessageBox.Show(Convert.ToString("dist " + dist));
-                        //MessageBox.Show(Convert.ToString(index));//GenObs.Count));
-                        //MessageBox.Show(Convert.ToString(GenObs.Count()));
             ClosestObstacle = GenObs[index].obs;
 
-            return GenObs[index]; /*<Plan> Create an event that gets its data to pass to other functions here and make this function's signature match that of the KeyUp event so that
-                                                this function is called when the window triggers the KeyDown event />*/
+            return GenObs[index]; 
         }
 
         public void Remove(GenObstacle obs)
         {
-            //MessageBox.Show(Convert.ToString(GenObs.Count));
             GenObs.Remove(obs); 
-            //MessageBox.Show(Convert.ToString(GenObs.Count));
         }
 
         public void Clear()
@@ -216,10 +197,10 @@ namespace BurningChoices_code
         }
     }
 
-    class Wall : GenObstacle//might make these private to reduce access to others though this might cause accessing issues
-    {//TODO
-        //List<Point> walls = new List<Point>();
-        
+    /*<Summary> The obstacles that inherit from the base class />*/
+
+    class Wall : GenObstacle
+    {
         public Wall(Image charac, Canvas canv, string pic, Image wall)
         {
             IsCollideable = true;
@@ -230,20 +211,15 @@ namespace BurningChoices_code
 
     }
 
-    class Door : GenObstacle//gotta plan this one it's different than wall
+    class Door : GenObstacle
     {
         public Door(Image charac, Canvas canv, string pic, Image door)
-        {//TODO
+        {
             IsCollideable = false;
             canvas = canv;
             character = charac;
             CreateObs(pic, door);
         }
-
-        /*protected void LevelChange(object sender, EventArgs e)//the event
-        {
-            MessageBox.Show("level change");
-        }*/
     }
 
     class Item : GenObstacle
@@ -254,7 +230,6 @@ namespace BurningChoices_code
             this.canvas = canv;
             character = charac;
             CreateObs(pic, item);
-            //canvas.Children.Remove(this);
         }
     }
 

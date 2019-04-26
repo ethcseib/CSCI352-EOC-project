@@ -18,6 +18,7 @@
         <Image x:Name="MainCharacter" Height="100" Canvas.Left="320" Canvas.Top="250" Width="100"/>
         <Image x:Name="DoorWest" Height="610" Canvas.Left="0" Canvas.Top="0" Width="10"/>
         <TextBox x:Name="StoryBox" Height="90" TextWrapping="Wrap" Canvas.Top="490" Width="750" Background="White" Focusable="False"/>
+        <Image x:Name="Fan" Height="100" Canvas.Left="570" Canvas.Top="110" Width="100"/>
 
     </Canvas>
 </Window>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*Description: Makes creating in game story easier.*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,12 +14,12 @@ namespace BurningChoices_code
         public List<string> dialogue;
         List<string> intro;
         bool cont;
-        bool complete;//level completed
+        bool complete;
         bool good;
         bool occured;
         public bool OccuredOnce { get { return occured; } }
         public bool IsGood { get { return good; } }
-        public bool IsComplete { get { return complete; } }//level completed
+        public bool IsComplete { get { return complete; } }
         public bool ShouldContinue { set { cont = value; } get { return cont; } }
 
         public Story()
@@ -43,6 +44,8 @@ namespace BurningChoices_code
 
         public void PrintLevelIntro(TextBox box)
         {
+            /*<Summary> Prints the intro for every level />*/
+
             occured = true;
             foreach (string x in intro)
             {
@@ -52,16 +55,12 @@ namespace BurningChoices_code
                     box.Text += "\n" + x.Remove(0, 12) + "\n";
                     
                 }
-
-                else
-                {
-                    /*<YOLO> Do nothing />*/
-                }
             }
         }
 
         public void PrintConversation(TextBox box)
         {
+            /*<Summary> Print conversation between characters />*/
             box.Text = "\n";
             
             if(intro.Count != 0)
@@ -82,7 +81,7 @@ namespace BurningChoices_code
             {
                 foreach(string str in dialogue)
                 {
-                    box.Text += "\n" + str + "\n";
+                    box.Text += str + "\n";
                 }
                 complete = true;
                 dialogue.Clear();

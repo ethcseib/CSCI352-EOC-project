@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*Description: This is the main menu for the game. It is the first window that is opened when the game starts.*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,8 @@ namespace BurningChoices_code
     /// </summary>
     public partial class MainMenu : Window
     {
+        /*<Summary> The user picks a menu option and the main menu records the choice in a variable to be used for decision making in main. />*/
+
         int choice;
         public int Choice { get { return choice; } }
 

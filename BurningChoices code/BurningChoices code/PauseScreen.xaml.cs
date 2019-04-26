@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*Description: This is the pause screen for when the player wants to quit the game or save it*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

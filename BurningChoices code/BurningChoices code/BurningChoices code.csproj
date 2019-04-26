@@ -62,6 +62,9 @@
     <Compile Include="Level2Bad.xaml.cs">
       <DependentUpon>Level2Bad.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Level2BadEnding.xaml.cs">
+      <DependentUpon>Level2BadEnding.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Level2Trident1.xaml.cs">
       <DependentUpon>Level2Trident1.xaml</DependentUpon>
     </Compile>
@@ -79,6 +82,10 @@
     <Compile Include="PlayerMovement.cs" />
     <Compile Include="Story.cs" />
     <Page Include="Level2Bad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Level2BadEnding.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,8 +151,6 @@
     <Resource Include="Object Model\Wall.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Object Model\MOVEMENTLEFT.png" />
-    <Resource Include="Object Model\MOVEMENTRIGHT.png" />
     <Resource Include="Object Model\ROAD.png" />
     <Resource Include="Object Model\TREE.png" />
     <Resource Include="Object Model\TREE2.png" />
@@ -202,6 +207,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Saved Game\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Object Model\Fan.png" />
+    <Resource Include="Object Model\Ice.png" />
+    <Resource Include="Object Model\Water.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

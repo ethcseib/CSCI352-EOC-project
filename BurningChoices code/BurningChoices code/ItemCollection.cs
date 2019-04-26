@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*Description: This is the other part of the Observer pattern we used. This is the Subject portion. It collects an an item from the canvas and notifies the Observer*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,6 +36,8 @@ namespace BurningChoices_code
 
     class ItemCollection : Subject
     {
+        /*<Summary> The ItemCollection/Subject class/>*/
+
         Image item;
         public Image GetItem
         {
@@ -49,9 +52,6 @@ namespace BurningChoices_code
         public void Collect(Image item)
         {
             this.item = item;
-            //MessageBox.Show("Collected");
-            //item.Remove(item);
-            
 
             Notify();   
         }
