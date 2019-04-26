@@ -62,7 +62,6 @@ namespace BurningChoices_code
             HellCanvas.Focusable = true;
             HellCanvas.Focus();
 
-            //make.MakeWall(MainCharacter, HellCanvas, "../../Object Model/rocks.png", HellRock1);
             make.MakeItem(MainCharacter, HellCanvas, "../../Object Model/T3.png", TridentPiece);
             make.MakeDoor(MainCharacter, HellCanvas, "", Door1);
             make.MakeDoor(MainCharacter, HellCanvas, "", Door2);
@@ -92,9 +91,14 @@ namespace BurningChoices_code
                 GoodStory.PrintLevelIntro(StoryBox);
             }
 
-            if (obs.CollisionStatus)
+            if (e.Key == Key.Escape)
             {
-                //MessageBox.Show(Convert.ToString(obs.Count()));
+                PauseScreen pause = new PauseScreen(this);
+                pause.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                pause.ShowDialog();
+            }
+            else if (obs.CollisionStatus)
+            {
                 if (obs.collideable)
                 {
                     if (Canvas.GetRight(MainCharacter) == Canvas.GetLeft(GenObstacle.ClosestObstacle))//going right
@@ -141,7 +145,13 @@ namespace BurningChoices_code
                         obs.Clear();
                         this.Close();
                     }
-                    press.MoveFreely(e);
+                    else if (Canvas.GetLeft(MainCharacter) == Canvas.GetRight(GenObstacle.ClosestObstacle))
+                        press.RestrictLeft(e);
+
+                    else if (Canvas.GetBottom(MainCharacter) == Canvas.GetTop(GenObstacle.ClosestObstacle))
+                        press.RestrictDown(e);
+                    else
+                        press.MoveFreely(e);
                 }
             }
             else

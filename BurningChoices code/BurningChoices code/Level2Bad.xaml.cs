@@ -82,9 +82,14 @@ namespace BurningChoices_code
             {
                 GoodStory.PrintLevelIntro(StoryBox);
             }
-                
 
-            if (obs.CollisionStatus)
+            if (e.Key == Key.Escape)
+            {
+                PauseScreen pause = new PauseScreen(this);
+                pause.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                pause.ShowDialog();
+            }
+            else if (obs.CollisionStatus)
             {
                 
                 if (obs is NPC)
@@ -114,12 +119,37 @@ namespace BurningChoices_code
 
                 else if (obs is Door)
                 {
-                    if (GoodEnding == true || GoodEnding == false)
+                    if (BadStory.ShouldContinue == true || GoodStory.ShouldContinue == true)
                     {
                         obs.Clear();
                         this.Close();
                     }
-                    move.MoveFreely(e);
+
+                    else if (Canvas.GetRight(MainCharacter) == Canvas.GetLeft(GenObstacle.ClosestObstacle))//going right
+                    {
+                        move.RestrictRight(e);
+                    }
+
+                    else if (Canvas.GetBottom(MainCharacter) == Canvas.GetTop(GenObstacle.ClosestObstacle))//going down
+                    {
+                        move.RestrictDown(e);
+                    }
+
+                    else if (Canvas.GetTop(MainCharacter) == Canvas.GetBottom(GenObstacle.ClosestObstacle))//going up
+                    {
+                        move.RestrictUp(e);
+
+                    }
+
+                    else if (Canvas.GetLeft(MainCharacter) == Canvas.GetRight(GenObstacle.ClosestObstacle))//going left
+                    {
+                        move.RestrictLeft(e);
+                    }
+
+                    else
+                    {
+                        move.MoveFreely(e);
+                    }
                 }
             }
 

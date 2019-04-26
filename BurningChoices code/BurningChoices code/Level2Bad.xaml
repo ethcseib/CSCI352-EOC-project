@@ -14,7 +14,7 @@
         <Grid x:Name="HellInventory" Height="573" Canvas.Left="760" Canvas.Top="0" Width="165" Initialized="HellInventory_Initialized"/>
         <Image x:Name="WallNorth" Height="10" Canvas.Top="0" Canvas.Left="0" Width="930"/>
         <Image x:Name="WallEast" Height="610" Canvas.Left="740" Canvas.Top="0" Width="10"/>
-        <Image x:Name="WallSouth" Height="10" Canvas.Left="10" Canvas.Top="560" Width="915"/>
+        <Image x:Name="WallSouth" Height="10" Canvas.Top="480" Canvas.Left="0" Width="910"/>
         <Image x:Name="MainCharacter" Height="100" Canvas.Left="320" Canvas.Top="250" Width="100"/>
         <Image x:Name="DoorWest" Height="610" Canvas.Left="0" Canvas.Top="0" Width="10"/>
         <TextBox x:Name="StoryBox" Height="90" TextWrapping="Wrap" Canvas.Top="490" Width="750" Background="White" Focusable="False"/>
